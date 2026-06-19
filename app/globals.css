@@ -18,11 +18,125 @@
     radial-gradient(circle at 50% 80%, rgba(119, 36, 29, 0.25), transparent 34%);
 }
 
+/* 17. Add this to app/globals.css */
+
 :root {
-  --primary: #221129;
-  --secondary: #77241D;
-  --cream: #F7EEE8;
-  --soft: #D6B8AD;
+  --primary: #2b1438;
+  --primary-light: #3b1f4b;
+  --secondary: #8b332c;
+  --secondary-light: #a95850;
+  --cream: #f4edf6;
+}
+
+.site-bg {
+  background:
+    radial-gradient(circle at 85% 12%, rgba(163, 78, 73, 0.28), transparent 32%),
+    radial-gradient(circle at 14% 72%, rgba(110, 76, 132, 0.32), transparent 36%),
+    linear-gradient(120deg, #2a1537 0%, #3a1e46 48%, #7a2524 100%);
+}
+
+.hero-soft-bg {
+  background:
+    radial-gradient(circle at 82% 12%, rgba(161, 75, 69, 0.34), transparent 30%),
+    radial-gradient(circle at 12% 72%, rgba(97, 68, 122, 0.35), transparent 34%),
+    linear-gradient(120deg, #2d173a 0%, #3d214b 48%, #7e2827 100%);
+}
+
+.soft-section {
+  background:
+    radial-gradient(circle at 14% 10%, rgba(118, 78, 143, 0.16), transparent 28%),
+    radial-gradient(circle at 88% 78%, rgba(157, 74, 69, 0.16), transparent 30%),
+    linear-gradient(120deg, #2a1537 0%, #341b42 55%, #512039 100%);
+}
+
+.soft-section-alt {
+  background:
+    radial-gradient(circle at 90% 12%, rgba(163, 83, 76, 0.2), transparent 30%),
+    radial-gradient(circle at 12% 86%, rgba(111, 76, 132, 0.22), transparent 34%),
+    linear-gradient(120deg, #321940 0%, #3c204b 50%, #642339 100%);
+}
+
+.surface-panel {
+  background:
+    radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.07), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.035));
+  backdrop-filter: blur(22px);
+}
+
+.soft-card {
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.soft-glass {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 80px rgba(20, 8, 28, 0.28);
+}
+
+.shadow-soft {
+  box-shadow: 0 28px 90px rgba(18, 7, 23, 0.24);
+}
+
+.soft-gradient-text {
+  background: linear-gradient(90deg, #ffffff 0%, #dfb4d9 42%, #d58b82 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-rings {
+  opacity: 0.22;
+  background:
+    radial-gradient(circle at 102% 76%,
+      transparent 0 14%,
+      rgba(255, 255, 255, 0.18) 14.5% 16%,
+      transparent 16.5% 22%,
+      rgba(255, 255, 255, 0.15) 22.5% 24%,
+      transparent 24.5% 30%,
+      rgba(255, 255, 255, 0.12) 30.5% 32%,
+      transparent 32.5% 100%);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.layer-stack {
+  position: relative;
+}
+
+.layer-stage {
+  position: relative;
+}
+
+.stack-card {
+  transform-origin: center top;
+  will-change: transform, opacity;
+}
+
+[data-parallax],
+.mouse-parallax,
+.hero-visual {
+  will-change: transform, opacity;
+}
+
+@media (max-width: 768px) {
+  .layer-stage {
+    height: auto;
+    margin-bottom: 2rem;
+  }
+
+  .stack-card {
+    position: relative;
+    top: 0;
+  }
+
+  .hero-rings {
+    opacity: 0.12;
+    width: 100%;
+  }
 }
 
 * {
