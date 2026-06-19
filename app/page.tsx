@@ -873,10 +873,14 @@ function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr]">
         <div>
           <div className="flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded-full bg-secondary">
-              <Sparkles className="h-5 w-5" />
-            </span>
-            <span className="text-lg font-black">IntelliQA</span>
+            <Image
+              src={"/elevro-logo.svg"}
+              alt="elevro-icon"
+              width={230} 
+              height={50} 
+              className="h-9 w-auto object-contain" 
+              priority
+            />
           </div>
           <p className="mt-5 max-w-sm text-sm leading-7 text-cream/[0.55]">
             AI-led product, cloud and quality engineering for teams that want
