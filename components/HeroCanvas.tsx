@@ -212,7 +212,7 @@ function QualityIntelligenceCore() {
       new THREE.TorusGeometry(0.74, 0.005, 10, 160),
       verificationMaterial,
     );
-    scene.add(verificationRing);
+    // scene.add(verificationRing);
 
     const baseColor = new THREE.Color("#dff8ff");
     const accentColor = new THREE.Color("#4ee7ff");

@@ -85,18 +85,7 @@
   color: transparent;
 }
 
-.hero-rings {
-  opacity: 0.22;
-  background:
-    radial-gradient(circle at 102% 76%,
-      transparent 0 14%,
-      rgba(255, 255, 255, 0.18) 14.5% 16%,
-      transparent 16.5% 22%,
-      rgba(255, 255, 255, 0.15) 22.5% 24%,
-      transparent 24.5% 30%,
-      rgba(255, 255, 255, 0.12) 30.5% 32%,
-      transparent 32.5% 100%);
-}
+
 
 .reveal {
   opacity: 0;
@@ -133,10 +122,6 @@
     top: 0;
   }
 
-  .hero-rings {
-    opacity: 0.12;
-    width: 100%;
-  }
 }
 
 * {

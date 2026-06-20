@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,73 +11,15 @@ import {
   BrainCircuit,
   BriefcaseBusiness,
   CheckCircle2,
-  ChevronDown,
   CloudCog,
   Cpu,
   FileText,
   Layers3,
-  Menu,
   Rocket,
   ShieldCheck,
   TestTubeDiagonal,
-  X,
 } from "lucide-react";
 import HeroCanvas from "@/components/HeroCanvas";
-import Image from "next/image";
-
-const navItems = [
-  { label: "Home", href: "/" },
-  {
-    label: "Services",
-    href: "/services",
-    children: [
-      {
-        label: "Artificial Intelligence",
-        href: "/services/artificial-intelligence",
-      },
-      { label: "Product Enablement", href: "/services/product-enablement" },
-      { label: "Digital Engineering", href: "/services/digital-engineering" },
-      {
-        label: "Intelligent Quality Engineering",
-        href: "/services/intelligent-quality-engineering",
-      },
-      { label: "Cloud Engineering", href: "/services/cloud-engineering" },
-    ],
-  },
-  {
-    label: "Solutions & Accelerators",
-    href: "/solutions-accelerators",
-    children: [
-      {
-        label: "AI Quality Command Center",
-        href: "/solutions-accelerators/ai-quality-command-center",
-      },
-      {
-        label: "Automation Accelerator Studio",
-        href: "/solutions-accelerators/automation-accelerator-studio",
-      },
-    ],
-  },
-  {
-    label: "Resources",
-    href: "/resources",
-    children: [
-      { label: "Blogs", href: "/resources/blogs" },
-      { label: "Whitepapers", href: "/resources/whitepapers" },
-      { label: "Case Studies", href: "/resources/case-studies" },
-    ],
-  },
-  {
-    label: "About Us",
-    href: "/about-us",
-    children: [
-      { label: "Overview", href: "/about-us/overview" },
-      { label: "Careers", href: "/about-us/careers" },
-      { label: "Partnerships", href: "/about-us/partnerships" },
-    ],
-  },
-  { label: "Contact Us", href: "/contact-us" },
-];
 
 const services = [
   {
@@ -175,7 +117,6 @@ const fadeUp = {
 };
 
 export default function HomePage() {
-  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -315,8 +256,7 @@ export default function HomePage() {
   }, []);
 
   return (
-      <main className={`min-h-screen overflow-hidden flex flex-col gap-3  text-cream`}>
-        <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
+      <main className={`min-h-screen overflow-hidden flex flex-col  text-cream`}>
         <Hero />
         <LogoStrip />
         <Services />
@@ -325,125 +265,26 @@ export default function HomePage() {
         <Resources />
         <About />
         <CTA />
-        <Footer />
       </main>
   );
 }
 
-function Navbar({
-  isOpen,
-  setIsOpen,
-}: {
-  isOpen: boolean;
-  setIsOpen: (value: boolean) => void;
-}) {
-  return (
-    <header className="nav-animate fixed left-0 right-0 top-0 z-50 px-4 py-4 md:px-8">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/12 bg-[#2d1738]/70 px-4 py-3 shadow-soft backdrop-blur-xl md:px-6">
-        {" "}
-        <Link href="/" className="flex items-center ">
-          <Image
-            src={"/elevro-logo.svg"}
-            alt="elevro-icon"
-            width={230} // Reflects the actual design aspect ratio
-            height={50} // dynamically matching the canvas proportions
-            className="h-9 w-auto object-contain" // Constrain the height, let the width breathe
-            priority
-          />
-        </Link>
-        <div className="hidden items-center gap-1 lg:flex">
-          {navItems.map((item) => (
-            <div key={item.label} className="group relative">
-              <Link
-                href={item.href}
-                className="flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium text-cream/[0.78] transition hover:bg-white/10 hover:text-white"
-              >
-                {item.label}
-                {item.children ? <ChevronDown className="h-3.5 w-3.5" /> : null}
-              </Link>
-              {item.children ? (
-                <div className="invisible absolute left-0 top-12 w-72 translate-y-3 rounded-3xl border border-white/10 bg-[#1a0c20]/95 p-3 opacity-0 shadow-card backdrop-blur-xl transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                  {item.children.map((child) => (
-                    <Link
-                      href={child.href}
-                      key={child.label}
-                      className="block rounded-2xl px-4 py-3 text-sm text-cream/75 transition hover:bg-secondary/30 hover:text-white"
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-          ))}
-        </div>
-        <Link
-          href="/contact-us"
-          className="hidden rounded-full bg-[#8b332c] px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-[#9d4038] lg:inline-flex"
-        >
-          Start a Project
-        </Link>
-        <button
-          className="grid h-10 w-10 place-items-center rounded-full bg-white/10 lg:hidden"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X /> : <Menu />}
-        </button>
-      </nav>
-
-      {isOpen ? (
-        <div className="mx-auto mt-3 max-w-7xl rounded-3xl border border-white/10 bg-[#1a0c20]/95 p-4 shadow-card backdrop-blur-xl lg:hidden">
-          {navItems.map((item) => (
-            <div
-              key={item.label}
-              className="border-b border-white/10 py-2 last:border-0"
-            >
-              <Link
-                href={item.href}
-                className="block py-2 font-semibold"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </Link>
-              {item.children ? (
-                <div className="pl-4">
-                  {item.children.map((child) => (
-                    <Link
-                      key={child.label}
-                      href={child.href}
-                      className="block py-2 text-sm text-cream/70"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-          ))}
-        </div>
-      ) : null}
-    </header>
-  );
-}
 
 function Hero() {
   return (
     <section
       id="home"
-      className="hero-parallax hero-soft-bg relative min-h-screen overflow-hidden px-4 pt-32 md:px-8 lg:pt-36"
+      className="hero-parallax hero-soft-bg relative min-h-screen overflow-hidden px-4 flex flex-col items-center justify-center md:px-8 "
     >
-      <div className="hero-rings pointer-events-none absolute inset-y-0 right-0 w-[44vw]" />
 
       <div
         data-parallax="-0.12"
-        className="pointer-events-none absolute -left-32 top-28 h-[380px] w-[380px] rounded-full bg-[#6f4b83]/25 blur-[120px]"
+        className="pointer-events-none absolute -left-32 top-28 h-95 w-95 rounded-full bg-[#6f4b83]/25 blur-[120px]"
       />
 
       <div
         data-parallax="0.14"
-        className="pointer-events-none absolute -right-32 top-28 h-[480px] w-[480px] rounded-full bg-[#a25858]/20 blur-[130px]"
+        className="pointer-events-none absolute -right-32 top-28 h-120 w-120 rounded-full bg-[#a25858]/20 blur-[130px]"
       />
 
       <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.02fr_0.98fr]">
@@ -460,7 +301,7 @@ function Hero() {
             </span>
           </h1>
 
-          <p className="mt-6 max-w-2xl text-base font-normal leading-8 text-cream/[0.68] md:text-lg">
+          <p className="mt-6 max-w-2xl text-base font-normal leading-8 text-cream/68 md:text-lg">
             We design AI, digital engineering and cloud-native quality systems
             that convert complex workflows into reliable, automated and
             measurable business outcomes.
@@ -477,7 +318,7 @@ function Hero() {
 
             <Link
               href="/services"
-              className="inline-flex items-center justify-center rounded-full border border-white/[0.14] bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white/85 transition hover:bg-white/10"
+              className="inline-flex items-center justify-center rounded-full border border-white/[0.14] bg-white/4 px-6 py-3.5 text-sm font-semibold text-white/85 transition hover:bg-white/10"
             >
               Explore Services
             </Link>
@@ -486,7 +327,7 @@ function Hero() {
 
         <div
           data-parallax="0.06"
-          className="hero-visual relative h-[580px] min-h-[400px]"
+          className="hero-visual relative h-145 min-h-100"
         >
           <div
             data-depth="-0.03"
@@ -527,7 +368,7 @@ function Hero() {
               {stats.slice(0, 3).map(([value, label]) => (
                 <div key={label} className="rounded-2xl bg-white/[0.07] p-3">
                   <p className="text-base font-semibold">{value}</p>
-                  <p className="mt-1 text-xs font-normal text-cream/[0.52]">
+                  <p className="mt-1 text-xs font-normal text-cream/52">
                     {label}
                   </p>
                 </div>
@@ -549,7 +390,7 @@ function Hero() {
 
           <div
             data-depth="-0.08"
-            className="mouse-parallax absolute right-8 bottom-28 z-10 hidden rounded-full border border-white/10 bg-white/[0.06] px-5 py-3 text-sm font-medium text-white/80 backdrop-blur-xl md:block"
+            className="mouse-parallax absolute right-8 bottom-28 z-10 hidden rounded-full border border-white/10 bg-white/6 px-5 py-3 text-sm font-medium text-white/80 backdrop-blur-xl md:block"
           >
             AI Quality Engine
           </div>
@@ -562,7 +403,7 @@ function Hero() {
 function LogoStrip() {
   return (
     <section className="relative border-y border-white/10 bg-[#1b0d21] py-6">
-      <div className="mx-auto mb-4 max-w-7xl px-4 text-sm uppercase tracking-[0.32em] text-cream/[0.45] md:px-8">
+      <div className="mx-auto mb-4 max-w-7xl px-4 text-sm uppercase tracking-[0.32em] text-cream/45 md:px-8">
         Trusted delivery mindset across digital, cloud and AI teams
       </div>
       <div className="overflow-hidden whitespace-nowrap">
@@ -602,11 +443,11 @@ function Services() {
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ delay: index * 0.07, duration: 0.55 }}
                 whileHover={{ y: -10, scale: 1.02 }}
-                className="group relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/[0.055] p-6 shadow-soft"
+                className="group relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/5.5 p-6 shadow-soft"
               >
-                <div className="absolute -right-14 -top-14 h-36 w-36 rounded-full bg-secondary/25 blur-2xl transition group-hover:bg-secondary/[0.45]" />
+                <div className="absolute -right-14 -top-14 h-36 w-36 rounded-full bg-secondary/25 blur-2xl transition group-hover:bg-secondary/45" />
                 <div className="relative">
-                  <span className="mb-8 grid h-14 w-14 place-items-center rounded-2xl bg-secondary/[0.35] text-white">
+                  <span className="mb-8 grid h-14 w-14 place-items-center rounded-2xl bg-secondary/35 text-white">
                     <Icon className="h-6 w-6" />
                   </span>
                   <h3 // 8. Replace service card title className with this
@@ -614,7 +455,7 @@ function Services() {
                   >
                     {service.title}
                   </h3>
-                  <p className="mt-4 text-sm leading-6 text-cream/[0.62]">
+                  <p className="mt-4 text-sm leading-6 text-cream/62">
                     {service.text}
                   </p>
                   <Link
@@ -645,7 +486,7 @@ function Evolution() {
         className="pointer-events-none absolute bottom-20 right-10 h-96 w-96 rounded-full bg-white/10 blur-[120px]"
       />
       <div // 10. Replace Evolution card wrapper className with this
-        className="reveal surface-panel relative mx-auto grid max-w-7xl overflow-hidden rounded-[2rem] border border-white/10 shadow-soft lg:grid-cols-2"
+        className="reveal surface-panel relative mx-auto grid max-w-7xl overflow-hidden rounded-4xl border border-white/10 shadow-soft lg:grid-cols-2"
       >
         <div className="p-8 md:p-12">
           <p className="mb-4 text-sm font-bold uppercase tracking-[0.32em] text-secondary">
@@ -654,7 +495,7 @@ function Evolution() {
           <h2 className="text-4xl font-black tracking-tight md:text-6xl">
             From idea to automated operating model.
           </h2>
-          <p className="mt-6 text-lg leading-8 text-cream/[0.68]">
+          <p className="mt-6 text-lg leading-8 text-cream/68">
             Use this section like Zylitix’s deeper service explanation area:
             each service gets a narrative, benefits and a conversion path, but
             the content is tuned around intelligent quality and automation.
@@ -670,13 +511,13 @@ function Evolution() {
                 className="flex items-start gap-3 rounded-2xl bg-white/5 p-4"
               >
                 <CheckCircle2 className="mt-0.5 h-5 w-5 text-secondary" />
-                <p className="text-cream/[0.78]">{item}</p>
+                <p className="text-cream/78">{item}</p>
               </div>
             ))}
           </div>
         </div>
-        <div className="relative min-h-[460px] bg-[radial-gradient(circle_at_50%_30%,rgba(119,36,29,0.65),transparent_32%),linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.01))] p-8 md:p-12">
-          <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:44px_44px]" />
+        <div className="relative min-h-115 bg-[radial-gradient(circle_at_50%_30%,rgba(119,36,29,0.65),transparent_32%),linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.01))] p-8 md:p-12">
+          <div className="absolute inset-0 opacity-30 bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-size-[44px_44px]" />
           <div className="relative grid gap-5">
             {services.slice(0, 4).map((service, index) => (
               <motion.div
@@ -687,7 +528,7 @@ function Evolution() {
                 transition={{ delay: index * 0.08 }}
                 className="glass rounded-3xl p-5"
               >
-                <p className="text-sm text-cream/[0.45]">0{index + 1}</p>
+                <p className="text-sm text-cream/45">0{index + 1}</p>
                 <p className="mt-1 font-black">{service.title}</p>
               </motion.div>
             ))}
@@ -706,12 +547,12 @@ function Solutions() {
     >
       <div
         data-parallax="-0.1"
-        className="pointer-events-none absolute -left-32 top-20 h-[420px] w-[420px] rounded-full bg-secondary/20 blur-[120px]"
+        className="pointer-events-none absolute -left-32 top-20 h-105 w-105 rounded-full bg-secondary/20 blur-[120px]"
       />
 
       <div
         data-parallax="0.16"
-        className="pointer-events-none absolute -right-32 bottom-10 h-[420px] w-[420px] rounded-full bg-white/10 blur-[120px]"
+        className="pointer-events-none absolute -right-32 bottom-10 h-105 w-105 rounded-full bg-white/10 blur-[120px]"
       />
 
       <div className="relative z-10 mx-auto max-w-7xl">
@@ -726,9 +567,9 @@ function Solutions() {
             return (
               <div
                 key={item.title}
-                className="reveal rounded-[2rem] border border-white/10 bg-primary/70 p-8 shadow-card"
+                className="reveal rounded-4xl border border-white/10 bg-primary/70 p-8 shadow-card"
               >
-                <span className="grid h-16 w-16 place-items-center rounded-3xl bg-secondary/[0.35]">
+                <span className="grid h-16 w-16 place-items-center rounded-3xl bg-secondary/35">
                   <Icon className="h-7 w-7" />
                 </span>
                 <h3 className="mt-8 text-3xl font-black">{item.title}</h3>
@@ -785,7 +626,7 @@ function Resources() {
             <motion.article
               key={resource.title}
               whileHover={{ y: -8 }}
-              className="reveal rounded-[2rem] border border-white/10 bg-white/[0.055] p-6 shadow-card"
+              className="reveal rounded-4xl border border-white/10 bg-white/5.5 p-6 shadow-card"
             >
               <span className="mb-10 inline-flex items-center gap-2 rounded-full bg-secondary/25 px-4 py-2 text-sm font-bold text-white">
                 <FileText className="h-4 w-4" /> {resource.type}
@@ -811,7 +652,7 @@ function About() {
   return (
     <section id="about" className="px-4 pb-24 md:px-8">
       <div
-        className="reveal surface-panel mx-auto grid max-w-7xl gap-8 rounded-[2rem] border border-white/10 p-8 shadow-soft md:p-12 lg:grid-cols-[0.85fr_1.15fr]"
+        className="reveal surface-panel mx-auto grid max-w-7xl gap-8 rounded-4xl border border-white/10 p-8 shadow-soft md:p-12 lg:grid-cols-[0.85fr_1.15fr]"
       >
         <div>
           <p className="mb-4 text-sm font-bold uppercase tracking-[0.32em] text-secondary">
@@ -844,7 +685,7 @@ function About() {
             >
               <BriefcaseBusiness className="mb-8 h-7 w-7 text-secondary" />
               <h3 className="text-xl font-black">{title}</h3>
-              <p className="mt-3 text-sm leading-6 text-cream/[0.62]">{text}</p>
+              <p className="mt-3 text-sm leading-6 text-cream/62">{text}</p>
             </Link>
           ))}
         </div>
@@ -856,9 +697,9 @@ function About() {
 function CTA() {
   return (
     <section className="px-4 pb-24 md:px-8">
-      <div className="reveal relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#8b332c] p-8 shadow-soft md:p-14">
+      <div className="reveal relative mx-auto max-w-7xl overflow-hidden rounded-4xl bg-[#8b332c] p-8 shadow-soft md:p-14">
         <div className="relative z-10 max-w-3xl">
-          <p className="mb-4 font-bold uppercase tracking-[0.32em] text-white/[0.65]">
+          <p className="mb-4 font-bold uppercase tracking-[0.32em] text-white/65">
             Call to Action
           </p>
           <h2 className="text-4xl font-black md:text-6xl">
@@ -878,46 +719,6 @@ function CTA() {
         </div>
       </div>
     </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="border-t border-white/10 bg-[#25112f] px-4 py-12 md:px-8">
-      <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr]">
-        <div>
-          <div className="flex items-center gap-3">
-            <Image
-              src={"/elevro-logo.svg"}
-              alt="elevro-icon"
-              width={230}
-              height={50}
-              className="h-9 w-auto object-contain"
-              priority
-            />
-          </div>
-          <p className="mt-5 max-w-sm text-sm leading-7 text-cream/[0.55]">
-            AI-led product, cloud and quality engineering for teams that want
-            automation with measurable impact.
-          </p>
-        </div>
-        <FooterColumn
-          title="Company"
-          links={["Home", "About Us", "Careers", "Contact Us"]}
-        />
-        <FooterColumn
-          title="Services"
-          links={services.map((item) => item.title)}
-        />
-        <FooterColumn
-          title="Resources"
-          links={["Blogs", "Whitepapers", "Case Studies", "Partnerships"]}
-        />
-      </div>
-      <div className="mx-auto mt-10 max-w-7xl border-t border-white/10 pt-6 text-sm text-cream/[0.45]">
-        © 2026 IntelliQA. All rights reserved.
-      </div>
-    </footer>
   );
 }
 
@@ -942,30 +743,10 @@ function SectionHeader({
         {title}
       </h2>
 
-      <p className="mt-5 text-base font-normal leading-8 text-cream/[0.62] md:text-lg">
+      <p className="mt-5 text-base font-normal leading-8 text-cream/62 md:text-lg">
         {text}
       </p>
     </div>
   );
 }
 
-function FooterColumn({ title, links }: { title: string; links: string[] }) {
-  return (
-    <div>
-      <h4 className="mb-4 font-black uppercase tracking-[0.2em] text-cream/80">
-        {title}
-      </h4>
-      <div className="grid gap-3">
-        {links.map((link) => (
-          <Link
-            key={link}
-            href="#"
-            className="text-sm text-cream/[0.55] transition hover:text-white"
-          >
-            {link}
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-}
