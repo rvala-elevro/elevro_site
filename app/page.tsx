@@ -337,7 +337,7 @@ function Hero() {
 
           <p className="mt-6 max-w-2xl text-base font-normal leading-7 text-cream/68 md:text-lg md:leading-8">
             We enable modern product engineering with AI-powered Quality
-            Engineering, automaƟon, DevOps, CloudOps, and release
+            Engineering, automation, DevOps, CloudOps, and release
             enablement—building confidence across every stage of product
             delivery.
           </p>
@@ -690,7 +690,7 @@ function CTA() {
           </p>
           <h2 className="text-4xl font-black md:text-6xl">
             Deliver confident product with robust End to End coverage and
-            gatekeepers backed by CogniƟve Intelligence.
+            gatekeepers backed by Cognitive Intelligence.
           </h2>
           <p className="mt-6 text-lg leading-8 text-white/75">
             Share us a problem you are facing and lets discuss the solutions!!
