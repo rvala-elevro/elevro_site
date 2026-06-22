@@ -418,47 +418,47 @@ function Services() {
           text="A homepage service grid inspired by enterprise AI consultancies, adapted for your exact service categories and brand colors."
         />
         <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
-        {services.map((service, index) => {
-  const Icon = service.icon;
-  return (
-    <motion.div
-      key={service.title}
-      variants={fadeUp}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ delay: index * 0.07, duration: 0.55 }}
-      whileHover={{ y: -10, scale: 1.02 }}
-      className="group relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/5.5 p-6 shadow-soft"
-    >
-      <div className="absolute -right-14 -top-14 h-36 w-36 rounded-full bg-secondary/25 blur-2xl transition group-hover:bg-secondary/45" />
-      
-      {/* Container must have h-full and flex-col */}
-      <div className="relative flex flex-col gap-4 h-full">
-        <span className="grid h-14 w-14 place-items-center rounded-2xl bg-secondary/35 text-white flex-shrink-0">
-          <Icon className="h-6 w-6" />
-        </span>
-        
-        <div className="flex flex-col gap-2">
-          <h3 className="text-lg font-medium leading-tight text-white/90">
-            {service.title}
-          </h3>
-          <p className="text-sm leading-6 text-cream/62">
-            {service.text}
-          </p>
-        </div>
+          {services.map((service, index) => {
+            const Icon = service.icon;
+            return (
+              <motion.div
+                key={service.title}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ delay: index * 0.07, duration: 0.55 }}
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="group relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/5.5 p-6 shadow-soft"
+              >
+                <div className="absolute -right-14 -top-14 h-36 w-36 rounded-full bg-secondary/25 blur-2xl transition group-hover:bg-secondary/45" />
 
-        {/* Adding mt-auto pushes this element to the very bottom */}
-        <Link
-          href={service.href}
-          className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-white self-start"
-        >
-          Know More <ArrowRight className="h-4 w-4" />
-        </Link>
-      </div>
-    </motion.div>
-  );
-})}
+                {/* Container must have h-full and flex-col */}
+                <div className="relative flex flex-col gap-4 h-full">
+                  <span className="grid h-14 w-14 place-items-center rounded-2xl bg-secondary/35 text-white flex-shrink-0">
+                    <Icon className="h-6 w-6" />
+                  </span>
+
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-lg font-medium leading-tight text-white/90">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm leading-6 text-cream/62">
+                      {service.text}
+                    </p>
+                  </div>
+
+                  {/* Adding mt-auto pushes this element to the very bottom */}
+                  <Link
+                    href={service.href}
+                    className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-white self-start"
+                  >
+                    Know More <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -684,23 +684,66 @@ function CTA() {
   return (
     <section className="px-4 pb-24 md:px-8">
       <div className="reveal relative mx-auto max-w-7xl overflow-hidden rounded-4xl bg-[#8b332c] p-8 shadow-soft md:p-14">
+        {/* Subtle background glow element to draw the eyes downward */}
+        <div className="pointer-events-none absolute -bottom-20 -right-20 h-80 w-80 rounded-full bg-white/10 blur-3xl animate-pulse" />
+
         <div className="relative z-10 max-w-3xl">
           <p className="mb-4 font-bold uppercase tracking-[0.32em] text-white/65">
             Call to Action
           </p>
           <h2 className="text-4xl font-black md:text-6xl">
-            Deliver confident product with robust End to End coverage and
+            Lets build your automation with robust End to End coverage and
             gatekeepers backed by Cognitive Intelligence.
           </h2>
           <p className="mt-6 text-lg leading-8 text-white/75">
             Share us a problem you are facing and lets discuss the solutions!!
           </p>
-          <Link
-            href="/contact-us"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 font-black text-primary transition hover:scale-105"
+
+          {/* Enhanced Interactive Contact Us Button */}
+          <motion.div
+            className="mt-8 inline-block"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
           >
-            Contact Us <ArrowRight className="h-4 w-4" />
-          </Link>
+            <Link href="/contact-us" passHref legacyBehavior>
+              <motion.a
+                className="relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-linear-to-r from-white via-cream to-white px-8 py-4.5 font-black text-[#8b332c] shadow-xl backdrop-blur-sm"
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0px 20px 40px rgba(255, 255, 255, 0.25)",
+                }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+              >
+                {/* Shimmer linear highlights sliding across the background */}
+                <motion.span
+                  className="absolute inset-0 block w-[200%] -translate-x-full bg-linear-to-r from-transparent via-white/40 to-transparent"
+                  animate={{ x: ["0%", "100%"] }}
+                  transition={{
+                    repeat: Infinity,
+                    ease: "linear",
+                    duration: 2.5,
+                  }}
+                />
+
+                <span className="relative z-10 flex items-center gap-2">
+                  Contact Us
+                  <motion.span
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 1.5,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <ArrowRight className="h-4 w-4 stroke-[3px]" />
+                  </motion.span>
+                </span>
+              </motion.a>
+            </Link>
+          </motion.div>
         </div>
       </div>
     </section>
