@@ -289,7 +289,7 @@ export default function HomePage() {
         }`}
       >
         <Hero />
-        <LogoStrip />
+        {/* <LogoStrip /> */}
         <Services />
         <Evolution />
         <Solutions />
