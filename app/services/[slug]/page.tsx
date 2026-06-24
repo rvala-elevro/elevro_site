@@ -46,35 +46,48 @@ export default async function ServiceDetailPage({
       <PageHero eyebrow="Service" title={service.title} text={service.hero} />
 
       <section className="px-4 pb-24 md:px-8">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-          <div className="rounded-4xl border border-white/10 bg-[#17091e] p-8 shadow-card">
-            <span className="grid h-20 w-20 place-items-center rounded-3xl bg-secondary/30">
-              <Icon className="h-9 w-9" />
-            </span>
+        <div className="mx-auto max-w-7xl">
+          <SectionTitle
+            eyebrow="Capabilities"
+            title="What Elevro delivers in this service."
+          />
 
-            <h2 className="mt-8 text-3xl font-black">Delivery Stack</h2>
+          <div className="mt-10 columns-1 gap-6 md:columns-2 xl:columns-3">
+            {/* Delivery Stack Card */}
+            <div className="mb-6 break-inside-avoid rounded-4xl border border-white/10 bg-[#17091e] p-8 shadow-card">
+              <span className="grid h-20 w-20 place-items-center rounded-3xl bg-secondary/30">
+                <Icon className="h-9 w-9" />
+              </span>
 
-            <div className="mt-6 grid gap-3">
-              {service.stack.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-2xl border border-white/10 bg-white/5.5 px-4 py-3 text-cream/75"
-                >
-                  {item}
-                </div>
-              ))}
+              <h2 className="mt-8 text-3xl font-black">Delivery Stack</h2>
+
+              <div className="mt-6 grid gap-3">
+                {service.stack.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-cream/75"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
 
-          <div>
-            <SectionTitle
-              eyebrow="Capabilities"
-              title="What Elevro delivers in this service."
-            />
+            {/* Capability Cards */}
+            {service.capabilities.map((item) => (
+              <div
+                key={item.title}
+                className="mb-6 break-inside-avoid rounded-4xl border border-white/10 bg-white/5 p-8"
+              >
+                <span className="grid h-8 w-8 place-items-center rounded-full border border-secondary text-secondary">
+                  ✓
+                </span>
 
-            <div className="mt-10">
-              <FeatureGrid items={service.capabilities} />
-            </div>
+                <h3 className="mt-10 text-2xl font-black">{item.title}</h3>
+
+                <p className="mt-5 leading-8 text-cream/65">{item.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

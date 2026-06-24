@@ -115,11 +115,13 @@ const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0 },
 };
-
+let hasHomeLoaderShown = false;
 export default function HomePage() {
-  const [showLoader, setShowLoader] = useState(true);
-
+  const [showLoader, setShowLoader] = useState(() => !hasHomeLoaderShown);
   useEffect(() => {
+    if (!showLoader) return;
+
+    hasHomeLoaderShown = true;
     document.body.style.overflow = "hidden";
 
     const timer = setTimeout(() => {
@@ -371,13 +373,6 @@ function Hero() {
             className="mouse-parallax absolute inset-0 z-0"
           >
             <HeroCanvas variant="orb" />
-          </div>
-
-          <div
-            data-depth="-0.08"
-            className="mouse-parallax absolute right-8 bottom-24 z-10 hidden rounded-full border border-white/10 bg-white/6 px-5 py-3 text-sm font-medium text-white/80 backdrop-blur-xl lg:block"
-          >
-            AI Quality Engine
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 // components/PageBlocks.tsx
-
+"use client"
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "motion/react";
