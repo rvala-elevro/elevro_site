@@ -1,8 +1,8 @@
 // components/PageBlocks.tsx
-
+"use client"
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-
+import { motion } from "motion/react";
 export function PageHero({
   eyebrow,
   title,
@@ -113,12 +113,50 @@ export function PageCTA() {
             with Elevro.
           </p>
 
-          <Link
-            href="/contact-us"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 font-black text-primary transition hover:scale-105"
+          <motion.div
+            className="mt-8 inline-block"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
           >
-            Contact Us <ArrowRight className="h-4 w-4" />
-          </Link>
+            <Link href="/contact-us" passHref legacyBehavior>
+              <motion.a
+                className="relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-linear-to-r from-white via-cream to-white px-8 py-4.5 font-black text-[#8b332c] shadow-xl backdrop-blur-sm"
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0px 20px 40px rgba(255, 255, 255, 0.25)",
+                }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+              >
+                {/* Shimmer linear highlights sliding across the background */}
+                <motion.span
+                  className="absolute inset-0 block w-[200%] -translate-x-full bg-linear-to-r from-transparent via-white/40 to-transparent"
+                  animate={{ x: ["0%", "100%"] }}
+                  transition={{
+                    repeat: Infinity,
+                    ease: "linear",
+                    duration: 2.5,
+                  }}
+                />
+
+                <span className="relative z-10 flex items-center gap-2">
+                  Contact Us
+                  <motion.span
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 1.5,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <ArrowRight className="h-4 w-4 stroke-[3px]" />
+                  </motion.span>
+                </span>
+              </motion.a>
+            </Link>
+          </motion.div>
         </div>
       </div>
     </section>

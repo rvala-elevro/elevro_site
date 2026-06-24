@@ -106,20 +106,40 @@ export const services: ServiceItem[] = [
     hero: "Elevro provides deep quality engineering expertise across scripting, UI automation, backend automation, embedded QA, hardware protocols, QAOps, and AI-powered QA.",
     capabilities: [
       {
-        title: "Scripting & Automation",
-        text: "Python, Pytest, and Robot Framework based scalable automation frameworks.",
+        title: "AI Enabled Automation Solutions",
+        text: "AI-assisted automation solutions that improve test design, execution, reporting, and quality insights.",
       },
       {
-        title: "UI/UX Test Automation",
-        text: "Web and mobile UI automation with Selenium WebDriver, Appium, XCUITest, Playwright, and Cypress.",
+        title: "Enterprise Web & Cloud",
+        text: "Quality engineering for enterprise web platforms, cloud applications, APIs, and scalable digital systems.",
       },
       {
-        title: "Embedded & IoT QA",
-        text: "Specialized validation for IoT devices, firmware, BLE, Wi-Fi, Matter, MQTT, Zigbee, LoRaWAN, and hardware workflows.",
+        title: "Mobile Applications",
+        text: "End-to-end validation for iOS, Android, connected mobile apps, and cross-platform mobile experiences.",
       },
       {
-        title: "Backend & CI/CD Automation",
-        text: "REST API automation, database validation, GitLab, Jenkins, GitHub Actions, Jira, Xray, and TestRail integrations.",
+        title: "IoT & Embedded Firmware",
+        text: "Testing and validation for IoT devices, embedded firmware, hardware workflows, and connected products.",
+      },
+      {
+        title: "Matter Enabled End-to-End Testing",
+        text: "End-to-end testing for Matter-enabled devices, smart home ecosystems, and interoperability workflows.",
+      },
+      {
+        title: "Communication Protocols Validation",
+        text: "Validation of communication protocols including BLE, Wi-Fi, MQTT, Zigbee, LoRaWAN, and device connectivity flows.",
+      },
+      {
+        title: "Audio Devices & Systems",
+        text: "Quality engineering for smart audio devices, wireless audio modules, and connected audio systems.",
+      },
+      {
+        title: "Industrial IoT",
+        text: "Validation of industrial IoT platforms, devices, telemetry, connectivity, and operational workflows.",
+      },
+      {
+        title: "End-to-End Solutions",
+        text: "Complete quality engineering coverage from device, firmware, mobile app, API, cloud, and production workflows.",
       },
     ],
     stack: [
@@ -157,20 +177,28 @@ export const services: ServiceItem[] = [
     hero: "From product idea to validation and launch, Elevro supports embedded, IoT, audio, wireless, and cloud-connected products with end-to-end engineering.",
     capabilities: [
       {
-        title: "Product Validation",
-        text: "End-to-end validation from concept, firmware, hardware, mobile app, API, and cloud workflows.",
+        title: "Continuous Integration & Delivery Pipelines",
+        text: "Build and optimize CI/CD pipelines for faster, reliable, and repeatable product delivery.",
       },
       {
-        title: "Wireless Audio Tooling",
-        text: "Enterprise tools for programming, configuration, testing, and production validation of wireless audio modules.",
+        title: "CI/CD Infrastructure Setup and Administration",
+        text: "Set up, configure, and manage CI/CD infrastructure across tools, environments, and release workflows.",
       },
       {
-        title: "SDK Enablement",
-        text: "CI/CD, build automation, test reporting, and release management for product SDKs.",
+        title: "QAOps Engineering",
+        text: "Integrate quality gates, automation, reporting, and test execution directly into engineering pipelines.",
       },
       {
-        title: "Manufacturing Support",
-        text: "Web serial, I2C, automation scripts, and hardware validation workflows for production lines.",
+        title: "DevOps Engineering",
+        text: "Enable DevOps practices across build automation, deployment workflows, environment management, and release operations.",
+      },
+      {
+        title: "Infrastructure Monitoring and Management",
+        text: "Monitor and manage infrastructure health, performance, availability, and operational reliability.",
+      },
+      {
+        title: "AIOps",
+        text: "Use AI-driven operational intelligence to improve monitoring, incident detection, root-cause analysis, and system reliability.",
       },
     ],
     stack: [
