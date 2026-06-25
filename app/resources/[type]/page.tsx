@@ -56,7 +56,7 @@ export default async function ResourceTypePage({
                     <Icon className="h-7 w-7" />
                   </span>
 
-                  <h2 className="mt-8 text-2xl font-black leading-tight">
+                  <h2 className="mt-8 text-2xl font-medium  leading-tight">
                     {item.title}
                   </h2>
 

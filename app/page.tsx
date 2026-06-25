@@ -307,7 +307,7 @@ function Hero() {
   return (
     <section
       id="home"
-      className="hero-parallax hero-soft-bg relative min-h-screen overflow-hidden px-4 flex flex-col items-center justify-center   pt-28 pb-16 md:pt-0 md:pb-0 md:px-8"
+      className="hero-parallax hero-soft-bg relative min-h-screen overflow-hidden px-4 flex flex-col items-center justify-center   pt-28 pb-16 lg:pt-0 lg:pb-0 lg:px-8"
     >
       <div
         data-parallax="-0.12"
@@ -326,7 +326,7 @@ function Hero() {
           className="hero-copy mx-auto max-w-3xl lg:mx-0 w-full text-center lg:text-left flex flex-col items-center lg:items-start"
         >
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.07] px-4 py-2 text-sm font-normal text-cream/75 backdrop-blur">
-            <span className="h-2 w-2 rounded-full bg-[#b56a62]" />
+            <span className="h-2 w-2 rounded-full bg-secondary" />
             AI-led engineering for modern enterprises
           </div>
 
@@ -473,10 +473,10 @@ function Evolution() {
       />
       <div className="reveal surface-panel relative mx-auto grid max-w-7xl overflow-hidden rounded-4xl border border-white/10 shadow-soft lg:grid-cols-2">
         <div className="p-8 md:p-12">
-          <p className="mb-4 text-sm font-bold uppercase tracking-[0.32em] text-secondary">
+          <p className="mb-4 text-sm font-bold uppercase tracking-[0.32em] text-[#d79088]">
             Digital Evolution
           </p>
-          <h2 className="text-4xl font-black tracking-tight md:text-6xl">
+          <h2 className="text-4xl font-medium tracking-tight md:text-6xl">
             From idea to automated operating model.
           </h2>
           <p className="mt-6 text-lg leading-8 text-cream/68">
@@ -513,7 +513,7 @@ function Evolution() {
                 className="glass rounded-3xl p-5"
               >
                 <p className="text-sm text-cream/45">0{index + 1}</p>
-                <p className="mt-1 font-black">{service.title}</p>
+                <p className="mt-1 font-meduim">{service.title}</p>
               </motion.div>
             ))}
           </div>
@@ -556,7 +556,7 @@ function Evolution() {
 //                 <span className="grid h-16 w-16 place-items-center rounded-3xl bg-secondary/35">
 //                   <Icon className="h-7 w-7" />
 //                 </span>
-//                 <h3 className="mt-8 text-3xl font-black">{item.title}</h3>
+//                 <h3 className="mt-8 text-3xl font-medium">{item.title}</h3>
 //                 <div className="mt-7 grid gap-3">
 //                   {item.points.map((point) => (
 //                     <div
@@ -615,7 +615,7 @@ function Resources() {
               <span className="mb-10 inline-flex items-center gap-2 rounded-full bg-secondary/25 px-4 py-2 text-sm font-bold text-white">
                 <FileText className="h-4 w-4" /> {resource.type}
               </span>
-              <h3 className="text-2xl font-black leading-tight">
+              <h3 className="text-2xl font-medium leading-tight">
                 {resource.title}
               </h3>
               <Link
@@ -637,10 +637,10 @@ function About() {
     <section id="about" className="px-4 pb-24 md:px-8">
       <div className="reveal surface-panel mx-auto grid max-w-7xl gap-8 rounded-4xl border border-white/10 p-8 shadow-soft md:p-12 lg:grid-cols-[0.85fr_1.15fr]">
         <div>
-          <p className="mb-4 text-sm font-bold uppercase tracking-[0.32em] text-secondary">
+          <p className="mb-4 text-sm font-bold uppercase tracking-[0.32em] text-[#d79088]">
             About Us
           </p>
-          <h2 className="text-4xl font-black md:text-5xl">
+          <h2 className="text-4xl font-medium md:text-5xl">
             Quality Architects, DevOps engineers and AI Engineers under one roof
           </h2>
         </div>
@@ -665,7 +665,7 @@ function About() {
               className="rounded-3xl bg-white/5 p-6 transition hover:bg-secondary/25"
             >
               <BriefcaseBusiness className="mb-8 h-7 w-7 text-secondary" />
-              <h3 className="text-xl font-black">{title}</h3>
+              <h3 className="text-xl font-medium">{title}</h3>
               <p className="mt-3 text-sm leading-6 text-cream/62">{text}</p>
             </Link>
           ))}
@@ -686,13 +686,15 @@ function CTA() {
           <p className="mb-4 font-bold uppercase tracking-[0.32em] text-white/65">
             Call to Action
           </p>
-          <h2 className="text-4xl font-black md:text-6xl">
+          <h2 className="text-4xl font-medium md:text-6xl">
             Lets build your automation with robust End to End coverage and
             gatekeepers backed by Cognitive Intelligence.
           </h2>
-          <p className="mt-6 text-lg leading-8 text-white/75">
-            Share us a problem you are facing and lets discuss the solutions!!
-          </p>
+          <div className="mt-6 border-l-3 border-white/30 pl-4">
+            <p className="text-lg leading-8 font-medium text-white">
+              Share us a problem you are facing and lets discuss the solutions!!
+            </p>
+          </div>
 
           {/* Enhanced Interactive Contact Us Button */}
           <motion.div
@@ -704,7 +706,7 @@ function CTA() {
           >
             <motion.a
               href="/contact-us"
-              className="relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-linear-to-r from-white via-cream to-white px-8 py-4.5 font-black text-[#8b332c] shadow-xl backdrop-blur-sm"
+              className="relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-linear-to-r from-white via-cream to-white px-8 py-4.5 font-medium text-[#8b332c] shadow-xl backdrop-blur-sm"
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0px 20px 40px rgba(255, 255, 255, 0.25)",

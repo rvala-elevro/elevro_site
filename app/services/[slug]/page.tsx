@@ -59,7 +59,7 @@ export default async function ServiceDetailPage({
                 <Icon className="h-9 w-9" />
               </span>
 
-              <h2 className="mt-8 text-3xl font-black">Delivery Stack</h2>
+              <h2 className="mt-8 text-3xl font-medium">Delivery Stack</h2>
 
               <div className="mt-6 grid gap-3">
                 {service.stack.map((item) => (
@@ -84,7 +84,7 @@ export default async function ServiceDetailPage({
                     ✓
                   </span>
 
-                  <h3 className="mt-10 text-2xl font-black">{item.title}</h3>
+                  <h3 className="mt-10 text-2xl font-medium">{item.title}</h3>
 
                   <p className="mt-5 leading-8 text-cream/65">{item.text}</p>
                 </div>

@@ -4,7 +4,7 @@ import Link from "next/link";
 function FooterColumn({ title, links }: { title: string; links: string[] }) {
   return (
     <div>
-      <h4 className="mb-4 font-black uppercase tracking-[0.2em] text-cream/80">
+      <h4 className="mb-4 font-medium uppercase tracking-[0.2em] text-cream/80">
         {title}
       </h4>
       <div className="grid gap-3">
