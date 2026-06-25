@@ -294,7 +294,7 @@ export default function HomePage() {
         {/* <LogoStrip /> */}
         <Services />
         <Evolution />
-        <Solutions />
+        {/* <Solutions /> */}
         <Resources />
         <About />
         <CTA />
@@ -523,65 +523,65 @@ function Evolution() {
   );
 }
 
-function Solutions() {
-  return (
-    <section
-      id="solutions"
-      className="soft-section-alt relative overflow-hidden px-4 py-24 md:px-8"
-    >
-      <div
-        data-parallax="-0.1"
-        className="pointer-events-none absolute -left-32 top-20 h-105 w-105 rounded-full bg-secondary/20 blur-[120px]"
-      />
+// function Solutions() {
+//   return (
+//     <section
+//       id="solutions"
+//       className="soft-section-alt relative overflow-hidden px-4 py-24 md:px-8"
+//     >
+//       <div
+//         data-parallax="-0.1"
+//         className="pointer-events-none absolute -left-32 top-20 h-105 w-105 rounded-full bg-secondary/20 blur-[120px]"
+//       />
 
-      <div
-        data-parallax="0.16"
-        className="pointer-events-none absolute -right-32 bottom-10 h-105 w-105 rounded-full bg-white/10 blur-[120px]"
-      />
+//       <div
+//         data-parallax="0.16"
+//         className="pointer-events-none absolute -right-32 bottom-10 h-105 w-105 rounded-full bg-white/10 blur-[120px]"
+//       />
 
-      <div className="relative z-10 mx-auto max-w-7xl">
-        <SectionHeader
-          eyebrow="Solutions & Accelerators"
-          title="Reusable accelerators that shorten the path from strategy to production."
-          text="Two subsections are added as requested. Rename them to your actual accelerator names when your product packaging is finalized."
-        />
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          {accelerators.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.title}
-                className="reveal rounded-4xl border border-white/10 bg-primary/70 p-8 shadow-card"
-              >
-                <span className="grid h-16 w-16 place-items-center rounded-3xl bg-secondary/35">
-                  <Icon className="h-7 w-7" />
-                </span>
-                <h3 className="mt-8 text-3xl font-black">{item.title}</h3>
-                <div className="mt-7 grid gap-3">
-                  {item.points.map((point) => (
-                    <div
-                      key={point}
-                      className="flex items-center gap-3 rounded-2xl bg-white/5 p-4 text-cream/75"
-                    >
-                      <CheckCircle2 className="h-5 w-5 text-secondary" />{" "}
-                      {point}
-                    </div>
-                  ))}
-                </div>
-                <Link
-                  href="/solutions-accelerators"
-                  className="mt-8 inline-flex items-center gap-2 font-bold"
-                >
-                  Explore accelerator <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
+//       <div className="relative z-10 mx-auto max-w-7xl">
+//         <SectionHeader
+//           eyebrow="Solutions & Accelerators"
+//           title="Reusable accelerators that shorten the path from strategy to production."
+//           text="Two subsections are added as requested. Rename them to your actual accelerator names when your product packaging is finalized."
+//         />
+//         <div className="mt-12 grid gap-6 lg:grid-cols-2">
+//           {accelerators.map((item) => {
+//             const Icon = item.icon;
+//             return (
+//               <div
+//                 key={item.title}
+//                 className="reveal rounded-4xl border border-white/10 bg-primary/70 p-8 shadow-card"
+//               >
+//                 <span className="grid h-16 w-16 place-items-center rounded-3xl bg-secondary/35">
+//                   <Icon className="h-7 w-7" />
+//                 </span>
+//                 <h3 className="mt-8 text-3xl font-black">{item.title}</h3>
+//                 <div className="mt-7 grid gap-3">
+//                   {item.points.map((point) => (
+//                     <div
+//                       key={point}
+//                       className="flex items-center gap-3 rounded-2xl bg-white/5 p-4 text-cream/75"
+//                     >
+//                       <CheckCircle2 className="h-5 w-5 text-secondary" />{" "}
+//                       {point}
+//                     </div>
+//                   ))}
+//                 </div>
+//                 <Link
+//                   href="/solutions-accelerators"
+//                   className="mt-8 inline-flex items-center gap-2 font-bold"
+//                 >
+//                   Explore accelerator <ArrowRight className="h-4 w-4" />
+//                 </Link>
+//               </div>
+//             );
+//           })}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 
 function Resources() {
   return (
@@ -702,42 +702,41 @@ function CTA() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <Link href="/contact-us" passHref legacyBehavior>
-              <motion.a
-                className="relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-linear-to-r from-white via-cream to-white px-8 py-4.5 font-black text-[#8b332c] shadow-xl backdrop-blur-sm"
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0px 20px 40px rgba(255, 255, 255, 0.25)",
+            <motion.a
+              href="/contact-us"
+              className="relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-linear-to-r from-white via-cream to-white px-8 py-4.5 font-black text-[#8b332c] shadow-xl backdrop-blur-sm"
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0px 20px 40px rgba(255, 255, 255, 0.25)",
+              }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            >
+              {/* Shimmer linear highlights sliding across the background */}
+              <motion.span
+                className="absolute inset-0 block w-[200%] -translate-x-full bg-linear-to-r from-transparent via-white/40 to-transparent"
+                animate={{ x: ["0%", "100%"] }}
+                transition={{
+                  repeat: Infinity,
+                  ease: "linear",
+                  duration: 2.5,
                 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ type: "spring", stiffness: 400, damping: 15 }}
-              >
-                {/* Shimmer linear highlights sliding across the background */}
+              />
+
+              <span className="relative z-10 flex items-center gap-2">
+                Contact Us
                 <motion.span
-                  className="absolute inset-0 block w-[200%] -translate-x-full bg-linear-to-r from-transparent via-white/40 to-transparent"
-                  animate={{ x: ["0%", "100%"] }}
+                  animate={{ x: [0, 4, 0] }}
                   transition={{
                     repeat: Infinity,
-                    ease: "linear",
-                    duration: 2.5,
+                    duration: 1.5,
+                    ease: "easeInOut",
                   }}
-                />
-
-                <span className="relative z-10 flex items-center gap-2">
-                  Contact Us
-                  <motion.span
-                    animate={{ x: [0, 4, 0] }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 1.5,
-                      ease: "easeInOut",
-                    }}
-                  >
-                    <ArrowRight className="h-4 w-4 stroke-[3px]" />
-                  </motion.span>
-                </span>
-              </motion.a>
-            </Link>
+                >
+                  <ArrowRight className="h-4 w-4 stroke-[3px]" />
+                </motion.span>
+              </span>
+            </motion.a>
           </motion.div>
         </div>
       </div>

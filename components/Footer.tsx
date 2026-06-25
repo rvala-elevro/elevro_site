@@ -23,24 +23,24 @@ function FooterColumn({ title, links }: { title: string; links: string[] }) {
 }
 const services = [
   {
-    title: "Artificial Intelligence",
-    href: "/services/artificial-intelligence",
+    title: "Intelligent Quality Engineering",
+    href: "/services/intelligent-quality-engineering",
   },
   {
     title: "Product Enablement",
     href: "/services/product-enablement",
   },
   {
-    title: "Digital Engineering",
-    href: "/services/digital-engineering",
-  },
-  {
-    title: "Intelligent Quality Engineering",
-    href: "/services/intelligent-quality-engineering",
+    title: "Artificial Intelligence",
+    href: "/services/artificial-intelligence",
   },
   {
     title: "Cloud Engineering",
     href: "/services/cloud-engineering",
+  },
+  {
+    title: "Digital Engineering",
+    href: "/services/digital-engineering",
   },
 ];
 const Footer = () => {

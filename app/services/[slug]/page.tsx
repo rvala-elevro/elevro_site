@@ -52,9 +52,9 @@ export default async function ServiceDetailPage({
             title="What Elevro delivers in this service."
           />
 
-          <div className="mt-10 columns-1 gap-6 md:columns-2 xl:columns-3">
+          <div className="mt-10 grid gap-6 lg:grid-cols-[0.95fr_2fr] lg:items-start">
             {/* Delivery Stack Card */}
-            <div className="mb-6 break-inside-avoid rounded-4xl border border-white/10 bg-[#17091e] p-8 shadow-card">
+            <div className="rounded-4xl border border-white/10 bg-[#17091e] p-8 shadow-card lg:sticky lg:top-28">
               <span className="grid h-20 w-20 place-items-center rounded-3xl bg-secondary/30">
                 <Icon className="h-9 w-9" />
               </span>
@@ -74,20 +74,22 @@ export default async function ServiceDetailPage({
             </div>
 
             {/* Capability Cards */}
-            {service.capabilities.map((item) => (
-              <div
-                key={item.title}
-                className="mb-6 break-inside-avoid rounded-4xl border border-white/10 bg-white/5 p-8"
-              >
-                <span className="grid h-8 w-8 place-items-center rounded-full border border-secondary text-secondary">
-                  ✓
-                </span>
+            <div className="grid gap-6 md:grid-cols-2">
+              {service.capabilities.map((item) => (
+                <div
+                  key={item.title}
+                  className="flex min-h-[300px] flex-col rounded-4xl border border-white/10 bg-white/5 p-8 shadow-soft"
+                >
+                  <span className="grid h-8 w-8 place-items-center rounded-full border border-secondary text-secondary">
+                    ✓
+                  </span>
 
-                <h3 className="mt-10 text-2xl font-black">{item.title}</h3>
+                  <h3 className="mt-10 text-2xl font-black">{item.title}</h3>
 
-                <p className="mt-5 leading-8 text-cream/65">{item.text}</p>
-              </div>
-            ))}
+                  <p className="mt-5 leading-8 text-cream/65">{item.text}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
