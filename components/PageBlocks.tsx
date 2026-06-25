@@ -236,7 +236,7 @@ export function PageCTA() {
               >
                 <motion.a
                   href="/contact-us"
-                  className="relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-linear-to-r from-white via-cream to-white px-8 py-4.5 font-black text-[#8b332c] shadow-xl backdrop-blur-sm"
+                  className="relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-linear-to-r from-white via-cream to-white px-8 py-4.5 font-medium text-[#8b332c] shadow-xl backdrop-blur-sm"
                   whileHover={{
                     scale: 1.05,
                     boxShadow: "0px 20px 40px rgba(255, 255, 255, 0.25)",
