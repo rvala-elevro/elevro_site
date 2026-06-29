@@ -15,10 +15,10 @@ import {
   Rocket,
   ShieldCheck,
   Sparkles,
-  Target,
   TestTubeDiagonal,
   Users,
 } from "lucide-react";
+import Card from "./Card";
 
 const fadeUp = {
   hidden: {
@@ -129,7 +129,7 @@ function AboutHero() {
   return (
     <section className="hero-soft-bg relative min-h-[92vh] overflow-hidden px-4 py-28 md:px-8 md:py-36">
       <div className="pointer-events-none absolute -left-32 top-28 h-96 w-96 rounded-full bg-[#6f4b83]/25 blur-[120px]" />
-      <div className="pointer-events-none absolute -right-32 top-20 h-[30rem] w-[30rem] rounded-full bg-[#a25858]/20 blur-[130px]" />
+      <div className="pointer-events-none absolute -right-32 top-20 h-120 w-120 rounded-full bg-[#a25858]/20 blur-[130px]" />
 
       <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
         <motion.div
@@ -147,7 +147,7 @@ function AboutHero() {
 
           <motion.h1
             variants={fadeUp}
-            className="max-w-5xl text-[2.7rem] font-medium leading-[1.05] tracking-[-0.04em] text-white/90 md:text-6xl xl:text-7xl"
+            className="max-w-5xl text-[2.7rem] font-medium leading-tight tracking-[-0.04em] text-white/90 md:text-6xl "
           >
             Engineering confidence for products that cannot afford uncertainty.
           </motion.h1>
@@ -164,7 +164,7 @@ function AboutHero() {
           <motion.div variants={fadeUp} className="mt-9 flex flex-wrap gap-4">
             <Link
               href="/contact-us"
-              className="inline-flex items-center gap-2 rounded-full bg-[#8b332c] px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-[#9d4038]"
+              className="inline-flex items-center gap-2 rounded-full bg-secondary px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-[#9d4038]"
             >
               Talk to Elevro <ArrowRight className="h-4 w-4" />
             </Link>
@@ -454,26 +454,38 @@ function ValuesSection() {
           viewport={{ once: true, margin: "-120px" }}
           className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3"
         >
-          {values.map((value, index) => (
-            <motion.div
-              key={value.title}
-              variants={fadeUp}
-              whileHover={{ y: -8 }}
-              className={`rounded-4xl border border-white/10 p-7 shadow-soft ${
-                index === 0
-                  ? "bg-secondary/30 md:col-span-2 xl:col-span-2"
-                  : "bg-white/5"
-              }`}
-            >
-              <HeartHandshake className="mb-8 h-7 w-7 text-[#d79088]" />
+          {values.map((value, index) => {
+            return index === 0 ? (
+              <motion.div
+                key={value.title}
+                variants={fadeUp}
+                whileHover={{ y: -8 }}
+                className={`rounded-4xl border border-white/10 p-7 shadow-soft ${
+                  index === 0
+                    ? "bg-secondary/30 md:col-span-2 xl:col-span-2"
+                    : "bg-white/5"
+                }`}
+              >
+                <HeartHandshake className="mb-8 h-7 w-7 text-[#d79088]" />
 
-              <h3 className="text-2xl font-medium text-white/90">
-                {value.title}
-              </h3>
+                <h3 className="text-2xl font-medium text-white/90">
+                  {value.title}
+                </h3>
 
-              <p className="mt-4 leading-7 text-cream/62">{value.text}</p>
-            </motion.div>
-          ))}
+                <p className="mt-4 leading-7 text-cream/62">{value.text}</p>
+              </motion.div>
+            ) : (
+              <Card index={index} key={index}>
+                <HeartHandshake className="mb-8 h-7 w-7 text-[#d79088]" />
+
+                <h3 className="text-2xl font-medium text-white/90">
+                  {value.title}
+                </h3>
+
+                <p className="mt-4 leading-7 text-cream/62">{value.text}</p>
+              </Card>
+            );
+          })}
         </motion.div>
       </div>
     </section>
@@ -563,7 +575,7 @@ function PromiseSection() {
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true, margin: "-120px" }}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        className="relative mx-auto max-w-7xl overflow-hidden rounded-4xl bg-[#8b332c] p-8 shadow-soft md:p-14"
+        className="relative mx-auto max-w-7xl overflow-hidden rounded-4xl bg-secondary p-8 shadow-soft md:p-14"
       >
         <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-white/10 blur-[90px]" />
         <div className="relative z-10  max-w-4xl">
@@ -571,7 +583,7 @@ function PromiseSection() {
             Our Promise
           </p>
 
-          <h2 className="text-3xl font-medium tracking-[-0.03em] text-white md:text-6xl">
+          <h2 className="text-3xl font-medium tracking-[-0.03em] leading-tight text-white md:text-6xl">
             We help you build reliable products faster.
           </h2>
 
@@ -603,7 +615,7 @@ function PromiseSection() {
               >
                 <motion.a
                   href="/contact-us"
-                  className="relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-linear-to-r from-white via-cream to-white px-8 py-4.5 font-medium text-[#8b332c] shadow-xl backdrop-blur-sm"
+                  className="relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-linear-to-r from-white via-cream to-white px-8 py-4.5 font-medium text-secondary shadow-xl backdrop-blur-sm"
                   whileHover={{
                     scale: 1.05,
                     boxShadow: "0px 20px 40px rgba(255, 255, 255, 0.25)",
@@ -666,7 +678,7 @@ function ScrollTitle({
         {eyebrow}
       </p>
 
-      <h2 className="text-3xl font-medium tracking-[-0.03em] text-white/90 md:text-5xl">
+      <h2 className="text-3xl font-medium leading-tight tracking-[-0.03em] text-white/90 md:text-5xl">
         {title}
       </h2>
 

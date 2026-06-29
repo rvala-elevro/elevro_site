@@ -3,6 +3,7 @@
 import { notFound } from "next/navigation";
 import { PageHero, SectionTitle } from "@/components/PageBlocks";
 import { resourceGroups } from "@/lib/elevro-data";
+import Card from "@/components/Card";
 
 const labels = {
   blogs: "Blogs",
@@ -44,24 +45,25 @@ export default async function ResourceTypePage({
           />
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {items.map((item) => {
+            {items.map((item, index) => {
               const Icon = item.icon;
 
               return (
-                <article
-                  key={item.title}
-                  className="rounded-4xl border border-white/10 bg-white/5.5 p-7 shadow-card"
-                >
-                  <span className="grid h-16 w-16 place-items-center rounded-3xl bg-secondary/30">
-                    <Icon className="h-7 w-7" />
-                  </span>
+                <Card index={index} key={index}>
+                  <article>
+                    <span className="grid h-16 w-16 place-items-center rounded-3xl bg-secondary/30">
+                      <Icon className="h-7 w-7" />
+                    </span>
 
-                  <h2 className="mt-8 text-2xl font-medium  leading-tight">
-                    {item.title}
-                  </h2>
+                    <h2 className="mt-8 text-2xl font-medium  leading-tight">
+                      {item.title}
+                    </h2>
 
-                  <p className="mt-4 leading-7 text-cream/65">{item.summary}</p>
-                </article>
+                    <p className="mt-4 leading-7 text-cream/65">
+                      {item.summary}
+                    </p>
+                  </article>
+                </Card>
               );
             })}
           </div>

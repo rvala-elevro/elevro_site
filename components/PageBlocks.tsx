@@ -185,7 +185,7 @@ export function PageCTA() {
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true, margin: "-120px" }}
         transition={{ duration: 0.9, ease: smoothEase }}
-        className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#8b332c] p-8 shadow-soft md:p-14"
+        className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-secondary p-8 shadow-soft md:p-14"
       >
         <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-white/10 blur-[90px]" />
         <div className="pointer-events-none absolute -bottom-24 left-20 h-80 w-80 rounded-full bg-[#6f4b83]/25 blur-[110px]" />
@@ -206,7 +206,7 @@ export function PageCTA() {
 
           <motion.h2
             variants={fadeUp}
-            className="text-3xl font-medium tracking-[-0.03em] text-white md:text-6xl"
+            className="text-3xl font-medium tracking-[-0.03em] leading-tight text-white md:text-6xl"
           >
             Ready to turn engineering complexity into intelligent automation?
           </motion.h2>
@@ -236,7 +236,7 @@ export function PageCTA() {
               >
                 <motion.a
                   href="/contact-us"
-                  className="relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-linear-to-r from-white via-cream to-white px-8 py-4.5 font-medium text-[#8b332c] shadow-xl backdrop-blur-sm"
+                  className="relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-linear-to-r from-white via-cream to-white px-8 py-4.5 font-medium text-secondary shadow-xl backdrop-blur-sm"
                   whileHover={{
                     scale: 1.05,
                     boxShadow: "0px 20px 40px rgba(255, 255, 255, 0.25)",
