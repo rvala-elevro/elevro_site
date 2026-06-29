@@ -36,7 +36,7 @@ const navItems = [
     label: "About Us",
     href: "/about-us",
   },
-  { label: "Contact Us", href: "/contact-us" },
+  { label: "Careers", href: "/careers" },
 ];
 
 const Navbar = () => {
@@ -90,9 +90,9 @@ const Navbar = () => {
 
         <Link
           href="/contact-us"
-          className="hidden rounded-full bg-[#8b332c] px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-[#9d4038] lg:inline-flex"
+          className="hidden rounded-full bg-secondary px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-[#9d4038] lg:inline-flex"
         >
-          Start a Project
+          Contact Us
         </Link>
 
         <button
@@ -145,10 +145,10 @@ const Navbar = () => {
             <div className="mt-4 pt-2">
               <Link
                 href="/contact-us"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#8b332c] py-3 text-sm font-semibold text-white shadow-soft"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-secondary py-3 text-sm font-semibold text-white shadow-soft"
                 onClick={() => setIsOpen(false)}
               >
-                Start a Project <ArrowRight className="h-4 w-4" />
+                Contact Us <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>

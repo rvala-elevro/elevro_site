@@ -1,14 +1,12 @@
 // app/services/[slug]/page.tsx
-
 import { notFound } from "next/navigation";
 import {
-  FeatureGrid,
   PageCTA,
   PageHero,
   SectionTitle,
 } from "@/components/PageBlocks";
 import { services } from "@/lib/elevro-data";
-
+import Card from "@/components/Card";
 export function generateStaticParams() {
   return services.map((service) => ({
     slug: service.slug,
@@ -75,11 +73,8 @@ export default async function ServiceDetailPage({
 
             {/* Capability Cards */}
             <div className="grid gap-6 md:grid-cols-2">
-              {service.capabilities.map((item) => (
-                <div
-                  key={item.title}
-                  className="flex min-h-[300px] flex-col rounded-4xl border border-white/10 bg-white/5 p-8 shadow-soft"
-                >
+              {service.capabilities.map((item, index) => (
+                <Card index={index} key={index}>
                   <span className="grid h-8 w-8 place-items-center rounded-full border border-secondary text-secondary">
                     ✓
                   </span>
@@ -87,7 +82,7 @@ export default async function ServiceDetailPage({
                   <h3 className="mt-10 text-2xl font-medium">{item.title}</h3>
 
                   <p className="mt-5 leading-8 text-cream/65">{item.text}</p>
-                </div>
+                </Card>
               ))}
             </div>
           </div>

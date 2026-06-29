@@ -111,7 +111,7 @@ const clients = [
   "QualifyX",
 ];
 
-const fadeUp = {
+export const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0 },
 };
@@ -330,7 +330,7 @@ function Hero() {
             AI-led engineering for modern enterprises
           </div>
 
-          <h1 className="max-w-4xl text-[2.35rem] font-medium leading-[1.1] tracking-[-0.04em] text-white/90 sm:text-[2.65rem] md:text-6xl xl:text-7xl">
+          <h1 className="max-w-4xl text-[2.35rem] font-medium leading-tight tracking-[-0.04em] text-white/90 sm:text-[2.65rem] md:text-6xl">
             Enabling Products{" "}
             <span className="soft-gradient-text font-medium block sm:inline">
               Engineering Confidence
@@ -347,7 +347,7 @@ function Hero() {
           <div className="mt-8 flex flex-col gap-4 w-full sm:w-auto sm:flex-row justify-center lg:justify-start">
             <Link
               href="/contact-us"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#8b332c] px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-[#9d4038]"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-secondary px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-[#9d4038]"
             >
               Discuss Your Roadmap
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
@@ -405,7 +405,7 @@ function LogoStrip() {
 
 function Services() {
   return (
-    <section id="services" className="soft-section px-4 py-24 md:px-8">
+    <section id="services" className="soft-section px-4 py-12 md:px-8">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow="Our Services"
@@ -462,7 +462,7 @@ function Services() {
 
 function Evolution() {
   return (
-    <section className="soft-section relative overflow-hidden px-4 pb-24 md:px-8">
+    <section className="soft-section relative overflow-hidden px-4 py-12 md:px-8">
       <div
         data-parallax="-0.12"
         className="pointer-events-none absolute left-10 top-10 h-72 w-72 rounded-full bg-secondary/20 blur-[100px]"
@@ -476,7 +476,7 @@ function Evolution() {
           <p className="mb-4 text-sm font-bold uppercase tracking-[0.32em] text-[#d79088]">
             Digital Evolution
           </p>
-          <h2 className="text-4xl font-medium tracking-tight md:text-6xl">
+          <h2 className="text-4xl font-medium tracking-tight leading-tight md:text-5xl">
             From idea to automated operating model.
           </h2>
           <p className="mt-6 text-lg leading-8 text-cream/68">
@@ -523,71 +523,11 @@ function Evolution() {
   );
 }
 
-// function Solutions() {
-//   return (
-//     <section
-//       id="solutions"
-//       className="soft-section-alt relative overflow-hidden px-4 py-24 md:px-8"
-//     >
-//       <div
-//         data-parallax="-0.1"
-//         className="pointer-events-none absolute -left-32 top-20 h-105 w-105 rounded-full bg-secondary/20 blur-[120px]"
-//       />
-
-//       <div
-//         data-parallax="0.16"
-//         className="pointer-events-none absolute -right-32 bottom-10 h-105 w-105 rounded-full bg-white/10 blur-[120px]"
-//       />
-
-//       <div className="relative z-10 mx-auto max-w-7xl">
-//         <SectionHeader
-//           eyebrow="Solutions & Accelerators"
-//           title="Reusable accelerators that shorten the path from strategy to production."
-//           text="Two subsections are added as requested. Rename them to your actual accelerator names when your product packaging is finalized."
-//         />
-//         <div className="mt-12 grid gap-6 lg:grid-cols-2">
-//           {accelerators.map((item) => {
-//             const Icon = item.icon;
-//             return (
-//               <div
-//                 key={item.title}
-//                 className="reveal rounded-4xl border border-white/10 bg-primary/70 p-8 shadow-card"
-//               >
-//                 <span className="grid h-16 w-16 place-items-center rounded-3xl bg-secondary/35">
-//                   <Icon className="h-7 w-7" />
-//                 </span>
-//                 <h3 className="mt-8 text-3xl font-medium">{item.title}</h3>
-//                 <div className="mt-7 grid gap-3">
-//                   {item.points.map((point) => (
-//                     <div
-//                       key={point}
-//                       className="flex items-center gap-3 rounded-2xl bg-white/5 p-4 text-cream/75"
-//                     >
-//                       <CheckCircle2 className="h-5 w-5 text-secondary" />{" "}
-//                       {point}
-//                     </div>
-//                   ))}
-//                 </div>
-//                 <Link
-//                   href="/solutions-accelerators"
-//                   className="mt-8 inline-flex items-center gap-2 font-bold"
-//                 >
-//                   Explore accelerator <ArrowRight className="h-4 w-4" />
-//                 </Link>
-//               </div>
-//             );
-//           })}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
 function Resources() {
   return (
     <section
       id="resources"
-      className="soft-section relative overflow-hidden px-4 py-24 md:px-8"
+      className="soft-section relative overflow-hidden px-4 py-12 md:px-8"
     >
       <div
         data-parallax="-0.08"
@@ -606,24 +546,32 @@ function Resources() {
           text="Blogs, whitepapers and case studies are represented as separate resource types in the homepage preview."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {resources.map((resource) => (
+          {resources.map((resource, index) => (
             <motion.article
-              key={resource.title}
-              whileHover={{ y: -8 }}
-              className="reveal rounded-4xl border border-white/10 bg-white/5.5 p-6 shadow-card"
+              key={index}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ delay: index * 0.07, duration: 0.55 }}
+              whileHover={{ y: -10, scale: 1.02 }}
+              className="group relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/5.5 p-6 shadow-soft"
             >
-              <span className="mb-10 inline-flex items-center gap-2 rounded-full bg-secondary/25 px-4 py-2 text-sm font-bold text-white">
-                <FileText className="h-4 w-4" /> {resource.type}
-              </span>
-              <h3 className="text-2xl font-medium leading-tight">
-                {resource.title}
-              </h3>
-              <Link
-                href={resource.href}
-                className="mt-8 inline-flex items-center gap-2 font-bold"
-              >
-                Read More <ArrowRight className="h-4 w-4" />
-              </Link>
+              <div className="absolute -right-14 -top-14 h-36 w-36 rounded-full bg-secondary/25 blur-2xl transition group-hover:bg-secondary/45" />
+              <div className="relative flex flex-col justify-between items-start h-full">
+                <span className=" inline-flex items-center   gap-2 rounded-full bg-secondary/25 px-4 py-2 text-sm font-bold text-white">
+                  <FileText className="h-4 w-4" /> {resource.type}
+                </span>
+                <h3 className="text-2xl font-medium leading-tight">
+                  {resource.title}
+                </h3>
+                <Link
+                  href={resource.href}
+                  className="mt-2 inline-flex items-center gap-2 font-bold"
+                >
+                  Read More <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
             </motion.article>
           ))}
         </div>
@@ -634,13 +582,13 @@ function Resources() {
 
 function About() {
   return (
-    <section id="about" className="px-4 pb-24 md:px-8">
+    <section id="about" className="px-4 py-12 md:px-8">
       <div className="reveal surface-panel mx-auto grid max-w-7xl gap-8 rounded-4xl border border-white/10 p-8 shadow-soft md:p-12 lg:grid-cols-[0.85fr_1.15fr]">
         <div>
           <p className="mb-4 text-sm font-bold uppercase tracking-[0.32em] text-[#d79088]">
             About Us
           </p>
-          <h2 className="text-4xl font-medium md:text-5xl">
+          <h2 className="text-4xl leading-tight font-medium md:text-5xl">
             Quality Architects, DevOps engineers and AI Engineers under one roof
           </h2>
         </div>
@@ -678,7 +626,7 @@ function About() {
 function CTA() {
   return (
     <section className="px-4 pb-24 md:px-8">
-      <div className="reveal relative mx-auto max-w-7xl overflow-hidden rounded-4xl bg-[#8b332c] p-8 shadow-soft md:p-14">
+      <div className="reveal relative mx-auto max-w-7xl overflow-hidden rounded-4xl bg-secondary p-8 shadow-soft md:p-14">
         {/* Subtle background glow element to draw the eyes downward */}
         <div className="pointer-events-none absolute -bottom-20 -right-20 h-80 w-80 rounded-full bg-white/10 blur-3xl animate-pulse" />
 
@@ -686,13 +634,15 @@ function CTA() {
           <p className="mb-4 font-bold uppercase tracking-[0.32em] text-white/65">
             Call to Action
           </p>
-          <h2 className="text-4xl font-medium md:text-6xl">
-            Lets build your automation with robust End to End coverage and
+          <h2 className="text-4xl font-medium leading-tight text-white/85 md:leading-tight">
+            Deliver confident product with robust End to End coverage and
             gatekeepers backed by Cognitive Intelligence.
           </h2>
-          <div className="mt-6 border-l-3 border-white/30 pl-4">
-            <p className="text-lg leading-8 font-medium text-white">
-              Share us a problem you are facing and lets discuss the solutions!!
+
+          <div className="mt-8 rounded-2xl border border-white/25 bg-white/12 px-5 py-4 shadow-[0_20px_60px_rgba(255,255,255,0.12)] backdrop-blur-sm">
+            <p className="text-xl font-semibold leading-8 text-white md:text-2xl">
+              Share us a problem you are facing and let&apos;s discuss the
+              solutions!!
             </p>
           </div>
 
@@ -706,7 +656,7 @@ function CTA() {
           >
             <motion.a
               href="/contact-us"
-              className="relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-linear-to-r from-white via-cream to-white px-8 py-4.5 font-medium text-[#8b332c] shadow-xl backdrop-blur-sm"
+              className="relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-linear-to-r from-white via-cream to-white px-8 py-4.5 font-medium text-secondary shadow-xl backdrop-blur-sm"
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0px 20px 40px rgba(255, 255, 255, 0.25)",
@@ -761,7 +711,7 @@ function SectionHeader({
         {eyebrow}
       </p>
 
-      <h2 className="text-3xl font-medium tracking-[-0.03em] text-white/90 md:text-5xl">
+      <h2 className="text-3xl leading-tight font-medium tracking-[-0.03em] text-white/90 md:text-5xl">
         {title}
       </h2>
 

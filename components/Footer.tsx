@@ -1,7 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
-function FooterColumn({ title, links }: { title: string; links: string[] }) {
+function FooterColumn({
+  title,
+  links,
+}: {
+  title: string;
+  links: { name: string; href: string }[];
+}) {
   return (
     <div>
       <h4 className="mb-4 font-medium uppercase tracking-[0.2em] text-cream/80">
@@ -10,11 +16,11 @@ function FooterColumn({ title, links }: { title: string; links: string[] }) {
       <div className="grid gap-3">
         {links.map((link) => (
           <Link
-            key={link}
-            href="#"
+            key={link.name}
+            href={link.href}
             className="text-sm text-cream/[0.55] transition hover:text-white"
           >
-            {link}
+            {link.name}
           </Link>
         ))}
       </div>
@@ -23,23 +29,23 @@ function FooterColumn({ title, links }: { title: string; links: string[] }) {
 }
 const services = [
   {
-    title: "Intelligent Quality Engineering",
+    name: "Intelligent Quality Engineering",
     href: "/services/intelligent-quality-engineering",
   },
   {
-    title: "Product Enablement",
+    name: "Product Enablement",
     href: "/services/product-enablement",
   },
   {
-    title: "Artificial Intelligence",
+    name: "Artificial Intelligence",
     href: "/services/artificial-intelligence",
   },
   {
-    title: "Cloud Engineering",
+    name: "Cloud Engineering",
     href: "/services/cloud-engineering",
   },
   {
-    title: "Digital Engineering",
+    name: "Digital Engineering",
     href: "/services/digital-engineering",
   },
 ];
@@ -65,15 +71,21 @@ const Footer = () => {
         </div>
         <FooterColumn
           title="Company"
-          links={["Home", "About Us", "Careers", "Contact Us"]}
+          links={[
+            { name: "Home", href: "/" },
+            { name: "About Us", href: "/about-us" },
+            { name: "Careers", href: "/careers" },
+            { name: "Contact Us", href: "/contact-us" },
+          ]}
         />
-        <FooterColumn
-          title="Services"
-          links={services.map((item) => item.title)}
-        />
+        <FooterColumn title="Services" links={services} />
         <FooterColumn
           title="Resources"
-          links={["Blogs", "Whitepapers", "Case Studies", "Partnerships"]}
+          links={[
+            { name: "Blogs", href: "/resources/blogs" },
+            { name: "Whitepapers", href: "/resources/whitepapers" },
+            { name: "Case Studies", href: "/resources/case-studies" },
+          ]}
         />
       </div>
       <div className="mx-auto mt-10 max-w-7xl border-t border-white/10 pt-6 text-sm text-cream/45">
