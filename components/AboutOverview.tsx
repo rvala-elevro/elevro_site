@@ -20,26 +20,7 @@ import {
   Users,
 } from "lucide-react";
 import Card from "./Card";
-
-const fadeUp = {
-  hidden: {
-    opacity: 0,
-    y: 42,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-  },
-};
-
-const staggerParent = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.09,
-    },
-  },
-};
+import { fadeUp, staggerParent } from "@/lib/animation-variants";
 
 const services = [
   {

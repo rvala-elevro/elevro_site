@@ -59,11 +59,22 @@ const navItems = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  // State to track which submenu accordion is open on mobile
+  const [activeMobileMenu, setActiveMobileMenu] = useState<string | null>(null);
+
+  const toggleMobileSubmenu = (label: string) => {
+    setActiveMobileMenu(activeMobileMenu === label ? null : label);
+  };
+
+  const closeAllMenus = () => {
+    setIsOpen(false);
+    setActiveMobileMenu(null);
+  };
 
   return (
     <header className="nav-animate fixed left-0 right-0 top-0 z-50 px-4 py-4 md:px-8">
       <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/12 bg-[#2d1738]/70 px-4 py-3 shadow-soft backdrop-blur-xl md:px-6">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center" onClick={closeAllMenus}>
           <Image
             src={"/elevro-logo.svg"}
             alt="elevro-icon"
@@ -114,7 +125,7 @@ const Navbar = () => {
         </Link>
 
         <button
-          className="grid h-10 w-10 place-items-center rounded-full bg-white/10 lg:hidden text-white"
+          className="grid h-10 w-10 place-items-center rounded-full bg-white/10 text-white lg:hidden"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -122,49 +133,80 @@ const Navbar = () => {
         </button>
       </nav>
 
-      {/* Mobile Menu - Scroll Fixed & Card Styling Applied */}
+      {/* Mobile Menu - Scroll Fixed & Card Accordion Styling */}
       {isOpen ? (
-        <div className="group relative mx-auto mt-3 max-w-7xl overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/5.5 p-5 shadow-soft backdrop-blur-xl lg:hidden">
-          {/* Ambient blur gradient matching your card aesthetic */}
-          <div className="absolute -right-14 -top-14 h-36 w-36 rounded-full bg-secondary/25 blur-2xl pointer-events-none" />
+        <div className="mx-auto mt-3 max-w-7xl overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#2d1738]/95 p-5 shadow-soft backdrop-blur-xl lg:hidden">
+          {/* Ambient blur gradient */}
+          <div className="absolute -right-14 -top-14 -z-10 h-36 w-36 rounded-full bg-secondary/25 blur-2xl" />
 
           {/* Scrollable Container Wrapper */}
-          <div className="relative z-10 max-h-[calc(100vh-130px)] overflow-y-auto pr-1 flex flex-col gap-1">
-            {navItems.map((item) => (
-              <div
-                key={item.label}
-                className="border-b border-white/10 py-2 last:border-0"
-              >
-                <Link
-                  href={item.href}
-                  className="block py-2 font-medium text-white/90 text-base"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </Link>
-                {item.children ? (
-                  <div className="pl-4 flex flex-col gap-1 mt-1">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.label}
-                        href={child.href}
-                        className="block py-2 text-sm text-cream/62 transition active:text-white"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                ) : null}
-              </div>
-            ))}
+          <div className="relative z-10 flex max-h-[calc(100vh-200px)] flex-col gap-1 overflow-y-auto pr-1">
+            {navItems.map((item) => {
+              const isSubmenuOpen = activeMobileMenu === item.label;
 
-            {/* Added Mobile Call to Action Button within the scroll frame */}
+              return (
+                <div
+                  key={item.label}
+                  className="border-b border-white/10 py-1 last:border-0"
+                >
+                  {item.children ? (
+                    // If it has children, trigger dropdown mechanism instead of a flat redirect link
+                    <button
+                      onClick={() => toggleMobileSubmenu(item.label)}
+                      className="flex w-full items-center justify-between py-2.5 text-base font-medium text-white/90"
+                    >
+                      <span>{item.label}</span>
+                      <ChevronDown
+                        className={`h-4 w-4 transition-transform duration-200 ${
+                          isSubmenuOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="flex w-full items-center justify-between py-2.5 text-base font-medium text-white/90"
+                      onClick={closeAllMenus}
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+
+                  {/* Accordion Content for Mobile Children */}
+                  {item.children && (
+                    <div
+                      className={`grid transition-all duration-200 ease-in-out ${
+                        isSubmenuOpen
+                          ? "grid-rows-[1fr] opacity-100 my-1"
+                          : "grid-rows-[0fr] opacity-0 pointer-events-none"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="flex flex-col gap-1 pl-4 border-l border-white/10 my-1">
+                          {item.children.map((child) => (
+                            <Link
+                              href={child.href}
+                              key={child.label}
+                              className="block rounded-xl px-3 py-2 text-sm text-white/70 transition active:bg-white/10"
+                              onClick={closeAllMenus}
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
+            {/* Mobile Call to Action Button */}
             <div className="mt-4 pt-2">
               <Link
                 href="/contact-us"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-secondary py-3 text-sm font-semibold text-white shadow-soft"
-                onClick={() => setIsOpen(false)}
+                onClick={closeAllMenus}
               >
                 Contact Us <ArrowRight className="h-4 w-4" />
               </Link>
