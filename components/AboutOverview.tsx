@@ -15,6 +15,7 @@ import {
   Rocket,
   ShieldCheck,
   Sparkles,
+  Target,
   TestTubeDiagonal,
   Users,
 } from "lucide-react";
@@ -78,7 +79,32 @@ const outcomes = [
   "Clear release visibility",
   "Long-term engineering confidence",
 ];
-
+const important = [
+  {
+    title: "Deep Domain Expertise",
+    text: "Specialized knowledge across embedded, IoT, cloud, and mobile platforms",
+  },
+  {
+    title: "Agile and Scalable Teams",
+    text: "Flexible engagement models for rapid scaling  and adaptability",
+  },
+  {
+    title: "Technology-First Approach",
+    text: "Leveraging cutting-edge tools and frameworks for otpimal results",
+  },
+  {
+    title: "End to End Ownership",
+    text: "Comprehensive solutions from initial strategy to flawless deployment.",
+  },
+  {
+    title: "Proven Track Record",
+    text: "Delivering success for global clients on complex, mission, critical projects.",
+  },
+  {
+    title: "Customer-Centric Delivery",
+    text: "Collabrative partnerships built on transparency and shared goals.",
+  },
+];
 const values = [
   {
     title: "Beyond Services",
@@ -117,6 +143,7 @@ export default function AboutOverviewContent() {
       <StorySection />
       <WhyStartedSection />
       <WhatWeDoSection />
+      <WhyChoose />
       <ApproachSection />
       <ValuesSection />
       <WhoWeAreSection />
@@ -437,7 +464,39 @@ function ApproachSection() {
     </section>
   );
 }
+function WhyChoose() {
+  return (
+    <section className="soft-section-alt px-4 py-24 md:px-8">
+      <div className="mx-auto grid max-w-7xl gap-12 grid-cols-1">
+        <ScrollTitle
+          eyebrow=""
+          title="Why Choose Elevro?"
+          text="Your trusted partner in quality engineering excellence"
+        />
 
+        <motion.div
+          variants={staggerParent}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-120px" }}
+          className="grid gap-4 sm:grid-cols-2"
+        >
+          {important.map((item, index) => (
+            <Card isNotHover index={index} key={index}>
+              <Target className="mb-8 h-7 w-7 text-[#d79088]" />
+
+              <h3 className="text-2xl font-medium text-white/90">
+                {item.title}
+              </h3>
+
+              <p className="mt-4 leading-7 text-cream/62">{item.text}</p>
+            </Card>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
 function ValuesSection() {
   return (
     <section className="soft-section px-4 py-24 md:px-8">
