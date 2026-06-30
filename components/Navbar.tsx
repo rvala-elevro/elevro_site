@@ -24,6 +24,24 @@ const navItems = [
     ],
   },
   {
+    label: "Industries",
+    href: "#",
+    children: [
+      {
+        label: "Consumer Electronics",
+        href: "/industries/consumer-electronics",
+      },
+      { label: "Healthcare & MedTech", href: "/industries/healthcare-medtech" },
+      { label: "Ecommerce & Retail", href: "/industries/ecommerce-retail" },
+      {
+        label: "Automative & Infotainment",
+        href: "/industries/automative-infotainment",
+      },
+      { label: "Smart Home & IOT", href: "/industries/smart-home" },
+      { label: "Cloud & SaaS Platforms", href: "/industries/cloud-saas" },
+    ],
+  },
+  {
     label: "Resources",
     href: "#",
     children: [
