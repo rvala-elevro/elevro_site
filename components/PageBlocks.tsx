@@ -2,31 +2,9 @@
 
 "use client";
 
-import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "motion/react";
-
-const fadeUp = {
-  hidden: {
-    opacity: 0,
-    y: 42,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-  },
-};
-
-const staggerParent = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.09,
-    },
-  },
-};
-
-const smoothEase = [0.16, 1, 0.3, 1] as const;
+import { fadeUp, staggerParent, smoothEase } from "@/lib/animation-variants";
 
 export function PageHero({
   eyebrow,
@@ -53,7 +31,7 @@ export function PageHero({
       <div className="relative z-10 mx-auto max-w-7xl">
         <motion.p
           variants={fadeUp}
-          transition={{ duration: 0.85, ease: smoothEase }}
+          transition={{ duration: 1.1, ease: smoothEase }}
           className="mb-5 text-sm font-medium uppercase tracking-[0.28em] text-[#d79088]"
         >
           {eyebrow}
@@ -61,7 +39,7 @@ export function PageHero({
 
         <motion.h1
           variants={fadeUp}
-          transition={{ duration: 0.9, ease: smoothEase }}
+          transition={{ duration: 1.1, ease: smoothEase }}
           className="max-w-5xl text-[2.7rem] font-medium leading-[1.05] tracking-[-0.04em] text-white/90 md:text-6xl xl:text-7xl"
         >
           {title}
@@ -69,7 +47,7 @@ export function PageHero({
 
         <motion.p
           variants={fadeUp}
-          transition={{ duration: 0.9, ease: smoothEase }}
+          transition={{ duration: 1.1, ease: smoothEase }}
           className="mt-7 max-w-3xl text-base font-normal leading-8 text-cream/68 md:text-lg"
         >
           {text}
@@ -115,7 +93,7 @@ export function SectionTitle({
       initial={{ opacity: 0, y: 42 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-120px" }}
-      transition={{ duration: 0.85, ease: smoothEase }}
+      transition={{ duration: 1.1, ease: smoothEase }}
       className="max-w-3xl"
     >
       <p className="mb-4 text-sm font-medium uppercase tracking-[0.28em] text-[#d79088]">
@@ -152,7 +130,7 @@ export function FeatureGrid({
         <motion.div
           key={item.title}
           variants={fadeUp}
-          transition={{ duration: 0.8, ease: smoothEase }}
+          // transition={{ duration: 0.8, ease: smoothEase }}
           whileHover={{ y: -8, scale: 1.015 }}
           className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.055] p-6 shadow-soft"
         >
@@ -184,7 +162,7 @@ export function PageCTA() {
         initial={{ opacity: 0, y: 54, scale: 0.98 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true, margin: "-120px" }}
-        transition={{ duration: 0.9, ease: smoothEase }}
+        transition={{ duration: 1.1, ease: smoothEase }}
         className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-secondary p-8 shadow-soft md:p-14"
       >
         <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-white/10 blur-[90px]" />

@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import HeroCanvas from "@/components/HeroCanvas";
 import LogoPreloader from "@/components/LogoPreloader";
+import { fadeUp } from "@/lib/animation-variants";
 
 const services = [
   {
@@ -111,10 +112,6 @@ const clients = [
   "QualifyX",
 ];
 
-export const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0 },
-};
 let hasHomeLoaderShown = false;
 export default function HomePage() {
   const [showLoader, setShowLoader] = useState(() => !hasHomeLoaderShown);
@@ -363,10 +360,7 @@ function Hero() {
         </div>
 
         {/* Hero Visual Container */}
-        <div
-          data-parallax="0.06"
-          className="hero-visual relative h-145 min-h-100"
-        >
+        <div className="hero-visual relative h-145 min-h-100">
           {/* Horizontally centered canvas viewport */}
           <div
             data-depth="-0.03"

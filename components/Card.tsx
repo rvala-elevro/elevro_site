@@ -1,5 +1,5 @@
 "use client";
-import { fadeUp } from "@/app/page";
+import { fadeUp } from "@/lib/animation-variants";
 import { motion } from "motion/react";
 import React from "react";
 const Card = ({
@@ -18,7 +18,11 @@ const Card = ({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ delay: index * 0.07, duration: 0.55 }}
+      transition={{
+        delay: index * 0.08,
+        duration: 0.95,
+        ease: [0.16, 1, 0.3, 1],
+      }}
       whileHover={!isNotHover ? undefined : { y: -10, scale: 1.02 }}
       className="group relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/5.5 p-6 shadow-soft"
     >
