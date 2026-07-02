@@ -12,10 +12,13 @@ import {
   Cpu,
   FileText,
   Handshake,
+  HeartPulse,
+  House,
   Layers3,
   Rocket,
   ServerCog,
   ShieldCheck,
+  ShoppingCart,
   Smartphone,
   TestTubeDiagonal,
   Users,
@@ -624,5 +627,203 @@ export const aboutPages = [
       "QAOps and automation partnerships",
       "Product engineering collaboration",
     ],
+  },
+];
+
+
+export type IndustryItem = {
+  slug: string;
+  title: string;
+  href: string;
+  icon: LucideIcon;
+  value: string;
+  intro: string;
+  whereElevroHelps: string[];
+  capabilities: string[];
+  relevantExperience: string;
+};
+
+export const industries: IndustryItem[] = [
+  {
+    slug: "consumer-electronics",
+    title: "Consumer Electronics",
+    href: "/industries/consumer-electronics",
+    icon: Smartphone,
+    value:
+      "Ensuring reliable product experiences across smart, connected, and embedded consumer devices.",
+    intro:
+      "Consumer electronics products today combine firmware, hardware, mobile apps, wireless connectivity, cloud services, and real-world usage conditions. Elevro helps validate these connected experiences across the full product lifecycle, from device behavior and mobile integration to automation frameworks, CI/CD execution, regression testing, and release readiness.",
+    whereElevroHelps: [
+      "Smart audio devices",
+      "BLE-enabled products",
+      "Wearable devices",
+      "Wireless modules",
+      "Embedded platforms",
+      "Connected consumer products",
+    ],
+    capabilities: [
+      "Embedded and firmware validation",
+      "BLE, Wi-Fi, USB, Ethernet, serial, and GPIO-based testing",
+      "Mobile app automation for iOS and Android",
+      "Device-to-app and device-to-cloud workflow validation",
+      "Smart audio, wireless module, and SDK verification",
+      "Regression automation and execution reporting",
+      "Hardware-in-loop and Raspberry Pi-based test automation",
+      "CI/CD integration for continuous device validation",
+    ],
+    relevantExperience:
+      "Smart audio device automation, BLE module and SDK verification, wireless audio device engineering support, firmware behavior validation, mobile app integration, API testing, and CI/CD-enabled automation.",
+  },
+  {
+    slug: "healthcare-medtech",
+    title: "Healthcare & MedTech",
+    href: "/industries/healthcare-medtech",
+    icon: HeartPulse,
+    value:
+      "Delivering precision, reliability, and compliance-focused validation for healthcare platforms and connected health products.",
+    intro:
+      "Healthcare and MedTech products demand accuracy, reliability, traceability, and strong validation across every workflow. Elevro supports healthcare technology teams with end-to-end QA, automation, API validation, database checks, regression governance, and connected-device verification.",
+    whereElevroHelps: [
+      "Healthcare platforms",
+      "Connected health devices",
+      "Healthcare eCommerce",
+      "B2B and B2C workflows",
+      "Mobile applications",
+      "Backend and admin systems",
+    ],
+    capabilities: [
+      "Healthcare platform QA and automation",
+      "Consumer, seller, backend, and admin portal validation",
+      "Order, inventory, pricing, and workflow verification",
+      "API and database validation",
+      "BLE health profile verification",
+      "Mobile app and connected device testing",
+      "Regression suite development and execution tracking",
+      "Test reporting, defect governance, and release readiness",
+    ],
+    relevantExperience:
+      "Healthcare eCommerce platform automation, consumer and seller portal validation, backend/admin workflows, database checks, and BLE health profile verification including heart rate, glucose, SpO2, temperature, and weight scale.",
+  },
+  {
+    slug: "ecommerce-retail",
+    title: "eCommerce & Retail",
+    href: "/industries/ecommerce-retail",
+    icon: ShoppingCart,
+    value:
+      "Optimizing digital commerce workflows for performance, reliability, and seamless customer experience.",
+    intro:
+      "Modern eCommerce platforms depend on accurate product data, inventory synchronization, pricing rules, payment flows, order management, backend operations, and customer-facing experiences. Elevro helps validate these business-critical workflows across web, API, database, and admin systems.",
+    whereElevroHelps: [
+      "Catalog workflows",
+      "Pricing and inventory systems",
+      "Cart and checkout flows",
+      "Order management",
+      "Seller operations",
+      "Backend and admin portals",
+    ],
+    capabilities: [
+      "End-to-end eCommerce workflow validation",
+      "Product listing, catalog, pricing, and inventory testing",
+      "Cart, checkout, order, and customer journey validation",
+      "Seller, backend/admin, and consumer portal testing",
+      "API and database validation",
+      "Regression automation across critical business flows",
+      "Cross-browser and cross-platform testing",
+      "Defect tracking, reporting, and test governance",
+    ],
+    relevantExperience:
+      "Healthcare eCommerce B2B/B2C automation across seller portal, backend/admin portal, consumer portal, database validation, inventory synchronization, price management, order verification, and automated regression coverage.",
+  },
+  {
+    slug: "automotive-infotainment",
+    title: "Automotive & Infotainment",
+    href: "/industries/automotive-infotainment",
+    icon: Car,
+    value:
+      "Validating connected vehicle experiences across infotainment, Android Auto, AAOS, and in-car systems.",
+    intro:
+      "Automotive and infotainment systems require dependable validation across vehicle interfaces, communication protocols, mobile connectivity, embedded platforms, and in-car user experiences. Elevro supports automotive product teams with automation frameworks, Android Auto validation, AAOS testing, CI/CD integration, and critical system interface verification.",
+    whereElevroHelps: [
+      "Android Auto",
+      "Android Automotive OS",
+      "Infotainment systems",
+      "Vehicle connectivity",
+      "CAN bus and Vehicle HAL",
+      "In-car digital experiences",
+    ],
+    capabilities: [
+      "Android Auto and AAOS test automation",
+      "Infotainment feature validation",
+      "USB, Bluetooth, and Wi-Fi connectivity testing",
+      "Media, navigation, call, and UI workflow validation",
+      "ADB, Logcat, Fastboot, and Android instrumentation testing",
+      "CAN bus and Vehicle HAL interface validation",
+      "CI/CD integration using Jenkins and GitLab CI",
+      "Regression suite design and execution reporting",
+    ],
+    relevantExperience:
+      "Android Automotive OS testing, Android Auto automation, multi-protocol connectivity validation, Appium-based automation, CI/CD pipeline integration, CAN bus validation, Vehicle HAL verification, and feature coverage across critical infotainment workflows.",
+  },
+  {
+    slug: "smart-home-iot-matter",
+    title: "Smart Home, IoT & Matter",
+    href: "/industries/smart-home-iot-matter",
+    icon: House,
+    value:
+      "Securing reliable connectivity and interoperability across smart devices, hubs, apps, and voice ecosystems.",
+    intro:
+      "Smart Home and IoT products operate across a complex ecosystem of devices, mobile apps, hubs, firmware, protocols, cloud services, and voice assistants. Elevro helps teams validate these environments through comprehensive automation, device provisioning, interoperability testing, firmware validation, and connected system verification.",
+    whereElevroHelps: [
+      "Matter-enabled devices",
+      "BLE and Wi-Fi modules",
+      "Smart hubs",
+      "Mobile apps",
+      "Voice assistant ecosystems",
+      "Firmware SDK validation",
+    ],
+    capabilities: [
+      "Matter IoT test automation",
+      "Device provisioning and commissioning validation",
+      "Mobile app automation for iOS and Android",
+      "BLE, Wi-Fi, Thread, Zigbee, LTE, and protocol-level validation",
+      "Voice assistant testing with Alexa, Google Home, and Apple ecosystems",
+      "Multi-hub interoperability testing",
+      "GPIO and hardware interaction automation",
+      "Firmware SDK validation and CI/CD automation",
+      "Device logs, reporting, and regression execution",
+    ],
+    relevantExperience:
+      "Matter IoT automation framework, low-power Wi-Fi and BLE IoT module SDK CI/CD, BLE module verification, Raspberry Pi GPIO-based automation, hub interoperability, voice command testing, mobile app validation, firmware SDK generation, Coverity/MISRA quality gates, and test reporting.",
+  },
+  {
+    slug: "cloud-saas-platforms",
+    title: "Cloud & SaaS Platforms",
+    href: "/industries/cloud-saas-platforms",
+    icon: CloudCog,
+    value:
+      "Guaranteeing stability, scalability, security, and automation confidence for digital platforms.",
+    intro:
+      "Cloud and SaaS platforms require strong validation across frontend applications, backend systems, APIs, databases, security workflows, performance behavior, integrations, and continuous release pipelines. Elevro helps SaaS teams establish reliable QA and automation practices that improve coverage, accelerate testing cycles, and strengthen release confidence.",
+    whereElevroHelps: [
+      "SaaS platforms",
+      "Frontend applications",
+      "Backend and admin systems",
+      "API ecosystems",
+      "Security assessment workflows",
+      "CI/CD release pipelines",
+    ],
+    capabilities: [
+      "SaaS platform QA and automation",
+      "Frontend, backend/admin, and core engine validation",
+      "API automation and integration testing",
+      "SAST/DAST workflow and report validation",
+      "Cross-browser testing across Chrome, Edge, Safari, and Firefox",
+      "Performance and data validation",
+      "Jenkins/GitLab CI integration",
+      "Regression suite development and execution analytics",
+      "Release readiness reporting and quality governance",
+    ],
+    relevantExperience:
+      "SaaS security assessment platform validation, frontend portal testing, backend/admin portal testing, core scanning engine validation, automated security report checks, Selenium-based automation, API automation, performance testing, cross-browser coverage, Jenkins integration, and faster test cycle execution.",
   },
 ];

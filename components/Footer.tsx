@@ -27,6 +27,32 @@ function FooterColumn({
     </div>
   );
 }
+const industries = [
+  {
+    name: "Consumer Electronics",
+    href: "/industries/consumer-electronics",
+  },
+  {
+    name: "Healthcare & MedTech",
+    href: "/industries/healthcare-medtech",
+  },
+  {
+    name: "eCommerce & Retail",
+    href: "/industries/ecommerce-retail",
+  },
+  {
+    name: "Automotive & Infotainment",
+    href: "/industries/automotive-infotainment",
+  },
+  {
+    name: "Smart Home, IoT & Matter",
+    href: "/industries/smart-home-iot-matter",
+  },
+  {
+    name: "Cloud & SaaS Platforms",
+    href: "/industries/cloud-saas-platforms",
+  },
+];
 const services = [
   {
     name: "Intelligent Quality Engineering",
@@ -52,7 +78,7 @@ const services = [
 const Footer = () => {
   return (
     <footer className="border-t border-white/10 bg-[#25112f] px-4 py-12 md:px-8">
-      <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr]">
+      <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr_0.8fr]">
         <div>
           <div className="flex items-center gap-3">
             <Image
@@ -79,6 +105,7 @@ const Footer = () => {
           ]}
         />
         <FooterColumn title="Services" links={services} />
+        <FooterColumn title="Industries" links={industries} />
         <FooterColumn
           title="Resources"
           links={[
