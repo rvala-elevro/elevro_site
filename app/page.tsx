@@ -5,6 +5,8 @@ import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { AnimatePresence, motion } from "motion/react";
+// 1. Add these icons in your lucide-react import
+
 import {
   ArrowRight,
   Bot,
@@ -14,8 +16,14 @@ import {
   CloudCog,
   Cpu,
   FileText,
+  HeartPulse,
+  House,
+  Layers3,
   Rocket,
   ShieldCheck,
+  ShoppingCart,
+  Car,
+  Smartphone,
   TestTubeDiagonal,
 } from "lucide-react";
 import HeroCanvas from "@/components/HeroCanvas";
@@ -55,27 +63,39 @@ const services = [
   },
 ];
 
-const accelerators = [
+// 2. Add this data after clients array
+const industries = [
   {
-    title: "AI Quality Command Center",
-    icon: ShieldCheck,
-    points: [
-      "AI-assisted defect prediction",
-      "Release risk scoring",
-      "Live quality intelligence dashboards",
-    ],
+    title: "Consumer Electronics",
+    icon: Smartphone,
+    text: "Reliable validation for smart, embedded, and connected consumer products across firmware, mobile apps, wireless protocols, cloud workflows, and automation pipelines.",
   },
   {
-    title: "Automation Accelerator Studio",
-    icon: Bot,
-    points: [
-      "Reusable automation components",
-      "Workflow bots and copilots",
-      "Faster test and process automation",
-    ],
+    title: "Healthcare & MedTech",
+    icon: HeartPulse,
+    text: "Precision-driven QA and automation for healthcare platforms, connected health devices, data workflows, APIs, portals, and critical user journeys.",
+  },
+  {
+    title: "eCommerce & Retail",
+    icon: ShoppingCart,
+    text: "End-to-end validation of commerce workflows including catalog, pricing, inventory, checkout, order management, seller operations, and backend systems.",
+  },
+  {
+    title: "Automotive & Infotainment",
+    icon: Car,
+    text: "Automation and validation for Android Auto, AAOS, infotainment systems, connectivity, vehicle interfaces, and in-car digital experiences.",
+  },
+  {
+    title: "Smart Home, IoT & Matter",
+    icon: House,
+    text: "Comprehensive testing for Matter devices, BLE/Wi-Fi modules, hubs, mobile apps, voice assistants, firmware, provisioning, and interoperability.",
+  },
+  {
+    title: "Cloud & SaaS Platforms",
+    icon: CloudCog,
+    text: "Quality engineering for SaaS platforms across frontend, backend, APIs, security workflows, performance, CI/CD, and release readiness.",
   },
 ];
-
 const resources = [
   {
     type: "Blog",
@@ -288,10 +308,9 @@ export default function HomePage() {
         }`}
       >
         <Hero />
-        {/* <LogoStrip /> */}
         <Services />
         <Evolution />
-        {/* <Solutions /> */}
+        <Industries />
         <Resources />
         <About />
         <CTA />
@@ -765,5 +784,131 @@ function HomeLoader() {
         </p>
       </motion.div>
     </motion.div>
+  );
+}
+// 4. Add this component anywhere below Solutions() or before Resources()
+
+function Industries() {
+  return (
+    <section
+      id="industries"
+      className="soft-section relative overflow-hidden px-4 py-24 md:px-8"
+    >
+      <div className="pointer-events-none absolute -left-32 top-24 h-96 w-96 rounded-full bg-[#6f4b83]/20 blur-[120px]" />
+      <div className="pointer-events-none absolute -right-32 bottom-20 h-[30rem] w-[30rem] rounded-full bg-[#a25858]/16 blur-[130px]" />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
+        <SectionHeader
+          eyebrow="Industries We Serve"
+          title="Specialized engineering for complex digital, connected and cloud-native ecosystems."
+          text="Elevro brings specialized quality engineering, automation, DevOps, and product validation expertise across consumer devices, healthcare platforms, automotive systems, Matter-enabled IoT, eCommerce workflows, and SaaS products."
+        />
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-120px" }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.09,
+              },
+            },
+          }}
+          className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+        >
+          {industries.map((industry, index) => {
+            const Icon = industry.icon;
+
+            return (
+              <motion.div
+                key={industry.title}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: 44,
+                    scale: 0.97,
+                  },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                  },
+                }}
+                transition={{
+                  duration: 0.8,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                whileHover={{
+                  y: -10,
+                  scale: 1.015,
+                }}
+                className="group relative min-h-[330px] overflow-hidden rounded-4xl border border-white/10 bg-white/[0.055] p-7 shadow-soft"
+              >
+                <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-secondary/20 blur-2xl transition group-hover:bg-secondary/35" />
+
+                <div className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+                <div className="relative z-10 flex h-full flex-col">
+                  <div className="flex items-start justify-between gap-5">
+                    <span className="grid h-14 w-14 place-items-center rounded-2xl bg-secondary/30 text-white">
+                      <Icon className="h-6 w-6" />
+                    </span>
+
+                    <span className="text-5xl font-medium text-white/[0.06]">
+                      0{index + 1}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-10 text-2xl font-medium leading-tight tracking-[-0.02em] text-white/90">
+                    {industry.title}
+                  </h3>
+
+                  <p className="mt-5 text-base font-normal leading-8 text-cream/62">
+                    {industry.text}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 42 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+          className="surface-panel mt-12 grid gap-8 rounded-4xl border border-white/10 p-8 shadow-soft md:grid-cols-[0.9fr_1.1fr] md:p-10"
+        >
+          <div>
+            <p className="mb-4 text-sm font-medium uppercase tracking-[0.28em] text-[#d79088]">
+              Section Overview
+            </p>
+
+            <h3 className="text-3xl font-medium tracking-[-0.03em] text-white/90 md:text-5xl">
+              Validate deeper, automate smarter, release with confidence.
+            </h3>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              "Connected products",
+              "Cloud-native systems",
+              "Critical user journeys",
+              "Release-ready automation",
+            ].map((item) => (
+              <div
+                key={item}
+                className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 text-cream/70"
+              >
+                <CheckCircle2 className="h-5 w-5 shrink-0 text-[#d79088]" />
+                <span className="text-sm font-medium">{item}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 }
