@@ -76,11 +76,11 @@ const Navbar = () => {
       <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/12 bg-[#2d1738]/70 px-4 py-3 shadow-soft backdrop-blur-xl md:px-6">
         <Link href="/" className="flex items-center" onClick={closeAllMenus}>
           <Image
-            src={"/elevro-logo.svg"}
+            src={"/elevro-text-logo.svg"}
             alt="elevro-icon"
             width={230}
             height={50}
-            className="h-9 w-auto object-contain"
+            className="h-7 w-auto object-contain"
             priority
           />
         </Link>

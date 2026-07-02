@@ -56,10 +56,10 @@ const Footer = () => {
         <div>
           <div className="flex items-center gap-3">
             <Image
-              src={"/elevro-logo.svg"}
+              src={"/elevro-text-logo.svg"}
               alt="elevro-icon"
-              width={230}
-              height={50}
+              width={250}
+              height={70}
               className="h-9 w-auto object-contain"
               priority
             />
