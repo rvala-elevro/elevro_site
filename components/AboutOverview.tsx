@@ -11,9 +11,7 @@ import {
   CloudCog,
   Cpu,
   HeartHandshake,
-  Layers3,
   Rocket,
-  ShieldCheck,
   Sparkles,
   Target,
   TestTubeDiagonal,
@@ -21,6 +19,7 @@ import {
 } from "lucide-react";
 import Card from "./Card";
 import { fadeUp, staggerParent } from "@/lib/animation-variants";
+import PageCard from "./PageCard";
 
 const services = [
   {
@@ -561,47 +560,23 @@ function WhoWeAreSection() {
           </p>
         </motion.div>
 
-        <motion.div
-          variants={staggerParent}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-120px" }}
-          className="grid gap-5"
-        >
-          {[
+        <PageCard
+          page="about"
+          cards={[
             {
-              icon: ShieldCheck,
               title: "Quality Architects",
               text: "Design scalable validation systems and release confidence frameworks.",
             },
             {
-              icon: CloudCog,
               title: "DevOps and Cloud Engineers",
               text: "Build reliable pipelines, cloud foundations, and operational visibility.",
             },
             {
-              icon: Layers3,
               title: "Product Enablers",
               text: "Modernize how teams build, release, automate, and scale products.",
             },
-          ].map((item) => {
-            const Icon = item.icon;
-
-            return (
-              <motion.div
-                key={item.title}
-                variants={fadeUp}
-                className="rounded-4xl border border-white/10 bg-white/5 p-7 shadow-soft"
-              >
-                <Icon className="h-7 w-7 text-[#d79088]" />
-                <h3 className="mt-5 text-2xl font-medium text-white/90">
-                  {item.title}
-                </h3>
-                <p className="mt-3 leading-7 text-cream/62">{item.text}</p>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+          ]}
+        />
       </div>
     </section>
   );
