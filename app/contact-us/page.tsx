@@ -1,11 +1,56 @@
-import { PageShell } from "@/components/PageShell";
+import type { Metadata } from "next";
+import { PageHero, SectionTitle } from "@/components/PageBlocks";
+import ContactForm from "@/components/ContactForm";
+import PageCard from "@/components/PageCard";
 
-export default function ContactPage() {
+export const metadata: Metadata = {
+  title: "Contact Us | Elevro",
+  description:
+    "Contact Elevro to discuss AI, product enablement, quality engineering, CloudOps, DevOps, IoT automation, and digital engineering requirements.",
+};
+
+export default function ContactUsPage() {
   return (
-    <PageShell
-      eyebrow="Contact Us"
-      title="Let’s build your intelligent automation roadmap."
-      description="Connect this page to your CRM, contact form API, calendar booking tool or sales workflow."
-    />
+    <main>
+      <PageHero
+        eyebrow="Contact Us"
+        title="Let’s discuss your product, quality, cloud or automation roadmap."
+        text="Share your requirement and Elevro can help with AI-powered QA, CloudOps, DevOps, IoT automation, embedded validation, protocol testing, and product enablement."
+      />
+
+      <section className="soft-section px-4 py-14 md:px-8">
+        <div className="justify-between grid w-full items-end gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+          <div>
+            <SectionTitle
+              eyebrow="Start a Conversation"
+              title="Tell us what you want to build or improve."
+              text="Use this form to send your requirement directly to the Elevro team."
+            />
+
+            <div className="mt-10 grid gap-4">
+              <PageCard
+                page="contact"
+                cards={[
+                  {
+                    title: "Email",
+                    text: "Your message will be sent directly to the client inbox.",
+                  },
+                  {
+                    title: "Response",
+                    text: "The team can reply directly to the sender email using Reply-To.",
+                  },
+                  {
+                    title: "Project Fit",
+                    text: "Best for AI, QA, automation, CloudOps, DevOps, IoT and product validation enquiries.",
+                  },
+                ]}
+              />
+            </div>
+          </div>
+
+          <ContactForm />
+        </div>
+      </section>
+    </main>
   );
 }
