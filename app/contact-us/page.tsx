@@ -19,33 +19,13 @@ export default function ContactUsPage() {
       />
 
       <section className="soft-section px-4 py-14 md:px-8">
-        <div className="justify-between grid w-full items-end gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="justify-between grid w-full  gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
             <SectionTitle
               eyebrow="Start a Conversation"
               title="Tell us what you want to build or improve."
               text="Use this form to send your requirement directly to the Elevro team."
             />
-
-            <div className="mt-10 grid gap-4">
-              <PageCard
-                page="contact"
-                cards={[
-                  {
-                    title: "Email",
-                    text: "Your message will be sent directly to the client inbox.",
-                  },
-                  {
-                    title: "Response",
-                    text: "The team can reply directly to the sender email using Reply-To.",
-                  },
-                  {
-                    title: "Project Fit",
-                    text: "Best for AI, QA, automation, CloudOps, DevOps, IoT and product validation enquiries.",
-                  },
-                ]}
-              />
-            </div>
           </div>
 
           <ContactForm />

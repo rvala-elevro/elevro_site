@@ -14,6 +14,7 @@ type FormState = {
   company: string;
   message: string;
   website: string;
+  subject: string;
 };
 
 const initialForm: FormState = {
@@ -23,6 +24,7 @@ const initialForm: FormState = {
   company: "",
   message: "",
   website: "",
+  subject: "",
 };
 
 export default function ContactForm() {
@@ -96,7 +98,7 @@ export default function ContactForm() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-120px" }}
       transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-      className="surface-panel rounded-4xl border border-white/10 p-6 shadow-soft md:p-8"
+      className="surface-panel self-end rounded-4xl border border-white/10 p-6 shadow-soft md:p-8"
     >
       {/* Honeypot field */}
       <input
@@ -147,6 +149,14 @@ export default function ContactForm() {
           placeholder="Company name"
         />
       </div>
+      <div className="mt-5"></div>
+      <Field
+        label="Subject"
+        name="subject"
+        value={form.subject}
+        onChange={updateField}
+        placeholder="What is your inquiry about?"
+      />
       <div className="mt-5">
         <label className="mb-2 block text-sm font-medium text-cream/75">
           Message

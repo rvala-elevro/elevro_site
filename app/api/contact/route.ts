@@ -13,6 +13,7 @@ type ContactPayload = {
   service?: string;
   message?: string;
   website?: string;
+  subject?: string;
 };
 
 function clean(value: unknown) {
@@ -43,7 +44,7 @@ export async function POST(request: Request) {
     const company = clean(body.company);
     const message = clean(body.message);
     const website = clean(body.website);
-
+    const subject = clean(body.subject);
     if (website) {
       return NextResponse.json({ ok: true });
     }
@@ -102,7 +103,9 @@ export async function POST(request: Request) {
     const safePhone = escapeHtml(phone || "Not provided");
     const safeCompany = escapeHtml(company || "Not provided");
     const safeMessage = escapeHtml(message);
-
+    const safeSubject = escapeHtml(
+      subject || `New website enquiry from ${name}`,
+    );
     const submittedAt = new Date().toLocaleString("en-IN", {
       timeZone: "Asia/Kolkata",
       dateStyle: "medium",
@@ -113,7 +116,7 @@ export async function POST(request: Request) {
       from: fromEmail,
       to: receiverEmail,
       replyTo: email,
-      subject: `New website enquiry from ${name}`,
+      subject: safeSubject,
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #222;">
           <h2>New Contact Form Enquiry</h2>
