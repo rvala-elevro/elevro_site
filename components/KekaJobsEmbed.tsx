@@ -89,7 +89,7 @@ export default function KekaJobsEmbed() {
         </div>
       ) : null}
 
-      <div id={KEKA_CONTAINER_ID} className="relative z-10 min-h-70" />
+      <div id={KEKA_CONTAINER_ID} className="relative z-10 min-h-130" />
     </motion.div>
   );
 }
