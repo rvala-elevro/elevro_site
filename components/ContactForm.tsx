@@ -6,7 +6,6 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { ArrowRight, Loader2 } from "lucide-react";
 
-
 type FormState = {
   name: string;
   email: string;
@@ -98,7 +97,7 @@ export default function ContactForm() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-120px" }}
       transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-      className="surface-panel self-end rounded-4xl border border-white/10 p-6 shadow-soft md:p-8"
+      className="surface-panel rounded-4xl border flex flex-col gap-5 border-white/10 p-6 shadow-soft md:p-8"
     >
       {/* Honeypot field */}
       <input
@@ -111,45 +110,40 @@ export default function ContactForm() {
         className="hidden"
       />
 
-      <div className="grid gap-5 md:grid-cols-2">
-        <Field
-          label="Name"
-          name="name"
-          value={form.name}
-          onChange={updateField}
-          placeholder="Your name"
-          required
-        />
+      <Field
+        label="Name"
+        name="name"
+        value={form.name}
+        onChange={updateField}
+        placeholder="Your name"
+        required
+      />
 
-        <Field
-          label="Email"
-          name="email"
-          value={form.email}
-          onChange={updateField}
-          placeholder="you@company.com"
-          type="email"
-          required
-        />
-      </div>
+      <Field
+        label="Email"
+        name="email"
+        value={form.email}
+        onChange={updateField}
+        placeholder="you@company.com"
+        type="email"
+        required
+      />
 
-      <div className="mt-5 grid gap-5 md:grid-cols-2">
-        <Field
-          label="Phone"
-          name="phone"
-          value={form.phone}
-          onChange={updateField}
-          placeholder="+91..."
-        />
+      <Field
+        label="Phone"
+        name="phone"
+        value={form.phone}
+        onChange={updateField}
+        placeholder="+91..."
+      />
 
-        <Field
-          label="Company"
-          name="company"
-          value={form.company}
-          onChange={updateField}
-          placeholder="Company name"
-        />
-      </div>
-      <div className="mt-5"></div>
+      <Field
+        label="Company"
+        name="company"
+        value={form.company}
+        onChange={updateField}
+        placeholder="Company name"
+      />
       <Field
         label="Subject"
         name="subject"
@@ -157,7 +151,7 @@ export default function ContactForm() {
         onChange={updateField}
         placeholder="What is your inquiry about?"
       />
-      <div className="mt-5">
+      <div>
         <label className="mb-2 block text-sm font-medium text-cream/75">
           Message
         </label>

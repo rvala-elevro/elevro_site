@@ -43,7 +43,7 @@ export default async function ServiceDetailPage({
     <main>
       <PageHero eyebrow="Service" title={service.title} text={service.hero} />
 
-      <section className="px-4 pb-24 md:px-8">
+      <section className="px-4 py-14 md:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionTitle
             eyebrow="Capabilities"
