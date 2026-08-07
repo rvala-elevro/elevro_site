@@ -219,291 +219,706 @@ body {
     top: 0;
   }
 }
-
-
-.keka-jobs-theme {
-  color: rgba(255, 255, 255, 0.9);
-}
-
 /* -------------------------------------------------------------------------- */
-/* KEKA JOBS EMBED - ELEVRO THEME                                             */
+/* KEKA JOBS EMBED - ELEVRO FINAL REFACTORED THEME                            */
 /* -------------------------------------------------------------------------- */
 
 .keka-jobs-theme {
-  color: rgba(255, 255, 255, 0.9);
+  --keka-bg-dark: rgba(45, 23, 56, 0.7);
+  --keka-bg-soft: rgba(255, 255, 255, 0.055);
+  --keka-bg-hover: rgba(139, 51, 44, 0.24);
+  --keka-border: rgba(255, 255, 255, 0.1);
+  --keka-border-active: rgba(215, 144, 136, 0.42);
+  --keka-text: rgba(255, 255, 255, 0.9);
+  --keka-muted: rgba(255, 255, 255, 0.62);
+  --keka-accent: #8b332c;
+  --keka-accent-light: #d79088;
+
+  color: var(--keka-text);
 }
 
-/* Main Keka container */
+/* Main container */
 .keka-jobs-theme #kh-main-container {
   width: 100% !important;
-  min-height: 420px !important;
+  min-height: 560px !important;
   font-family: inherit !important;
   --theme-color: 139, 51, 44 !important;
-  color: rgba(255, 255, 255, 0.9) !important;
   background: transparent !important;
+  color: var(--keka-text) !important;
 }
 
-/* Main layout */
+/* Layout: filter left, jobs right */
 .keka-jobs-theme #kh-embed-job-container {
-  display: flex !important;
-  gap: 24px !important;
-  align-items: flex-start !important;
+  display: grid !important;
+  grid-template-columns: 320px minmax(0, 1fr) !important;
+  gap: 28px !important;
 }
 
-/* Sidebar filters */
+/* Remove Keka column sizing */
+.keka-jobs-theme #kh-embed-jobs-filters,
+.keka-jobs-theme #kh-job-widget {
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: unset !important;
+  padding: 0 !important;
+}
+
+/* Sticky filter */
 .keka-jobs-theme #kh-embed-jobs-filters {
-  padding-right: 0 !important;
+  position: sticky !important;
+  top: 104px !important;
+  z-index: 20 !important;
 }
 
-.keka-jobs-theme #kh-embed-jobs-filters .kh-card {
+/* Filter panel */
+.keka-jobs-theme #kh-embed-jobs-filters>.kh-card {
   overflow: hidden !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 28px !important;
+  border-radius: 30px !important;
+  border: 1px solid var(--keka-border) !important;
   background:
-    radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.065), transparent 28%),
+    radial-gradient(circle at 82% 10%, rgba(255, 255, 255, 0.07), transparent 32%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035)) !important;
   box-shadow: 0 28px 90px rgba(18, 7, 23, 0.24) !important;
   backdrop-filter: blur(22px) !important;
 }
 
-.keka-jobs-theme .kh-card-body {
-  padding: 22px !important;
+.keka-jobs-theme #kh-embed-jobs-filters .kh-card-body {
+  padding: 24px !important;
   background: transparent !important;
-  color: rgba(255, 255, 255, 0.9) !important;
 }
 
-/* Search input */
+/* Reset Keka lists */
+.keka-jobs-theme #kh-embed-jobs-filters ul,
+.keka-jobs-theme #kh-embed-jobs-filters li {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  list-style: none !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* SEARCH                                                                     */
+/* -------------------------------------------------------------------------- */
+
+.keka-jobs-theme #kh-embed-jobs-filters>.kh-card .kh-card-body>ul>li:first-child>.kh-d-flex {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 34px !important;
+  gap: 10px !important;
+  align-items: center !important;
+}
+
 .keka-jobs-theme .kh-input-search {
+  position: relative !important;
   overflow: hidden !important;
-  border-radius: 18px !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  background: #17091e !important;
-}
-
-.keka-jobs-theme .kh-form-control,
-.keka-jobs-theme input {
-  min-height: 48px !important;
-  border: 0 !important;
-  border-radius: 18px !important;
-  background: #17091e !important;
-  color: rgba(255, 255, 255, 0.9) !important;
-  box-shadow: none !important;
-  outline: none !important;
-}
-
-.keka-jobs-theme .kh-form-control::placeholder,
-.keka-jobs-theme input::placeholder {
-  color: rgba(255, 255, 255, 0.36) !important;
-}
-
-.keka-jobs-theme .kh-form-control:focus,
-.keka-jobs-theme input:focus {
-  border-color: rgba(215, 144, 136, 0.7) !important;
-  box-shadow: 0 0 0 3px rgba(139, 51, 44, 0.25) !important;
-}
-
-/* Search / clear icons */
-.keka-jobs-theme .kh-icon,
-.keka-jobs-theme .ki-search,
-.keka-jobs-theme .ki-clear-filter,
-.keka-jobs-theme .ki-arrow-dropdown {
-  color: rgba(215, 144, 136, 0.9) !important;
-}
-
-/* Filter headings */
-.keka-jobs-theme .kh-accordion-item {
-  overflow: hidden !important;
-  border-radius: 20px !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  background: rgba(255, 255, 255, 0.045) !important;
-}
-
-.keka-jobs-theme .kh-accordion-title {
-  padding: 14px 16px !important;
-  color: rgba(255, 255, 255, 0.88) !important;
-}
-
-.keka-jobs-theme .kh-font-large {
-  font-size: 14px !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.01em !important;
-  color: rgba(255, 255, 255, 0.88) !important;
-}
-
-.keka-jobs-theme .kh-accordion-content {
-  padding: 0 14px 14px !important;
-  color: rgba(255, 255, 255, 0.65) !important;
-}
-
-/* Filter list items */
-.keka-jobs-theme #kh-hiro-departments li,
-.keka-jobs-theme #kh-hiro-locations li {
-  margin-top: 8px !important;
+  min-height: 58px !important;
   border-radius: 999px !important;
-  padding: 9px 12px !important;
-  background: rgba(255, 255, 255, 0.045) !important;
-  color: rgba(255, 255, 255, 0.68) !important;
+  border: 1px solid var(--keka-border) !important;
+  background: var(--keka-bg-dark) !important;
+}
+
+/* IMPORTANT: target only search input, not every input */
+.keka-jobs-theme #kh-hiro-searchText {
+  width: 100% !important;
+  min-height: 58px !important;
+  padding: 0 18px 0 46px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  color: var(--keka-text) !important;
+  font-size: 15px !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.keka-jobs-theme #kh-hiro-searchText::placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.keka-jobs-theme .ki-search {
+  left: 18px !important;
+  margin-left: 0 !important;
+  color: var(--keka-accent-light) !important;
+}
+
+.keka-jobs-theme .ki-clear-filter {
+  display: grid !important;
+  width: 34px !important;
+  height: 34px !important;
+  place-items: center !important;
+  margin-left: 0 !important;
+  border-radius: 999px !important;
+  color: var(--keka-accent-light) !important;
   transition:
     background 180ms ease,
-    color 180ms ease,
     transform 180ms ease !important;
 }
 
-.keka-jobs-theme #kh-hiro-departments li:hover,
-.keka-jobs-theme #kh-hiro-locations li:hover {
-  transform: translateY(-1px) !important;
-  background: rgba(139, 51, 44, 0.28) !important;
-  color: white !important;
+.keka-jobs-theme .ki-clear-filter:hover {
+  background: var(--keka-bg-hover) !important;
+  transform: scale(1.04) !important;
 }
 
-/* Job listing area */
-.keka-jobs-theme #kh-job-widget {
+/* -------------------------------------------------------------------------- */
+/* MAIN ACCORDIONS: DEPARTMENT / LOCATION                                     */
+/* -------------------------------------------------------------------------- */
+
+.keka-jobs-theme #kh-embed-jobs-filters>.kh-card .kh-card-body>ul>li.kh-mt-3>.kh-accordion-item {
+  margin-top: 18px !important;
+  overflow: hidden !important;
+  border-radius: 24px !important;
+  border: 1px solid var(--keka-border) !important;
+  background: rgba(255, 255, 255, 0.045) !important;
+}
+
+.keka-jobs-theme #kh-embed-jobs-filters>.kh-card .kh-card-body>ul>li.kh-mt-3>.kh-accordion-item>.kh-accordion-title {
+  padding: 18px 20px !important;
+}
+
+.keka-jobs-theme #kh-embed-jobs-filters .kh-accordion-title>.kh-d-flex {
+  display: flex !important;
+  width: 100% !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+}
+
+.keka-jobs-theme #kh-embed-jobs-filters .kh-font-large {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+.keka-jobs-theme #kh-embed-jobs-filters .ki-arrow-dropdown {
+  display: grid !important;
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  place-items: center !important;
+  margin-left: auto !important;
+  padding-left: 0 !important;
+  color: var(--keka-accent-light) !important;
+  transition: transform 180ms ease !important;
+}
+
+.keka-jobs-theme #kh-embed-jobs-filters .kh-accordion-title.kh-is-open .ki-arrow-dropdown {
+  transform: rotate(180deg) !important;
+}
+
+.keka-jobs-theme #kh-embed-jobs-filters .kh-accordion-content {
+  padding: 0 18px 18px !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* SHARED CHECKBOX STYLE                                                      */
+/* -------------------------------------------------------------------------- */
+
+.keka-jobs-theme input.kh-form-check-input,
+.keka-jobs-theme input.country-checkbox,
+.keka-jobs-theme input.city-group-checkbox,
+.keka-jobs-theme input.city-checkbox {
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(215, 144, 136, 0.78) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+}
+
+.keka-jobs-theme input.kh-form-check-input::after,
+.keka-jobs-theme input.country-checkbox::after,
+.keka-jobs-theme input.city-group-checkbox::after,
+.keka-jobs-theme input.city-checkbox::after {
+  content: "" !important;
+  display: block !important;
+  width: 8px !important;
+  height: 8px !important;
+  margin: 4px !important;
+  border-radius: 999px !important;
+  background: white !important;
+  transform: scale(0) !important;
+  transition: transform 160ms ease !important;
+}
+
+.keka-jobs-theme input.kh-form-check-input:checked,
+.keka-jobs-theme input.country-checkbox:checked,
+.keka-jobs-theme input.city-group-checkbox:checked,
+.keka-jobs-theme input.city-checkbox:checked {
+  border-color: var(--keka-accent-light) !important;
+  background: var(--keka-accent) !important;
+}
+
+.keka-jobs-theme input.kh-form-check-input:checked::after,
+.keka-jobs-theme input.country-checkbox:checked::after,
+.keka-jobs-theme input.city-group-checkbox:checked::after,
+.keka-jobs-theme input.city-checkbox:checked::after {
+  transform: scale(1) !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* DEPARTMENT DROPDOWN                                                        */
+/* -------------------------------------------------------------------------- */
+
+.keka-jobs-theme #kh-hiro-departments {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.keka-jobs-theme #kh-hiro-departments li.kh-form-check {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  min-height: 50px !important;
+  margin-top: 10px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.03)),
+    rgba(45, 23, 56, 0.48) !important;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease !important;
+}
+
+.keka-jobs-theme #kh-hiro-departments li.kh-form-check:hover {
+  transform: translateY(-1px) !important;
+  border-color: rgba(215, 144, 136, 0.35) !important;
+  background:
+    linear-gradient(135deg, rgba(139, 51, 44, 0.22), rgba(255, 255, 255, 0.04)),
+    rgba(45, 23, 56, 0.58) !important;
+}
+
+/* FIX: absolute input, no left-corner bug */
+.keka-jobs-theme #kh-hiro-departments li.kh-form-check>input.kh-form-check-input {
+  position: absolute !important;
+  left: 16px !important;
+  top: 50% !important;
+  z-index: 2 !important;
+  transform: translateY(-50%) !important;
+}
+
+/* Full clickable department label */
+.keka-jobs-theme #kh-hiro-departments li.kh-form-check>label.kh-form-check-label {
+  display: flex !important;
+  width: 100% !important;
+  min-height: 50px !important;
+  align-items: center !important;
+  padding: 0 16px 0 48px !important;
+  margin: 0 !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-size: 14px !important;
+  line-height: 1.25 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  cursor: pointer !important;
+}
+
+.keka-jobs-theme #kh-hiro-departments li.kh-form-check:has(input:checked) {
+  border-color: var(--keka-border-active) !important;
+  background:
+    linear-gradient(135deg, rgba(139, 51, 44, 0.3), rgba(255, 255, 255, 0.05)),
+    rgba(45, 23, 56, 0.64) !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* LOCATION DROPDOWN                                                          */
+/* -------------------------------------------------------------------------- */
+
+.keka-jobs-theme #kh-hiro-locations,
+.keka-jobs-theme #kh-hiro-locations ul {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.keka-jobs-theme #kh-hiro-locations .kh-ml-4,
+.keka-jobs-theme #kh-hiro-locations .kh-pl-2 {
+  margin-left: 0 !important;
   padding-left: 0 !important;
 }
 
-/* Empty state */
-.keka-jobs-theme .kh-alert,
-.keka-jobs-theme .kh-alert-info {
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 28px !important;
-  background:
-    radial-gradient(circle at 90% 10%, rgba(139, 51, 44, 0.18), transparent 34%),
-    rgba(255, 255, 255, 0.055) !important;
-  color: rgba(255, 255, 255, 0.72) !important;
-  padding: 28px !important;
-  box-shadow: 0 28px 90px rgba(18, 7, 23, 0.18) !important;
+/* Country/city wrapper */
+.keka-jobs-theme #kh-hiro-locations li.kh-accordion-item {
+  width: 100% !important;
+  margin-top: 10px !important;
+  overflow: visible !important;
+  border: 0 !important;
+  background: transparent !important;
 }
 
-/* Job cards when jobs exist */
-.keka-jobs-theme #kh-job-widget .kh-card {
+/* Country/city title row: checkbox | label | arrow */
+.keka-jobs-theme #kh-hiro-locations li.kh-accordion-item>.kh-accordion-title {
+  display: grid !important;
+  grid-template-columns: 20px minmax(0, 1fr) 26px !important;
+  gap: 12px !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: 52px !important;
+  padding: 0 14px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.028)),
+    rgba(45, 23, 56, 0.5) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease !important;
+}
+
+.keka-jobs-theme #kh-hiro-locations li.kh-accordion-item>.kh-accordion-title:hover {
+  transform: translateY(-1px) !important;
+  border-color: rgba(215, 144, 136, 0.32) !important;
+  background:
+    linear-gradient(135deg, rgba(139, 51, 44, 0.22), rgba(255, 255, 255, 0.04)),
+    rgba(45, 23, 56, 0.6) !important;
+}
+
+/* Checkbox first */
+.keka-jobs-theme #kh-hiro-locations li.kh-accordion-item>.kh-accordion-title>input[type="checkbox"] {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+
+/* Label middle */
+.keka-jobs-theme #kh-hiro-locations li.kh-accordion-item>.kh-accordion-title>label,
+.keka-jobs-theme #kh-hiro-locations li.kh-accordion-item>.kh-accordion-title>span:not(.ki-arrow-dropdown) {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-size: 14px !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
   overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  cursor: pointer !important;
+}
+
+/* Arrow last */
+.keka-jobs-theme #kh-hiro-locations li.kh-accordion-item>.kh-accordion-title>.ki-arrow-dropdown {
+  grid-column: 3 !important;
+  grid-row: 1 !important;
+  display: grid !important;
+  width: 26px !important;
+  height: 26px !important;
+  min-width: 26px !important;
+  place-items: center !important;
+  place-self: center end !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--keka-accent-light) !important;
+  transition: transform 180ms ease !important;
+}
+
+.keka-jobs-theme #kh-hiro-locations li.kh-accordion-item>.kh-accordion-title.kh-is-open>.ki-arrow-dropdown {
+  transform: rotate(180deg) !important;
+}
+
+.keka-jobs-theme #kh-hiro-locations li.kh-accordion-item>.kh-accordion-title:has(input:checked) {
+  border-color: var(--keka-border-active) !important;
+  background:
+    linear-gradient(135deg, rgba(139, 51, 44, 0.3), rgba(255, 255, 255, 0.05)),
+    rgba(45, 23, 56, 0.64) !important;
+}
+
+/* Nested level indentation */
+.keka-jobs-theme #kh-hiro-locations .kh-accordion-content {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 10px 0 0 18px !important;
+}
+
+/* City row slightly different */
+.keka-jobs-theme #kh-hiro-locations .kh-accordion-content li.kh-accordion-item>.kh-accordion-title {
+  min-height: 50px !important;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.025)),
+    rgba(45, 23, 56, 0.44) !important;
+}
+
+/* Leaf location: Head Office */
+.keka-jobs-theme #kh-hiro-locations li.kh-form-check {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: 46px !important;
+  margin-top: 10px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.025)),
+    rgba(45, 23, 56, 0.44) !important;
+}
+
+.keka-jobs-theme #kh-hiro-locations li.kh-form-check>input[type="checkbox"] {
+  position: absolute !important;
+  left: 14px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+.keka-jobs-theme #kh-hiro-locations li.kh-form-check>label {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: 46px !important;
+  padding: 0 14px 0 44px !important;
+  margin: 0 !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-size: 14px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  cursor: pointer !important;
+}
+
+.keka-jobs-theme #kh-hiro-locations li.kh-form-check:has(input:checked) {
+  border-color: var(--keka-border-active) !important;
+  background:
+    linear-gradient(135deg, rgba(139, 51, 44, 0.3), rgba(255, 255, 255, 0.05)),
+    rgba(45, 23, 56, 0.64) !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* JOB LIST                                                                   */
+/* -------------------------------------------------------------------------- */
+
+.keka-jobs-theme #kh-job-widget {
+  max-height: 690px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding-right: 10px !important;
+  scroll-behavior: smooth !important;
+}
+
+.keka-jobs-theme #kh-job-widget::-webkit-scrollbar {
+  width: 8px;
+}
+
+.keka-jobs-theme #kh-job-widget::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.keka-jobs-theme #kh-job-widget::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(215, 144, 136, 0.35);
+}
+
+.keka-jobs-theme #kh-job-widget h1 {
+  margin: 0 0 18px !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.keka-jobs-theme .kch-job-section-badge,
+.keka-jobs-theme .kh-badge {
+  margin-left: 12px !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: rgba(255, 255, 255, 0.58) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+.keka-jobs-theme #kh-job-widget>.kh-row {
+  margin-bottom: 34px !important;
+}
+
+.keka-jobs-theme #kh-job-widget .kh-job-card,
+.keka-jobs-theme #kh-job-widget .kh-job-container {
+  display: block !important;
+  width: 100% !important;
+  min-height: 132px !important;
   margin-bottom: 18px !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  overflow: hidden !important;
+  text-decoration: none !important;
   border-radius: 28px !important;
-  background: rgba(255, 255, 255, 0.055) !important;
-  box-shadow: 0 28px 90px rgba(18, 7, 23, 0.2) !important;
+  border: 1px solid var(--keka-border) !important;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(139, 51, 44, 0.18), transparent 32%),
+    var(--keka-bg-soft) !important;
+  box-shadow: 0 24px 70px rgba(18, 7, 23, 0.2) !important;
   transition:
     transform 220ms ease,
     border-color 220ms ease,
     background 220ms ease !important;
 }
 
-.keka-jobs-theme #kh-job-widget .kh-card:hover {
-  transform: translateY(-6px) !important;
-  border-color: rgba(215, 144, 136, 0.34) !important;
-  background: rgba(255, 255, 255, 0.075) !important;
+.keka-jobs-theme #kh-job-widget .kh-job-card:hover,
+.keka-jobs-theme #kh-job-widget .kh-job-container:hover {
+  transform: translateY(-5px) !important;
+  border-color: rgba(215, 144, 136, 0.38) !important;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(139, 51, 44, 0.28), transparent 32%),
+    rgba(255, 255, 255, 0.075) !important;
 }
 
-/* Text inside job cards */
-.keka-jobs-theme #kh-job-widget h1,
-.keka-jobs-theme #kh-job-widget h2,
-.keka-jobs-theme #kh-job-widget h3,
-.keka-jobs-theme #kh-job-widget h4,
-.keka-jobs-theme #kh-job-widget p,
-.keka-jobs-theme #kh-job-widget span,
-.keka-jobs-theme #kh-job-widget div {
-  font-family: inherit !important;
+.keka-jobs-theme #kh-job-widget .kh-card-body {
+  min-height: 132px !important;
+  padding: 24px 28px !important;
+  background: transparent !important;
 }
 
-.keka-jobs-theme #kh-job-widget h1,
-.keka-jobs-theme #kh-job-widget h2,
-.keka-jobs-theme #kh-job-widget h3,
-.keka-jobs-theme #kh-job-widget h4 {
-  font-weight: 500 !important;
-  color: rgba(255, 255, 255, 0.92) !important;
-}
-
-.keka-jobs-theme #kh-job-widget p,
-.keka-jobs-theme #kh-job-widget span,
-.keka-jobs-theme #kh-job-widget div {
-  color: rgba(255, 255, 255, 0.66) !important;
-}
-
-/* Apply buttons / links */
-.keka-jobs-theme #kh-job-widget a,
-.keka-jobs-theme #kh-job-widget button,
-.keka-jobs-theme .kh-btn,
-.keka-jobs-theme .kh-button {
-  border-radius: 999px !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  background: #8b332c !important;
-  color: #ffffff !important;
+.keka-jobs-theme #kh-job-widget .kh-job-title {
+  margin: 0 !important;
+  color: rgba(255, 255, 255, 0.94) !important;
+  font-size: 20px !important;
   font-weight: 600 !important;
-  box-shadow: 0 18px 50px rgba(139, 51, 44, 0.22) !important;
-  transition:
-    transform 180ms ease,
-    background 180ms ease,
-    box-shadow 180ms ease !important;
+  line-height: 1.35 !important;
 }
 
-.keka-jobs-theme #kh-job-widget a:hover,
-.keka-jobs-theme #kh-job-widget button:hover,
-.keka-jobs-theme .kh-btn:hover,
-.keka-jobs-theme .kh-button:hover {
-  transform: translateY(-2px) !important;
-  background: #9d4038 !important;
-  box-shadow: 0 22px 60px rgba(139, 51, 44, 0.32) !important;
+.keka-jobs-theme #kh-job-widget .kh-text-secondary,
+.keka-jobs-theme #kh-job-widget .kh-font-normal,
+.keka-jobs-theme #kh-job-widget p,
+.keka-jobs-theme #kh-job-widget span {
+  color: rgba(255, 255, 255, 0.58) !important;
+}
+
+.keka-jobs-theme #kh-job-widget .kh-dot {
+  width: 4px !important;
+  height: 4px !important;
+  border-radius: 999px !important;
+  background: rgba(215, 144, 136, 0.75) !important;
+}
+
+/* Empty state */
+.keka-jobs-theme .kh-alert,
+.keka-jobs-theme .kh-alert-info {
+  border: 1px solid var(--keka-border) !important;
+  border-radius: 28px !important;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(139, 51, 44, 0.2), transparent 34%),
+    var(--keka-bg-soft) !important;
+  color: rgba(255, 255, 255, 0.72) !important;
+  padding: 28px !important;
 }
 
 /* Footer */
 .keka-jobs-theme .kh-footer {
   position: relative !important;
-  margin-top: 36px !important;
-  padding-top: 24px !important;
+  margin-top: 38px !important;
+  padding-top: 22px !important;
   border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 .keka-jobs-theme #kh-companyShortName {
   margin-bottom: 10px !important;
-  font-size: 12px !important;
+  color: rgba(255, 255, 255, 0.42) !important;
+  font-size: 11px !important;
   font-weight: 500 !important;
   letter-spacing: 0.18em !important;
   text-transform: uppercase !important;
-  color: rgba(255, 255, 255, 0.45) !important;
 }
 
 .keka-jobs-theme .kh-footer-content,
 .keka-jobs-theme .kh-footer-content span {
+  color: rgba(255, 255, 255, 0.38) !important;
   font-size: 12px !important;
-  color: rgba(255, 255, 255, 0.42) !important;
 }
 
 .keka-jobs-theme .kh-footer-content img {
   opacity: 0.65 !important;
-  filter: grayscale(1) brightness(1.5) !important;
+  filter: grayscale(1) brightness(1.4) !important;
 }
 
-/* Mobile */
+/* -------------------------------------------------------------------------- */
+/* RESPONSIVE                                                                 */
+/* -------------------------------------------------------------------------- */
+
 @media (max-width: 991px) {
   .keka-jobs-theme #kh-embed-job-container {
-    flex-direction: column !important;
-    gap: 18px !important;
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
   }
 
-  .keka-jobs-theme #kh-embed-jobs-filters,
+  .keka-jobs-theme #kh-embed-jobs-filters {
+    position: sticky !important;
+    top: 82px !important;
+  }
+
   .keka-jobs-theme #kh-job-widget {
-    width: 100% !important;
-    max-width: 100% !important;
-    flex: 0 0 100% !important;
+    max-height: 520px !important;
+    overflow-y: auto !important;
+    padding-right: 6px !important;
   }
 }
 
 @media (max-width: 640px) {
-  .keka-jobs-theme .kh-card-body {
+  .keka-jobs-theme #kh-main-container {
+    min-height: 520px !important;
+  }
+
+  .keka-jobs-theme #kh-embed-jobs-filters .kh-card-body {
     padding: 18px !important;
   }
 
-  .keka-jobs-theme .kh-alert,
-  .keka-jobs-theme .kh-alert-info {
-    padding: 22px !important;
+  .keka-jobs-theme #kh-embed-jobs-filters>.kh-card {
+    border-radius: 26px !important;
+  }
+
+  .keka-jobs-theme #kh-embed-job-container {
+    gap: 18px !important;
+  }
+
+  .keka-jobs-theme #kh-job-widget {
+    max-height: 460px !important;
+  }
+
+  .keka-jobs-theme #kh-hiro-locations .kh-accordion-content {
+    padding-left: 12px !important;
+  }
+
+  .keka-jobs-theme #kh-hiro-locations li.kh-accordion-item>.kh-accordion-title {
+    grid-template-columns: 18px minmax(0, 1fr) 24px !important;
+    gap: 10px !important;
+    min-height: 50px !important;
+    padding: 0 12px !important;
+  }
+
+  .keka-jobs-theme #kh-hiro-locations li.kh-accordion-item>.kh-accordion-title>label,
+  .keka-jobs-theme #kh-hiro-locations li.kh-accordion-item>.kh-accordion-title>span:not(.ki-arrow-dropdown),
+  .keka-jobs-theme #kh-hiro-locations li.kh-form-check>label,
+  .keka-jobs-theme #kh-hiro-departments li.kh-form-check>label.kh-form-check-label {
+    font-size: 13px !important;
+  }
+
+  .keka-jobs-theme #kh-job-widget h1 {
+    font-size: 18px !important;
+  }
+
+  .keka-jobs-theme #kh-job-widget .kh-job-card,
+  .keka-jobs-theme #kh-job-widget .kh-job-container {
+    min-height: 120px !important;
     border-radius: 22px !important;
   }
 
-  .keka-jobs-theme #kh-job-widget .kh-card {
-    border-radius: 22px !important;
+  .keka-jobs-theme #kh-job-widget .kh-card-body {
+    min-height: 120px !important;
+    padding: 20px !important;
   }
-}
 
-.keka-jobs-theme .kh-footer-content {
-  color: rgba(255, 255, 255, 0.55) !important;
+  .keka-jobs-theme #kh-job-widget .kh-job-title {
+    font-size: 18px !important;
+  }
 }
