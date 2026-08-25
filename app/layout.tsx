@@ -110,11 +110,11 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         {/* Load GTM early so Tag Assistant detects it instantly */}
-        <Script id="gtm-script" strategy="beforeInteractive">
+        <Script id="gtm-script" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-T6LVHCKT');`}
         </Script>
 
