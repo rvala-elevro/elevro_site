@@ -21,15 +21,12 @@ const siteUrl = "https://www.elevro.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-
   title: {
     default: "Elevro | Intelligent Product Enablement & Quality Engineering",
     template: "%s | Elevro",
   },
-
   description:
     "Elevro provides AI-powered quality engineering, product enablement, digital engineering, CloudOps, DevOps, IoT automation, embedded QA, and intelligent automation services.",
-
   keywords: [
     "Elevro",
     "Artificial Intelligence",
@@ -45,15 +42,12 @@ export const metadata: Metadata = {
     "Automation Testing",
     "AI Testing",
   ],
-
   authors: [{ name: "Elevro" }],
   creator: "Elevro",
   publisher: "Elevro",
-
   alternates: {
     canonical: "/",
   },
-
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -71,7 +65,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
     title: "Elevro | Intelligent Product Enablement & Quality Engineering",
@@ -79,7 +72,6 @@ export const metadata: Metadata = {
       "AI-powered quality engineering, product enablement, CloudOps, DevOps, IoT automation, embedded QA, and intelligent automation services.",
     images: ["/og-image.png"],
   },
-
   robots: {
     index: true,
     follow: true,
@@ -91,7 +83,6 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -118,25 +109,23 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Script
-          id="gtm-script"
-          strategy="afterInteractive"
+        {/* Load GTM early so Tag Assistant detects it instantly */}
+        <Script id="gtm-script" strategy="beforeInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-T6LVHCKT');`}
+        </Script>
+
+        {/* Correct placement for fallback iframe */}
+        <noscript
           dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-T6LVHCKT');`,
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T6LVHCKT"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
           }}
         />
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-T6LVHCKT"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
+
         <Navbar />
         {children}
         <Footer />
