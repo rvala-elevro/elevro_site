@@ -1,5 +1,8 @@
+import { siteConfig } from "@/lib/site-config";
 import Image from "next/image";
 import Link from "next/link";
+import LinkedIn from "./icons/LinkedIn";
+import Instagram from "./icons/Instagram";
 
 function FooterColumn({
   title,
@@ -115,8 +118,31 @@ const Footer = () => {
           ]}
         />
       </div>
-      <div className="mx-auto mt-10 max-w-7xl border-t border-white/10 pt-6 text-sm text-cream/45">
-        © 2026 Elevro. All rights reserved.
+      <div className="flex mx-auto mt-10 gap-3 md:flex-row flex-col-reverse border-t border-white/10 pt-4 justify-between max-w-7xl">
+        <span className="  self-start  text-sm text-cream/45">
+          © 2026 Elevro. All rights reserved.
+        </span>
+        <div className="flex items-center slef-end justify-end gap-3">
+          <a
+            href={siteConfig.social.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Elevro LinkedIn"
+            className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/5 text-cream/70 transition hover:-translate-y-0.5 hover:bg-secondary/30 hover:text-white"
+          >
+            <LinkedIn className="h-5 w-5" />
+          </a>
+
+          <a
+            href={siteConfig.social.instagram}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Elevro Instagram"
+            className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/5 text-cream/70 transition hover:-translate-y-0.5 hover:bg-secondary/30 hover:text-white"
+          >
+            <Instagram className="h-5 w-5" />
+          </a>
+        </div>
       </div>
     </footer>
   );

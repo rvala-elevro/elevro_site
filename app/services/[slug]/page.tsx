@@ -7,6 +7,7 @@ import {
 } from "@/components/PageBlocks";
 import { services } from "@/lib/elevro-data";
 import Card from "@/components/Card";
+import { seoPages, siteConfig } from "@/lib/site-config";
 export function generateStaticParams() {
   return services.map((service) => ({
     slug: service.slug,
@@ -21,12 +22,62 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = services.find((item) => item.slug === slug);
 
+  if (slug === "intelligent-quality-engineering") {
+    return {
+      title: seoPages.intelligentQualityEngineering.title,
+      description: seoPages.intelligentQualityEngineering.description,
+      keywords: [seoPages.intelligentQualityEngineering.keyword],
+      alternates: {
+        canonical: seoPages.intelligentQualityEngineering.path,
+      },
+      openGraph: {
+        title: seoPages.intelligentQualityEngineering.title,
+        description: seoPages.intelligentQualityEngineering.description,
+        url: `${siteConfig.url}${seoPages.intelligentQualityEngineering.path}`,
+        siteName: "Elevro",
+        images: ["/og-image.png"],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: seoPages.intelligentQualityEngineering.title,
+        description: seoPages.intelligentQualityEngineering.description,
+        images: ["/og-image.png"],
+      },
+    };
+  }
+
+  if (slug === "product-enablement") {
+    return {
+      title: seoPages.productEnablement.title,
+      description: seoPages.productEnablement.description,
+      keywords: [seoPages.productEnablement.keyword],
+      alternates: {
+        canonical: seoPages.productEnablement.path,
+      },
+      openGraph: {
+        title: seoPages.productEnablement.title,
+        description: seoPages.productEnablement.description,
+        url: `${siteConfig.url}${seoPages.productEnablement.path}`,
+        siteName: "Elevro",
+        images: ["/og-image.png"],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: seoPages.productEnablement.title,
+        description: seoPages.productEnablement.description,
+        images: ["/og-image.png"],
+      },
+    };
+  }
+
   return {
     title: service ? `${service.title} | Elevro` : "Service | Elevro",
     description: service?.short,
+    alternates: {
+      canonical: service ? `/services/${service.slug}` : "/services",
+    },
   };
 }
-
 export default async function ServiceDetailPage({
   params,
 }: {
