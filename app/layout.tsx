@@ -4,7 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
+import { seoPages, siteConfig } from "@/lib/site-config";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -17,45 +17,43 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-const siteUrl = "https://www.elevro.com";
-
+const siteUrl = siteConfig.url;
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Elevro | Intelligent Product Enablement & Quality Engineering",
-    template: "%s | Elevro",
+    default: seoPages.home.title,
+    template: "%s",
   },
-  description:
-    "Elevro provides AI-powered quality engineering, product enablement, digital engineering, CloudOps, DevOps, IoT automation, embedded QA, and intelligent automation services.",
+
+  description: seoPages.home.description,
   keywords: [
+    seoPages.home.keyword,
     "Elevro",
-    "Artificial Intelligence",
-    "Product Enablement",
-    "Digital Engineering",
-    "Quality Engineering",
-    "Intelligent Quality Engineering",
+    "AI-powered quality engineering",
+    "product enablement services",
+    "test automation",
+    "DevOps",
     "Cloud Engineering",
     "CloudOps",
-    "DevOps",
-    "IoT Automation",
-    "Embedded QA",
-    "Automation Testing",
-    "AI Testing",
+    "IoT validation",
+    "Matter testing",
+    "BLE testing",
+    "Wi-Fi testing",
+    "MQTT testing",
   ],
   authors: [{ name: "Elevro" }],
   creator: "Elevro",
   publisher: "Elevro",
   alternates: {
-    canonical: "/",
+    canonical: seoPages.home.path,
   },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteUrl,
     siteName: "Elevro",
-    title: "Elevro | Intelligent Product Enablement & Quality Engineering",
-    description:
-      "AI-powered quality engineering, product enablement, CloudOps, DevOps, IoT automation, embedded QA, and intelligent automation services.",
+    title: seoPages.home.title,
+    description: seoPages.home.description,
     images: [
       {
         url: "/og-image.png",
@@ -67,9 +65,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Elevro | Intelligent Product Enablement & Quality Engineering",
-    description:
-      "AI-powered quality engineering, product enablement, CloudOps, DevOps, IoT automation, embedded QA, and intelligent automation services.",
+    title: seoPages.home.title,
+    description: seoPages.home.description,
     images: ["/og-image.png"],
   },
   robots: {

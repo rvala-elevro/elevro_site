@@ -487,21 +487,22 @@ function Evolution() {
       <div className="reveal surface-panel relative mx-auto grid max-w-7xl overflow-hidden rounded-4xl border border-white/10 shadow-soft lg:grid-cols-2">
         <div className="p-8 md:p-12">
           <p className="mb-4 text-sm font-bold uppercase tracking-[0.32em] text-[#d79088]">
-            Digital Evolution
+            HOW WE ENABLE
           </p>
           <h2 className="text-4xl font-medium tracking-tight leading-tight md:text-5xl">
-            From idea to automated operating model.
+            From product complexity to engineering confidence.
           </h2>
           <p className="mt-6 text-lg leading-8 text-cream/68">
-            Use this section like Zylitix’s deeper service explanation area:
-            each service gets a narrative, benefits and a conversion path, but
-            the content is tuned around intelligent quality and automation.
+            Elevro connects quality engineering, automation, CI/CD, cloud
+            infrastructure and AI-driven intelligence across the complete
+            product ecosystem—from firmware and connected devices to
+            applications, APIs and cloud platforms.
           </p>
           <div className="mt-9 space-y-4">
             {[
-              "Map business workflows and quality risks",
-              "Build the AI, automation and cloud foundation",
-              "Measure impact through dashboards and release intelligence",
+              "Understand the product ecosystem Map workflows, dependencies and quality risks",
+              "Build the engineering foundation Engineer automation, validation and delivery systems",
+              "Enable intelligent operations Turn engineering signals into release intelligence",
             ].map((item) => (
               <div
                 key={item}
@@ -614,15 +615,16 @@ function About() {
             [
               "Careers",
               "Build with teams solving AI, cloud and quality challenges.",
+              "https://www.elevro.com/careers",
             ],
             [
               "Partnerships",
               "Co-create accelerators and platform integrations.",
             ],
-          ].map(([title, text]) => (
+          ].map(([title, text, href]) => (
             <Link
               key={title}
-              href={`/about-us/${title.toLowerCase()}`}
+              href={href ?? `/about-us`}
               className="rounded-3xl bg-white/5 p-6 transition hover:bg-secondary/25"
             >
               <BriefcaseBusiness className="mb-8 h-7 w-7 text-secondary" />
