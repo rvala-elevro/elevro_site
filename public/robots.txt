@@ -1,0 +1,13 @@
+User-agent: *	
+Allow: /	
+	
+Disallow: /*?s=	
+Disallow: /search	
+Disallow: /*?q=	
+Disallow: /*?utm_	
+Disallow: /*?gclid=	
+Disallow: /*?fbclid=	
+Disallow: /thank-you	
+Disallow: /*/thank-you	
+	
+Sitemap: https://www.elevro.com/sitemap.xml	
