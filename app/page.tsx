@@ -9,7 +9,6 @@ import { AnimatePresence, motion } from "motion/react";
 
 import {
   ArrowRight,
-  Bot,
   BrainCircuit,
   BriefcaseBusiness,
   CheckCircle2,
@@ -18,9 +17,7 @@ import {
   FileText,
   HeartPulse,
   House,
-  Layers3,
   Rocket,
-  ShieldCheck,
   ShoppingCart,
   Car,
   Smartphone,
@@ -347,9 +344,9 @@ function Hero() {
           </div>
 
           <h1 className="max-w-4xl text-[2.35rem] font-medium leading-tight tracking-[-0.04em] text-white/90 sm:text-[2.65rem] md:text-6xl">
-            Enabling Products{" "}
+            AI-Powered Product{" "}
             <span className="soft-gradient-text font-medium block sm:inline">
-              Engineering Confidence
+              Engineering Services
             </span>
           </h1>
 

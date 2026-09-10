@@ -1,11 +1,11 @@
 // app/industries/[slug]/page.tsx
 
 import { notFound } from "next/navigation";
-import type { Metadata } from "next";
 import { CheckCircle2, Layers3 } from "lucide-react";
 import { PageCTA, PageHero, SectionTitle } from "@/components/PageBlocks";
 import Card from "@/components/Card";
 import { industries } from "@/lib/elevro-data";
+import { seoPages } from "@/lib/site-config";
 
 export function generateStaticParams() {
   return industries.map((industry) => ({
@@ -17,13 +17,30 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+}) {
   const { slug } = await params;
   const industry = industries.find((item) => item.slug === slug);
+  const seo = seoPages.industries[slug as keyof typeof seoPages.industries];
 
   return {
-    title: industry ? `${industry.title} | Elevro` : "Industry | Elevro",
-    description: industry?.value,
+    title: seo?.metaTitle ?? `${industry?.title ?? "Industry"} | Elevro`,
+    description: seo?.metaDescription ?? industry?.intro,
+    alternates: {
+      canonical: `/industries/${slug}`,
+    },
+    openGraph: {
+      title: seo?.metaTitle ?? `${industry?.title ?? "Industry"} | Elevro`,
+      description: seo?.metaDescription ?? industry?.intro,
+      url: `https://www.elevro.com/industries/${slug}`,
+      siteName: "Elevro",
+      images: ["/og-image.png"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seo?.metaTitle ?? `${industry?.title ?? "Industry"} | Elevro`,
+      description: seo?.metaDescription ?? industry?.intro,
+      images: ["/og-image.png"],
+    },
   };
 }
 
@@ -38,12 +55,12 @@ export default async function IndustryDetailPage({
   if (!industry) notFound();
 
   const Icon = industry.icon;
-
+  const seo = seoPages.industries[slug as keyof typeof seoPages.industries];
   return (
     <main>
       <PageHero
         eyebrow="Industry"
-        title={industry.title}
+        title={seo?.h1 ?? industry.title}
         text={industry.value}
       />
 

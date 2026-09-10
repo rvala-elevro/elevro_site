@@ -101,7 +101,7 @@ export type ServiceItem = {
 export const services: ServiceItem[] = [
   {
     slug: "intelligent-quality-engineering",
-    title: "Intelligent Quality Engineering",
+    title: "AI-Powered Quality Engineering Services",
     href: "/services/intelligent-quality-engineering",
     icon: TestTubeDiagonal,
     short:

@@ -21,13 +21,12 @@ const siteUrl = siteConfig.url;
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: seoPages.home.title,
+    default: seoPages.home.metaTitle,
     template: "%s",
   },
 
-  description: seoPages.home.description,
+  description: seoPages.home.metaDescription,
   keywords: [
-    seoPages.home.keyword,
     "Elevro",
     "AI-powered quality engineering",
     "product enablement services",
@@ -52,8 +51,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "Elevro",
-    title: seoPages.home.title,
-    description: seoPages.home.description,
+    title: seoPages.home.metaTitle,
+    description: seoPages.home.metaDescription,
     images: [
       {
         url: "/og-image.png",
@@ -65,8 +64,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: seoPages.home.title,
-    description: seoPages.home.description,
+    title: seoPages.home.metaTitle,
+    description: seoPages.home.metaDescription,
     images: ["/og-image.png"],
   },
   robots: {
