@@ -1,13 +1,9 @@
 // app/services/[slug]/page.tsx
 import { notFound } from "next/navigation";
-import {
-  PageCTA,
-  PageHero,
-  SectionTitle,
-} from "@/components/PageBlocks";
+import { PageCTA, PageHero, SectionTitle } from "@/components/PageBlocks";
 import { services } from "@/lib/elevro-data";
 import Card from "@/components/Card";
-import { seoPages, siteConfig } from "@/lib/site-config";
+import { seoPages } from "@/lib/site-config";
 export function generateStaticParams() {
   return services.map((service) => ({
     slug: service.slug,
@@ -21,60 +17,26 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
   const service = services.find((item) => item.slug === slug);
-
-  if (slug === "intelligent-quality-engineering") {
-    return {
-      title: seoPages.intelligentQualityEngineering.title,
-      description: seoPages.intelligentQualityEngineering.description,
-      keywords: [seoPages.intelligentQualityEngineering.keyword],
-      alternates: {
-        canonical: seoPages.intelligentQualityEngineering.path,
-      },
-      openGraph: {
-        title: seoPages.intelligentQualityEngineering.title,
-        description: seoPages.intelligentQualityEngineering.description,
-        url: `${siteConfig.url}${seoPages.intelligentQualityEngineering.path}`,
-        siteName: "Elevro",
-        images: ["/og-image.png"],
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: seoPages.intelligentQualityEngineering.title,
-        description: seoPages.intelligentQualityEngineering.description,
-        images: ["/og-image.png"],
-      },
-    };
-  }
-
-  if (slug === "product-enablement") {
-    return {
-      title: seoPages.productEnablement.title,
-      description: seoPages.productEnablement.description,
-      keywords: [seoPages.productEnablement.keyword],
-      alternates: {
-        canonical: seoPages.productEnablement.path,
-      },
-      openGraph: {
-        title: seoPages.productEnablement.title,
-        description: seoPages.productEnablement.description,
-        url: `${siteConfig.url}${seoPages.productEnablement.path}`,
-        siteName: "Elevro",
-        images: ["/og-image.png"],
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: seoPages.productEnablement.title,
-        description: seoPages.productEnablement.description,
-        images: ["/og-image.png"],
-      },
-    };
-  }
+  const seo = seoPages.services[slug as keyof typeof seoPages.services];
 
   return {
-    title: service ? `${service.title} | Elevro` : "Service | Elevro",
-    description: service?.short,
+    title: seo?.metaTitle ?? `${service?.title ?? "Service"} | Elevro`,
+    description: seo?.metaDescription ?? service?.short,
     alternates: {
-      canonical: service ? `/services/${service.slug}` : "/services",
+      canonical: `/services/${slug}`,
+    },
+    openGraph: {
+      title: seo?.metaTitle ?? `${service?.title ?? "Service"} | Elevro`,
+      description: seo?.metaDescription ?? service?.short,
+      url: `https://www.elevro.com/services/${slug}`,
+      siteName: "Elevro",
+      images: ["/og-image.png"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seo?.metaTitle ?? `${service?.title ?? "Service"} | Elevro`,
+      description: seo?.metaDescription ?? service?.short,
+      images: ["/og-image.png"],
     },
   };
 }
@@ -89,10 +51,14 @@ export default async function ServiceDetailPage({
   if (!service) notFound();
 
   const Icon = service.icon;
-
+  const seo = seoPages.services[slug as keyof typeof seoPages.services];
   return (
     <main>
-      <PageHero eyebrow="Service" title={service.title} text={service.hero} />
+      <PageHero
+        eyebrow="Service"
+        title={seo.h1 ?? service.title}
+        text={service.hero}
+      />
 
       <section className="px-4 py-14 md:px-8">
         <div className="mx-auto max-w-7xl">
