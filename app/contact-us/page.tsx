@@ -12,6 +12,27 @@ export const metadata: Metadata = {
   title: "Contact Us | Elevro",
   description:
     "Contact Elevro to discuss AI, product enablement, quality engineering, CloudOps, DevOps, IoT automation, and digital engineering requirements.",
+
+  alternates: {
+    canonical: "/contact-us",
+  },
+
+  openGraph: {
+    title: "Contact Us | Elevro",
+    description:
+      "Contact Elevro to discuss AI, product enablement, quality engineering, CloudOps, DevOps, IoT automation, and digital engineering requirements.",
+    url: "https://www.elevro.com/contact-us",
+    siteName: "Elevro",
+    images: ["/og-image.png"],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Us | Elevro",
+    description:
+      "Contact Elevro to discuss AI, product enablement, quality engineering, CloudOps, DevOps, IoT automation, and digital engineering requirements.",
+    images: ["/og-image.png"],
+  },
 };
 
 const locations = [
