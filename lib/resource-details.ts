@@ -4,7 +4,10 @@ export type RichTextPart = {
 };
 
 export type RichText = string | RichTextPart[];
-
+export type ResourceFaq = {
+  question: string;
+  answer: string;
+};
 export type ResourceSection =
   | {
       type: "text";
@@ -40,30 +43,30 @@ export type ResourceSection =
       alt: string;
       caption?: string;
     };
-    export type ResourceDetail = {
-        type: "blogs" | "whitepapers" | "case-studies";
-        slug: string;
-      
-        category: string;
-        title: string;
-        excerpt: string;
-      
-        metaTitle: string;
-        metaDescription: string;
-      
-        publishedAt: string;
-        readTime: string;
-      
-        heroImage?: string;
-      
-        sections: ResourceSection[];
-      };
+export type ResourceDetail = {
+  type: "blogs" | "whitepapers" | "case-studies";
+  slug: string;
+
+  category: string;
+  title: string;
+  excerpt: string;
+
+  metaTitle: string;
+  metaDescription: string;
+
+  publishedAt: string;
+  readTime: string;
+
+  heroImage?: string;
+  faqs?: ResourceFaq[];
+  sections: ResourceSection[];
+};
 export const resourceDetails: ResourceDetail[] = [
   {
     type: "blogs",
 
     slug: "building-cicd-quality-gates-for-embedded-sdks",
-    heroImage: "/resources/blogs/embedded-sdk-quality-gates/hero.webp",
+    heroImage: "/resources/blogs/embedded-sdk-quality-gates/hero.png",
     category: "Connected Device Quality Engineering",
 
     title: "Building CI/CD Quality Gates for Embedded SDKs",
@@ -79,7 +82,48 @@ export const resourceDetails: ResourceDetail[] = [
     publishedAt: "September 2026",
 
     readTime: "8 min read",
-
+    faqs: [
+      {
+        question: "Why are embedded SDK releases difficult to trust?",
+        answer:
+          "An SDK may build correctly for one board while failing for another. A code change may not break the main example, yet it can introduce a hidden reliability issue, violate an agreed coding rule or change behavior expected by existing customers. Manual release checks also vary by person and are difficult to repeat. A pipeline solves this by applying the same evidence-based checks to every important change.",
+      },
+      {
+        question: "What is a CI/CD quality gate?",
+        answer:
+          "A CI/CD quality gate evaluates required evidence against an agreed policy. A Pass means the required evidence meets the policy. Review means a known exception or new risk needs an owner. Stop means a critical build, code-quality or regression condition has failed.",
+      },
+      {
+        question: "What should daily builds prove?",
+        answer:
+          "Daily builds should build supported configurations and important examples, confirm required files, libraries and documentation are packaged, run fast smoke tests on simulators or representative hardware, record source version, toolchain, dependencies and results, and publish a traceable artifact so failures can be reproduced.",
+      },
+      {
+        question: "How do modern code-health checks reduce risk?",
+        answer:
+          "Modern code-health checks reduce risk through shared formatting and linting, coding-rule and compliance checks, static security analysis, secret and dependency vulnerability scanning, code coverage monitoring, binary and memory budgets, and runtime memory measurements such as peak heap, fragmentation, leaks and stack high-water marks.",
+      },
+      {
+        question: "What should automated regression cover?",
+        answer:
+          "Automated regression should prove that the SDK still supports the product journeys customers depend on. It should cover public APIs, drivers, sample applications, connectivity, configuration, error handling, supported hardware and backward compatibility. Fast tests can run on every change, while broader hardware, compatibility, recovery and long-duration scenarios can run daily, weekly or before release.",
+      },
+      {
+        question: "What does a practical quality-gate flow look like?",
+        answer:
+          "A practical quality-gate flow starts by identifying the change and affected builds and tests. Teams then create repeatable builds, check code health, validate behavior and budgets, collect evidence such as logs, findings, test results, sizes and versions, and finally decide whether to release, request review or stop based on the agreed policy.",
+      },
+      {
+        question: "How should a team implement the gates?",
+        answer:
+          "Teams should define supported variants, critical customer journeys and unacceptable failure types, stabilize automated builds and make artifacts traceable, baseline compliance, vulnerability, coverage and memory results, automate fast tests before adding representative hardware and runtime memory measurements, and review trends and escaped defects so gate policies improve over time.",
+      },
+      {
+        question: "What business value do quality gates create?",
+        answer:
+          "Quality gates reduce late surprises, repeated manual effort and unclear release discussions. Developers receive faster feedback, reviewers can focus on meaningful risk, and leaders receive consistent engineering evidence instead of relying on confidence by opinion.",
+      },
+    ],
     sections: [
       {
         type: "text",
@@ -91,7 +135,7 @@ export const resourceDetails: ResourceDetail[] = [
       },
       {
         type: "image",
-        src: "/resources/blogs/embedded-sdk-quality-gates/release-guardrails.webp",
+        src: "/resources/blogs/embedded-sdk-quality-gates/four.jpeg",
         alt: "Four guardrails for an embedded SDK release",
         caption:
           "Figure 1. Release confidence comes from four complementary guardrails.",
@@ -173,7 +217,7 @@ export const resourceDetails: ResourceDetail[] = [
       },
       {
         type: "image",
-        src: "/resources/blogs/embedded-sdk-quality-gates/quality-gate-flow.webp",
+        src: "/resources/blogs/embedded-sdk-quality-gates/quality.jpeg",
         alt: "Embedded SDK CI/CD quality gate workflow",
         caption:
           "Figure 2. Each quality gate answers a different release-risk question.",

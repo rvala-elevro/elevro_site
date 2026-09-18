@@ -93,7 +93,73 @@ export async function generateMetadata({
     },
   };
 }
+function ResourceStructuredData({
+  resource,
+}: {
+  resource: {
+    title: string;
+    excerpt: string;
+    slug: string;
+    type: string;
+    publishedAt: string;
+    faqs?: {
+      question: string;
+      answer: string;
+    }[];
+  };
+}) {
+  const articleUrl = `https://www.elevro.com/resources/${resource.type}/${resource.slug}`;
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: resource.title,
+    description: resource.excerpt,
+    url: articleUrl,
+    mainEntityOfPage: articleUrl,
+    publisher: {
+      "@type": "Organization",
+      name: "Elevro",
+      url: "https://www.elevro.com",
+    },
+  };
+
+  const faqSchema =
+    resource.faqs?.length
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: resource.faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.answer,
+            },
+          })),
+        }
+      : null;
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
+          }}
+        />
+      )}
+    </>
+  );
+}
 /* -------------------------------------------------------------------------- */
 /* PAGE                                                                       */
 /* -------------------------------------------------------------------------- */
@@ -133,6 +199,7 @@ export default async function ResourceDetailPage({ params }: PageProps) {
 
   return (
     <main className="overflow-hidden">
+      <ResourceStructuredData resource={resource} />
       <article>
         <ResourceHero resource={resource} />
 
@@ -330,7 +397,6 @@ function RenderSection({
                 src={section.src}
                 alt={section.alt}
                 fill
-                className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 850px"
               />
             </div>
