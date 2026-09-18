@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { PageHero, SectionTitle } from "@/components/PageBlocks";
 import { resourceGroups } from "@/lib/elevro-data";
 import Card from "@/components/Card";
 import Link from "next/link";
@@ -92,76 +91,63 @@ export default async function ResourceTypePage({
   if (!items) notFound();
 
   return (
-    <main>
-      <PageHero
-        eyebrow="Resources"
-        title={labels[type as ResourceType]}
-        text="Explore Elevro’s thinking and delivery experience across AI, quality engineering, CloudOps, DevOps, connected products, IoT, protocols and automation."
-      />
+    <main className="soft-section min-h-screen px-4 pb-24 pt-32 md:px-8 md:pb-28 md:pt-40">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {items.map((item, index) => {
+            const Icon = item.icon;
 
-      <section className="px-4 pb-24 md:px-8">
-        <div className="mx-auto max-w-7xl">
-          <SectionTitle
-            eyebrow={labels[type as ResourceType]}
-            title="Curated technical resources."
-          />
+            const detail = resourceDetails.find(
+              (resource) =>
+                resource.type === type && resource.title === item.title,
+            );
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {items.map((item, index) => {
-              const Icon = item.icon;
+            const content = (
+              <article className="flex h-full flex-col">
+                <span className="grid h-16 w-16 place-items-center rounded-3xl bg-secondary/30">
+                  <Icon className="h-7 w-7" />
+                </span>
 
-              const detail = resourceDetails.find(
-                (resource) =>
-                  resource.type === type && resource.title === item.title,
-              );
+                <h2 className="mt-8 text-2xl font-medium leading-tight text-white/90">
+                  {item.title}
+                </h2>
 
-              const content = (
-                <article className="flex h-full flex-col">
-                  <span className="grid h-16 w-16 place-items-center rounded-3xl bg-secondary/30">
-                    <Icon className="h-7 w-7" />
-                  </span>
+                <p className="mt-4 leading-7 text-cream/65">{item.summary}</p>
 
-                  <h2 className="mt-8 text-2xl font-medium leading-tight text-white/90">
-                    {item.title}
-                  </h2>
+                {detail && (
+                  <div className="mt-auto pt-8">
+                    <span className="inline-flex items-center gap-2 text-sm font-medium text-[#d79088] transition group-hover:text-white">
+                      {type === "blogs"
+                        ? "Read Insight"
+                        : type === "whitepapers"
+                          ? "View Whitepaper"
+                          : "View Case Study"}
 
-                  <p className="mt-4 leading-7 text-cream/65">{item.summary}</p>
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                )}
+              </article>
+            );
 
-                  {detail && (
-                    <div className="mt-auto pt-8">
-                      <span className="inline-flex items-center gap-2 text-sm font-medium text-[#d79088] transition group-hover:text-white">
-                        {type === "blogs"
-                          ? "Read Insight"
-                          : type === "whitepapers"
-                            ? "View Whitepaper"
-                            : "View Case Study"}
-
-                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                      </span>
-                    </div>
-                  )}
-                </article>
-              );
-
-              return (
-                <Card index={index} key={`${item.title}-${index}`}>
-                  {detail ? (
-                    <Link
-                      href={`/resources/${type}/${detail.slug}`}
-                      className="group block h-full"
-                      aria-label={`Read ${item.title}`}
-                    >
-                      {content}
-                    </Link>
-                  ) : (
-                    content
-                  )}
-                </Card>
-              );
-            })}
-          </div>
+            return (
+              <Card index={index} key={`${item.title}-${index}`}>
+                {detail ? (
+                  <Link
+                    href={`/resources/${type}/${detail.slug}`}
+                    className="group block h-full"
+                    aria-label={`Read ${item.title}`}
+                  >
+                    {content}
+                  </Link>
+                ) : (
+                  content
+                )}
+              </Card>
+            );
+          })}
         </div>
-      </section>
+      </div>
     </main>
   );
 }
