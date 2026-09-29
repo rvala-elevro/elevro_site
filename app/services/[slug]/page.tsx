@@ -4,6 +4,7 @@ import { PageCTA, PageHero, SectionTitle } from "@/components/PageBlocks";
 import { services } from "@/lib/elevro-data";
 import Card from "@/components/Card";
 import { seoPages } from "@/lib/site-config";
+import Link from "next/link";
 export function generateStaticParams() {
   return services.map((service) => ({
     slug: service.slug,
@@ -39,6 +40,43 @@ export async function generateMetadata({
       images: ["/og-image.png"],
     },
   };
+}
+function CapabilityText({
+  text,
+}: {
+  text: string | { text: string; href?: string }[];
+}) {
+  if (typeof text === "string") {
+    return <>{text}</>;
+  }
+
+  return (
+    <>
+      {text.map((part, index) =>
+        part.href ? (
+          <Link
+            key={`${part.text}-${index}`}
+            href={part.href}
+            className="
+              font-medium
+              text-[#d79088]
+              underline
+              decoration-[#d79088]/35
+              underline-offset-4
+              transition
+              duration-200
+              hover:text-white
+              hover:decoration-white/50
+            "
+          >
+            {part.text}
+          </Link>
+        ) : (
+          <span key={`${part.text}-${index}`}>{part.text}</span>
+        ),
+      )}
+    </>
+  );
 }
 export default async function ServiceDetailPage({
   params,
@@ -98,7 +136,9 @@ export default async function ServiceDetailPage({
 
                   <h3 className="mt-10 text-2xl font-medium">{item.title}</h3>
 
-                  <p className="mt-5 leading-8 text-cream/65">{item.text}</p>
+                  <p className="mt-5 leading-8 text-cream/65">
+                    <CapabilityText text={item.text} />
+                  </p>
                 </Card>
               ))}
             </div>

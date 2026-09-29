@@ -80,9 +80,14 @@ export const navItems = [
   { label: "Contact Us", href: "/contact-us" },
 ];
 
+export type CardTextPart = {
+  text: string;
+  href?: string;
+};
+
 export type CardItem = {
   title: string;
-  text: string;
+  text: string | CardTextPart[];
 };
 
 export type ServiceItem = {
@@ -110,39 +115,102 @@ export const services: ServiceItem[] = [
     capabilities: [
       {
         title: "AI Enabled Automation Solutions",
-        text: "AI-assisted automation solutions that improve test design, execution, reporting, and quality insights.",
+        text: [
+          {
+            text: "AI-assisted automation solutions that improve test design, execution, reporting, and quality insights through our ",
+          },
+          {
+            text: "AI-powered solutions",
+            href: "/services/artificial-intelligence",
+          },
+          {
+            text: ".",
+          },
+        ],
       },
+
       {
         title: "Enterprise Web & Cloud",
-        text: "Quality engineering for enterprise web platforms, cloud applications, APIs, and scalable digital systems.",
+        text: [
+          {
+            text: "Quality engineering for enterprise web platforms, ",
+          },
+          {
+            text: "cloud applications",
+            href: "/services/cloud-engineering",
+          },
+          {
+            text: ", APIs, and scalable digital systems.",
+          },
+        ],
       },
+
       {
         title: "Mobile Applications",
         text: "End-to-end validation for iOS, Android, connected mobile apps, and cross-platform mobile experiences.",
       },
+
       {
         title: "IoT & Embedded Firmware",
-        text: "Testing and validation for IoT devices, embedded firmware, hardware workflows, and connected products.",
+        text: [
+          {
+            text: "Testing and validation for ",
+          },
+          {
+            text: "IoT and connected products",
+            href: "/industries/smart-home-iot-matter",
+          },
+          {
+            text: ", embedded firmware, hardware workflows, and connected ecosystems.",
+          },
+        ],
       },
+
       {
         title: "Matter Enabled End-to-End Testing",
         text: "End-to-end testing for Matter-enabled devices, smart home ecosystems, and interoperability workflows.",
       },
+
       {
         title: "Communication Protocols Validation",
         text: "Validation of communication protocols including BLE, Wi-Fi, MQTT, Zigbee, LoRaWAN, and device connectivity flows.",
       },
+
       {
         title: "Audio Devices & Systems",
-        text: "Quality engineering for smart audio devices, wireless audio modules, and connected audio systems.",
+        text: [
+          {
+            text: "Quality engineering for ",
+          },
+          {
+            text: "consumer electronics",
+            href: "/industries/consumer-electronics",
+          },
+          {
+            text: ", smart audio devices, wireless audio modules, and connected audio systems.",
+          },
+        ],
       },
+
       {
         title: "Industrial IoT",
         text: "Validation of industrial IoT platforms, devices, telemetry, connectivity, and operational workflows.",
       },
+
       {
         title: "End-to-End Solutions",
-        text: "Complete quality engineering coverage from device, firmware, mobile app, API, cloud, and production workflows.",
+        text: [
+          {
+            text: "Complete quality engineering and ",
+          },
+          {
+            text: "product enablement",
+            href: "/services/product-enablement",
+          },
+          {
+            text: " coverage across devices, firmware, mobile apps, APIs, cloud, and production workflows.",
+          },
+        ],
       },
     ],
     stack: [
