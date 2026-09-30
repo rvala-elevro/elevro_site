@@ -563,9 +563,9 @@ export const resourcePreview = [
 export const resourceGroups = {
   blogs: [
     {
-      title: "AI-Based Testing for Modern Product Teams",
+      title: "AI Based Testing for Modern Product Teams",
       summary:
-        "How AI-powered QA, automation frameworks, and quality dashboards help teams reduce manual effort.",
+        "How to connect change impact, cross-product validation and release evidence.",
       icon: BrainCircuit,
     },
     {
