@@ -96,7 +96,7 @@ export default async function ResourceTypePage({
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {items.map((item, index) => {
             const Icon = item.icon;
-
+            
             const detail = resourceDetails.find(
               (resource) =>
                 resource.type === type && resource.title === item.title,

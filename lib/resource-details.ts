@@ -42,6 +42,11 @@ export type ResourceSection =
       src: string;
       alt: string;
       caption?: string;
+    }
+  | {
+      type: "faq";
+      title?: string;
+      items: ResourceFaq[];
     };
 export type ResourceDetail = {
   type: "blogs" | "whitepapers" | "case-studies";
@@ -53,6 +58,7 @@ export type ResourceDetail = {
 
   metaTitle: string;
   metaDescription: string;
+  keywords?: string[];
 
   publishedAt: string;
   readTime: string;
@@ -302,6 +308,392 @@ export const resourceDetails: ResourceDetail[] = [
         type: "callout",
         label: "Closing perspective",
         text: "The objective is not to create more pipeline steps. It is to make every embedded SDK release more repeatable, explainable and safe.",
+      },
+    ],
+  },
+  {
+    type: "blogs",
+
+    slug: "ai-based-testing-for-modern-product-teams",
+
+    category: "AI & Quality Engineering",
+
+    title: "AI Based Testing for Modern Product Teams",
+
+    excerpt:
+      "How to connect change impact, cross-product validation and release evidence.",
+
+    metaTitle: "AI Based Testing for Modern Product Teams | Elevro",
+
+    metaDescription:
+      "How AI based testing connects change impact analysis, cross-product validation and release evidence for embedded, IoT and connected product teams.",
+
+    keywords: [
+      "AI based testing",
+      "AI testing for embedded systems",
+      "change impact analysis testing",
+      "IoT test automation with AI",
+      "release evidence model",
+      "hardware-in-the-loop testing AI",
+    ],
+
+    publishedAt: "October 2026",
+
+    readTime: "12 min read",
+
+    faqs: [
+      {
+        question: "Is AI based testing a replacement for test automation?",
+        answer:
+          "No. Automation executes repeatable checks and captures evidence. AI helps plan, prioritize, maintain and interpret that work; it depends on reliable tests and environments.",
+      },
+      {
+        question: "Can AI predict which changes will cause defects?",
+        answer:
+          "A model can estimate elevated risk from change history, complexity, ownership and prior failures. It cannot guarantee a defect or prove a change is safe. Treat the score as a review and test prioritization signal.",
+      },
+      {
+        question:
+          "Will risk based selection remove the need for full regression?",
+        answer:
+          "No. Teams still need broader regression at planned intervals and for critical releases, unfamiliar changes or low model confidence.",
+      },
+      {
+        question: "How can we trust AI generated test cases?",
+        answer:
+          "Tie each candidate to a requirement or risk, review its assertion and data, run it in a stable environment and examine false positives. Generated text alone is not validated coverage.",
+      },
+      {
+        question: "What data is needed to start?",
+        answer:
+          "Begin with build and commit IDs, component ownership, test tags and results, defects, environment details and a small set of critical journeys. Consistent links matter more than volume.",
+      },
+      {
+        question: "Does this approach apply to hardware and IoT products?",
+        answer:
+          "Yes. It can connect device lab runs, firmware builds, wireless or serial protocols, applications, APIs and cloud results. Hardware state and configuration must be recorded with each result.",
+      },
+      {
+        question: "Who makes the final release decision?",
+        answer:
+          "Accountable people do. AI can summarize evidence and recommend attention, while release policy, exceptions and residual risk acceptance remain visible and governed.",
+      },
+      {
+        question:
+          "How is AI based testing different from AI testing tools like Mabl or Testsigma?",
+        answer:
+          "Tools like Mabl and Testsigma primarily use AI to generate and self-heal individual test scripts for web, mobile and API applications. AI based testing is the broader operating model that connects a code change to risk, coordinates validation across device, firmware, app and cloud layers, and produces auditable release evidence.",
+      },
+      {
+        question:
+          "Does AI based testing help with compliance and certification?",
+        answer:
+          "Indirectly but significantly. A structured evidence model linking requirements, builds, test executions and gate decisions produces the traceable record that standards such as IEC 62304, ISO 26262 and IEC 62443 typically require during an audit. AI does not certify a product; the evidence model underneath it is what makes audits faster to prepare for.",
+      },
+    ],
+
+    sections: [
+      {
+        type: "text",
+        title: "The quality problem is bigger than test execution",
+        paragraphs: [
+          "A product change rarely stays inside one component. A firmware update can alter connectivity behaviour, a mobile pairing flow, an API payload and the cloud state seen by a customer. Yet each team may test its own layer, store results in a different tool and report a green status.",
+          [
+            {
+              text: "That reconstruction is costly. Engineers repeatedly interpret requirements, map code changes to tests, reserve lab hardware, classify failures and assemble release evidence. ",
+            },
+            {
+              text: "AI based testing",
+              href: "/services/intelligent-quality-engineering",
+            },
+            {
+              text: " becomes useful when it helps the team connect the change to the relevant risks, run dependable checks and explain what the resulting evidence means.",
+            },
+          ],
+        ],
+      },
+
+      {
+        type: "bullets",
+        title:
+          "AI Based Testing vs. AI Testing Tools vs. Traditional Automation",
+        items: [
+          "Traditional test automation executes a fixed, human-written suite reliably and quickly. It does not decide what to test or why.",
+          "AI testing tools mainly use AI to generate, maintain and self-heal individual UI or API test scripts, largely for web and mobile applications.",
+          "AI based testing is broader: it connects a code change to relevant risk, selects and runs validation across device, connectivity, app, API and cloud layers, and produces defensible release evidence.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "From a code change to a defensible validation plan",
+        paragraphs: [
+          "Consider a change to Wi-Fi reconnection logic in a connected device. The change may affect a driver, retry timing, mobile status updates and cloud synchronization.",
+          "A practical workflow starts by identifying affected components and requirements from the diff, dependency map and prior incidents. It then proposes tests for reconnect after network loss, stale app state, duplicate events, recovery across device variants and cloud consistency.",
+          "A change impact service can rank tests by relevance, criticality, historical failures, execution cost and evidence freshness. The recommendation must remain explainable.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "A closer look at change impact and regression selection",
+        paragraphs: [
+          "Change impact cannot rely on filenames alone. A driver change may affect a shared connectivity service, an app retry sequence and a cloud event contract even if none of those repositories changed.",
+          "Test selection should include known failure modes and areas whose coverage is stale, even when the code diff looks small.",
+          "If the dependency map is incomplete or the lab lacks a required device, the workflow should flag missing evidence instead of presenting a confident green result.",
+        ],
+      },
+
+      {
+        type: "callout",
+        label: "Realistic illustration",
+        text: "A fragmented validation process can allow firmware, mobile and cloud teams to each report green while an interaction between those layers still fails in production. Cross-layer, evidence-linked validation is designed to catch these gaps before release.",
+      },
+
+      {
+        type: "text",
+        title: "The foundation is repeatable automation and shared evidence",
+        paragraphs: [
+          "The test framework must handle device control, flashing, protocol traffic, mobile and web interactions, APIs, cloud checks, test data, recovery and logs as reusable components.",
+          "Tests need deterministic setup and assertions. A retry should preserve the first failure, not turn an intermittent defect into an unexplained pass. Device availability, firmware version, environment health and build identity should travel with every result.",
+        ],
+      },
+
+      {
+        type: "image",
+        src: "/resources/blogs/ai-based-testing-modern-product-teams/reusable-test-framework.png",
+        alt: "Reusable test framework for AI based product testing",
+        caption:
+          "A reusable framework connects device control, flashing, protocol traffic, applications, APIs, cloud checks, recovery and evidence.",
+      },
+
+      {
+        type: "text",
+        title: "Where This Fits in the Embedded Testing Pyramid",
+        paragraphs: [
+          [
+            {
+              text: "Embedded teams commonly structure validation as a pyramid: static analysis and unit tests at the base, integration tests in the middle, and full system tests, including ",
+            },
+            {
+              text: "Hardware-in-the-Loop (HIL) testing",
+              href: "/industries/consumer-electronics",
+            },
+            {
+              text: ", at the top.",
+            },
+          ],
+          [
+            {
+              text: "AI based testing does not replace this pyramid. It decides, for a given change, how much of each layer needs to run, and it is at the system and HIL layer that cross-product, ",
+            },
+            {
+              text: "device-to-cloud validation",
+              href: "/industries/smart-home-iot-matter",
+            },
+            {
+              text: " most often exposes failures unit tests cannot see.",
+            },
+          ],
+          "Protocol coverage can include Bluetooth Classic and BLE, Wi-Fi, Zigbee, Z-Wave, Matter, LTE-M, NB-IoT, MQTT and CoAP.",
+        ],
+      },
+
+      {
+        type: "callout",
+        label: "Evidence model",
+        text: "Requirement or risk → component and commit → build and configuration → test execution → log or trace → defect → gate decision.",
+      },
+
+      {
+        type: "text",
+        title: "Design the evidence model before asking AI to reason over it",
+        paragraphs: [
+          "A test result is more useful when it is a structured record than when it is only a pass or fail line.",
+          "Capture the commit and build artifact, component and feature tags, requirement or risk reference, test version, hardware revision, firmware and application versions, environment, configuration, timestamps, assertion outcome, failure category, raw artifacts and rerun history.",
+          "Keep raw evidence immutable or versioned and normalize a small vocabulary for components, test types, environments and failure classes.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "AI agents can coordinate work with defined boundaries",
+        paragraphs: [
+          "Focused agents can assist at different points in the workflow. A requirement agent can flag ambiguity, an impact agent can map changed code to product areas, an orchestration agent can run approved suites, a failure agent can group related errors, and a reporting agent can produce audience-specific summaries.",
+          "Each action needs constrained tool scope, recorded inputs, visible rationale and a human review path. Generated scripts should be reviewed before they become trusted assertions.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "Orchestrate execution without losing control",
+        paragraphs: [
+          "An agent workflow can turn an approved validation plan into executable steps, but each step needs a contract.",
+          "Timeouts, missing hardware and partial runs should be explicit states rather than generic failures. Destructive actions and configuration changes should be scoped by environment.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "Validate the product journey across layers",
+        paragraphs: [
+          "For a connected product, an end-to-end check might flash an approved firmware build, establish BLE or Wi-Fi, perform pairing in a mobile app, issue a device command, confirm API and cloud state, and correlate identifiers across device and service logs.",
+          "Individual component checks provide fast feedback and localize defects; the journey check shows whether the integrated behaviour reaches the user.",
+        ],
+      },
+
+      {
+        type: "image",
+        src: "/resources/blogs/ai-based-testing-modern-product-teams/connected-product-validation.png",
+        alt: "Connected product validation across device, connectivity, mobile, API and cloud layers",
+        caption:
+          "Connected-product validation combines evidence across the complete product journey.",
+      },
+
+      {
+        type: "text",
+        title: "Investigate failures with correlated signals",
+        paragraphs: [
+          "One failed end-to-end scenario can produce many symptoms across devices, applications, APIs and cloud services.",
+          "A useful triage service groups events by build, configuration and correlation ID, compares the first meaningful error with healthy runs and proposes a likely fault boundary.",
+          "Engineers should verify the hypothesis before a defect is assigned or a rerun is accepted, while preserving the first-failure artifacts.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "Turn quality data into release decisions",
+        paragraphs: [
+          "A useful dashboard answers five questions: What changed? What was validated? What failed? What risk remains? Who owns the next action?",
+          "AI can group failures and summarize changes, but the underlying result and gate rule must remain accessible.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "Make the dashboard actionable at each gate",
+        paragraphs: [
+          "A release view should show critical journeys by build and configuration, their latest reliable result, outstanding defects, gate exceptions and evidence age.",
+          "Different views can serve engineers, QA leads, release leads and executives, but they should always use the same underlying facts.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "Compliance, Certification and Safety Standards",
+        paragraphs: [
+          "For embedded, medical, automotive and industrial products, validation evidence can also support audit and compliance workflows.",
+          "A structured evidence model linking requirements, builds, test execution and gate decisions creates a traceable record that can make compliance reviews easier to prepare for.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "A phased route from pilot to production",
+        paragraphs: [
+          "A small pilot can start with one product journey and one recurring pain point. First baseline the manual steps and create a traceable inventory of components, tests, environments and defects.",
+          "Then stabilize execution, connect results to a shared evidence model and dashboard, and only after that trial AI-assisted impact analysis or triage alongside the existing workflow.",
+        ],
+      },
+
+      {
+        type: "bullets",
+        title: "Who This Is For",
+        items: [
+          "VPs of Engineering and Heads of Quality accountable for release confidence.",
+          "IoT and embedded Product Managers coordinating firmware, mobile and cloud teams.",
+          "QA and Test Engineering leads managing device labs, flaky tests and growing regression suites.",
+          "Release and DevOps leads responsible for gate decisions, audit evidence and rollback readiness.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "Where Elevro fits",
+        paragraphs: [
+          [
+            {
+              text: "Elevro helps product teams build the enablement system around validation: reusable automation frameworks, device and protocol test integration, ",
+            },
+            {
+              text: "CI/CD and quality gates",
+              href: "/resources/blogs/building-cicd-quality-gates-for-embedded-sdks",
+            },
+            {
+              text: ", lab orchestration, dashboards, release evidence and bounded AI workflows.",
+            },
+          ],
+          "The outcome is straightforward: every significant product change should lead to a reasoned validation plan, trustworthy execution and a release decision that the team can explain.",
+        ],
+      },
+
+      {
+        type: "bullets",
+        title: "Glossary",
+        items: [
+          "Change Impact Analysis — mapping a code or configuration change to the product areas, requirements and tests it could affect.",
+          "Evidence Model — a structured record linking a requirement or risk to the commit, build, test execution, logs, defects and final gate decision.",
+          "Hardware-in-the-Loop Testing — running firmware on real or emulated hardware against simulated real-world inputs.",
+          "Testing Pyramid — static analysis and unit tests at the base, integration tests in the middle, and system or HIL tests at the top.",
+          "Correlation ID — an identifier connecting device, app and cloud logs generated by one scenario.",
+          "Flaky Test — a test whose result changes between runs without a code change.",
+          "Progressive Gates — staged quality checks that become broader as a build moves toward production.",
+        ],
+      },
+
+      {
+        type: "faq",
+        title: "Frequently Asked Questions",
+        items: [
+          {
+            question: "Is AI based testing a replacement for test automation?",
+            answer:
+              "No. Automation executes repeatable checks and captures evidence. AI helps plan, prioritize, maintain and interpret that work; it depends on reliable tests and environments.",
+          },
+          {
+            question: "Can AI predict which changes will cause defects?",
+            answer:
+              "A model can estimate elevated risk from change history, complexity, ownership and prior failures. It cannot guarantee a defect or prove a change is safe.",
+          },
+          {
+            question:
+              "Will risk based selection remove the need for full regression?",
+            answer:
+              "No. Teams still need broader regression at planned intervals and for critical releases, unfamiliar changes or low model confidence.",
+          },
+          {
+            question: "How can we trust AI generated test cases?",
+            answer:
+              "Tie each candidate to a requirement or risk, review its assertion and data, run it in a stable environment and examine false positives.",
+          },
+          {
+            question: "What data is needed to start?",
+            answer:
+              "Begin with build and commit IDs, component ownership, test tags and results, defects, environment details and a small set of critical journeys.",
+          },
+          {
+            question: "Does this approach apply to hardware and IoT products?",
+            answer:
+              "Yes. It can connect device lab runs, firmware builds, wireless or serial protocols, applications, APIs and cloud results.",
+          },
+          {
+            question: "Who makes the final release decision?",
+            answer:
+              "Accountable people do. AI can summarize evidence and recommend attention, while release policy, exceptions and residual risk acceptance remain governed.",
+          },
+          {
+            question:
+              "How is AI based testing different from AI testing tools like Mabl or Testsigma?",
+            answer:
+              "AI testing tools primarily automate individual test scripts. AI based testing is the broader operating model connecting changes to risk, validation and auditable release evidence.",
+          },
+          {
+            question:
+              "Does AI based testing help with compliance and certification?",
+            answer:
+              "Indirectly but significantly. The structured evidence model beneath the AI creates the traceable records needed to support audit preparation.",
+          },
+        ],
       },
     ],
   },

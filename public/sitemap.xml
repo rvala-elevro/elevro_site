@@ -108,4 +108,14 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://www.elevro.com/resources/blogs/ai-based-testing-for-modern-product-teams</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.elevro.com/resources/blogs/building-cicd-quality-gates-for-embedded-sdks</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

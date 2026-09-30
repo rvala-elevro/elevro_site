@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import {
   ArrowLeft,
+  ArrowRight,
   CheckCircle2,
   CircleAlert,
   ShieldCheck,
@@ -64,7 +65,7 @@ export async function generateMetadata({
   return {
     title: resource.metaTitle,
     description: resource.metaDescription,
-
+    keywords: resource.keywords,
     alternates: {
       canonical: canonicalPath,
     },
@@ -124,21 +125,20 @@ function ResourceStructuredData({
     },
   };
 
-  const faqSchema =
-    resource.faqs?.length
-      ? {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: resource.faqs.map((faq) => ({
-            "@type": "Question",
-            name: faq.question,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: faq.answer,
-            },
-          })),
-        }
-      : null;
+  const faqSchema = resource.faqs?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: resource.faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer,
+          },
+        })),
+      }
+    : null;
 
   return (
     <>
@@ -158,6 +158,36 @@ function ResourceStructuredData({
         />
       )}
     </>
+  );
+}
+function TalkToElevro() {
+  return (
+    <section className="relative mt-14 overflow-hidden rounded-[2rem] border border-white/10 bg-[#8b332c]/20 p-7 shadow-soft md:p-10">
+      <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-secondary/20 blur-[90px]" />
+
+      <div className="relative z-10">
+        <p className="text-xs font-medium uppercase tracking-[0.18em] text-[#d79088]">
+          Talk to Elevro
+        </p>
+
+        <h2 className="mt-4 max-w-2xl text-2xl font-medium tracking-[-0.035em] text-white md:text-3xl">
+          Turn engineering complexity into a clearer path to release.
+        </h2>
+
+        <p className="mt-4 max-w-2xl leading-8 text-cream/65">
+          Have a product quality, automation, AI, embedded, cloud or release
+          engineering challenge? Talk to Elevro about how we can help.
+        </p>
+
+        <Link
+          href="/contact-us"
+          className="mt-7 inline-flex items-center gap-2 rounded-full bg-secondary px-6 py-3.5 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-[#9d4038]"
+        >
+          Talk to Elevro
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
+    </section>
   );
 }
 /* -------------------------------------------------------------------------- */
@@ -214,6 +244,8 @@ export default async function ResourceDetailPage({ params }: PageProps) {
                   index={index}
                 />
               ))}
+
+              {resource.type === "blogs" && <TalkToElevro />}
             </div>
 
             {/* Sidebar */}
@@ -243,7 +275,7 @@ function ResourceHero({
     excerpt: string;
     publishedAt: string;
     readTime: string;
-    heroImage?: string
+    heroImage?: string;
   };
 }) {
   return (
@@ -408,6 +440,31 @@ function RenderSection({
             </figcaption>
           )}
         </figure>
+      );
+    case "faq":
+      return (
+        <ArticleSection number={index + 1} title={section.title}>
+          <div className="space-y-3">
+            {section.items.map((faq) => (
+              <details
+                key={faq.question}
+                className="group overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.045]"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-5 font-medium text-white/85 md:px-6">
+                  <span>{faq.question}</span>
+
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/10 text-[#d79088] transition-transform duration-200 group-open:rotate-45">
+                    +
+                  </span>
+                </summary>
+
+                <div className="border-t border-white/8 px-5 py-5 text-sm leading-7 text-cream/60 md:px-6">
+                  {faq.answer}
+                </div>
+              </details>
+            ))}
+          </div>
+        </ArticleSection>
       );
     default:
       return null;
