@@ -96,18 +96,13 @@ const industries = [
 const resources = [
   {
     type: "Blog",
-    title: "How intelligent automation improves release confidence",
-    href: "/resources/blogs/intelligent-automation-release-confidence",
+    title: "AI Based Testing for Modern Product Teams",
+    href: "/resources/blogs/ai-based-testing-for-modern-product-teams",
   },
   {
-    type: "Whitepaper",
-    title: "AI-led quality engineering maturity model",
-    href: "/resources/whitepapers/ai-quality-engineering-maturity-model",
-  },
-  {
-    type: "Case Study",
-    title: "Reducing manual regression effort with automation accelerators",
-    href: "/resources/case-studies/regression-automation-accelerator",
+    type: "Blog",
+    title: "Building CI/CD Quality Gates for Embedded SDKs",
+    href: "/resources/blogs/building-cicd-quality-gates-for-embedded-sdks",
   },
 ];
 
