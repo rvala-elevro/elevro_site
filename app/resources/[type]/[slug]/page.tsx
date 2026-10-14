@@ -10,6 +10,16 @@ import {
   CheckCircle2,
   CircleAlert,
   ShieldCheck,
+  Power,
+  Wifi,
+  Radio,
+  Cpu,
+  RotateCcw,
+  GitBranch,
+  Play,
+  Database,
+  FileCheck2,
+  Rocket,
 } from "lucide-react";
 
 import {
@@ -335,6 +345,376 @@ function ResourceHero({
   );
 }
 
+function RepeatableLabDiagram() {
+  const controls = [
+    {
+      icon: Power,
+      title: "Power + I/O",
+      text: "Cycle power, drive inputs and reset devices.",
+    },
+    {
+      icon: Wifi,
+      title: "Network Control",
+      text: "Control AP loss, signal conditions and reconnects.",
+    },
+    {
+      icon: Radio,
+      title: "Protocol Tools",
+      text: "Capture BLE, Wi-Fi, UART, CAN and bus evidence.",
+    },
+  ];
+
+  const failures = [
+    "Power cycle",
+    "Network loss",
+    "Device restart",
+    "Delayed response",
+    "Packet loss",
+    "Bus errors",
+  ];
+
+  return (
+    <figure className="my-14">
+      <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.045] p-5 shadow-soft md:p-8">
+        {/* soft Elevro glow */}
+        <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-secondary/15 blur-[100px]" />
+        <div className="pointer-events-none absolute -bottom-24 left-16 h-72 w-72 rounded-full bg-[#6f4b83]/15 blur-[100px]" />
+
+        <div className="relative z-10">
+          <div className="text-center">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-[#d79088]">
+              Controlled Validation Lab
+            </p>
+
+            <h3 className="mt-3 text-2xl font-medium tracking-[-0.035em] text-white md:text-3xl">
+              Make faults repeatable in the lab
+            </h3>
+
+            <p className="mx-auto mt-3 max-w-2xl leading-7 text-cream/55">
+              Control network, power and peripheral conditions while preserving
+              evidence from every test run.
+            </p>
+          </div>
+
+          {/* top controls */}
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {controls.map(({ icon: Icon, title, text }) => (
+              <div
+                key={title}
+                className="rounded-[1.5rem] border border-white/10 bg-[#2d1738]/65 p-5 backdrop-blur-xl"
+              >
+                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#8b332c]/25 text-[#d79088]">
+                  <Icon className="h-5 w-5" />
+                </span>
+
+                <h4 className="mt-4 font-medium text-white/90">{title}</h4>
+
+                <p className="mt-2 text-sm leading-6 text-cream/50">{text}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* DUT */}
+          <div className="relative my-8">
+            <div className="absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-linear-to-b from-[#d79088]/0 via-[#d79088]/30 to-[#d79088]/0 md:block" />
+
+            <div className="relative mx-auto max-w-md rounded-[2rem] border border-[#d79088]/25 bg-linear-to-br from-[#3d234a]/90 to-[#24122d]/90 p-7 text-center shadow-[0_20px_70px_rgba(20,8,26,0.35)]">
+              <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl border border-white/10 bg-white/5 text-[#d79088]">
+                <Cpu className="h-6 w-6" />
+              </span>
+
+              <p className="mt-5 text-xs font-medium uppercase tracking-[0.17em] text-[#d79088]">
+                Device Under Test
+              </p>
+
+              <h4 className="mt-2 text-xl font-medium text-white">
+                Connected Product
+              </h4>
+
+              <div className="mt-5 flex flex-wrap justify-center gap-2">
+                {["BLE", "Wi-Fi", "UART", "I2C", "SPI", "CAN", "Modbus"].map(
+                  (item) => (
+                    <span
+                      key={item}
+                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-cream/55"
+                    >
+                      {item}
+                    </span>
+                  ),
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* automation / evidence */}
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-5">
+              <div className="flex items-center gap-3">
+                <Play className="h-5 w-5 text-[#d79088]" />
+
+                <h4 className="font-medium text-white/90">Test Automation</h4>
+              </div>
+
+              <div className="mt-4 space-y-3 text-sm text-cream/55">
+                {[
+                  "Initialize lab devices",
+                  "Execute scenarios",
+                  "Inject controlled faults",
+                  "Capture traces and logs",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-3">
+                    <CheckCircle2 className="h-4 w-4 shrink-0 text-[#d79088]" />
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-5">
+              <div className="flex items-center gap-3">
+                <Database className="h-5 w-5 text-[#d79088]" />
+
+                <h4 className="font-medium text-white/90">Evidence</h4>
+              </div>
+
+              <div className="mt-4 space-y-3 text-sm text-cream/55">
+                {[
+                  "Protocol traces",
+                  "Device logs",
+                  "Build + configuration",
+                  "Final product state",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-3">
+                    <CheckCircle2 className="h-4 w-4 shrink-0 text-[#d79088]" />
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* fault injection */}
+          <div className="mt-6 rounded-[1.5rem] border border-white/10 bg-[#17091e]/55 p-5">
+            <div className="flex items-center gap-3">
+              <RotateCcw className="h-5 w-5 text-[#d79088]" />
+
+              <p className="text-sm font-medium text-white/85">
+                Fault Injection Scenarios
+              </p>
+            </div>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              {failures.map((failure) => (
+                <span
+                  key={failure}
+                  className="rounded-full border border-white/10 bg-white/[0.055] px-4 py-2 text-xs text-cream/55"
+                >
+                  {failure}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <figcaption className="mt-4 text-center text-sm italic leading-6 text-cream/40">
+        Figure 6. Controlled network, power and I/O conditions make failures
+        reproducible.
+      </figcaption>
+    </figure>
+  );
+}
+function ReleaseDecisionDiagram() {
+  const steps = [
+    {
+      number: "01",
+      icon: GitBranch,
+      title: "Code Change",
+      text: "Identify affected product behaviour.",
+    },
+    {
+      number: "02",
+      icon: FileCheck2,
+      title: "Select Tests",
+      text: "Choose protocol and product-level validation.",
+    },
+    {
+      number: "03",
+      icon: Play,
+      title: "Run in Lab",
+      text: "Execute on devices, simulators and controlled faults.",
+    },
+    {
+      number: "04",
+      icon: Database,
+      title: "Collect Proof",
+      text: "Preserve traces, logs, results and configuration.",
+    },
+    {
+      number: "05",
+      icon: ShieldCheck,
+      title: "Release Gate",
+      text: "Pass, review or stop based on evidence.",
+    },
+  ];
+
+  return (
+    <figure className="my-14">
+      <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.045] p-5 shadow-soft md:p-8">
+        <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-[#6f4b83]/20 blur-[100px]" />
+        <div className="pointer-events-none absolute -bottom-20 right-0 h-64 w-64 rounded-full bg-secondary/15 blur-[90px]" />
+
+        <div className="relative z-10">
+          <div className="text-center">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-[#d79088]">
+              Evidence to Release
+            </p>
+
+            <h3 className="mt-3 text-2xl font-medium tracking-[-0.035em] text-white md:text-3xl">
+              Connect protocol evidence to release decisions
+            </h3>
+
+            <p className="mx-auto mt-3 max-w-2xl leading-7 text-cream/55">
+              Every selected protocol and product test contributes traceable
+              evidence to the final release decision.
+            </p>
+          </div>
+
+          {/* desktop flow */}
+          <div className="mt-9 hidden items-stretch gap-3 lg:grid lg:grid-cols-5">
+            {steps.map(({ number, icon: Icon, title, text }, index) => (
+              <div
+                key={title}
+                className="relative rounded-[1.6rem] border border-white/10 bg-[#2d1738]/60 p-5 backdrop-blur-xl"
+              >
+                {index !== steps.length - 1 && (
+                  <div className="absolute -right-[14px] top-1/2 z-10 -translate-y-1/2 text-[#d79088]">
+                    <ArrowRight className="h-5 w-5" />
+                  </div>
+                )}
+
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-medium tracking-[0.14em] text-[#d79088]">
+                    {number}
+                  </span>
+
+                  <span className="grid h-9 w-9 place-items-center rounded-xl bg-[#8b332c]/25 text-[#d79088]">
+                    <Icon className="h-4 w-4" />
+                  </span>
+                </div>
+
+                <h4 className="mt-6 font-medium text-white/90">{title}</h4>
+
+                <p className="mt-2 text-sm leading-6 text-cream/50">{text}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* mobile / tablet */}
+          <div className="mt-8 grid gap-3 lg:hidden">
+            {steps.map(({ number, icon: Icon, title, text }, index) => (
+              <div key={title}>
+                <div className="flex gap-4 rounded-[1.5rem] border border-white/10 bg-[#2d1738]/60 p-5">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#8b332c]/25 text-[#d79088]">
+                    <Icon className="h-5 w-5" />
+                  </span>
+
+                  <div>
+                    <p className="text-[11px] font-medium tracking-[0.14em] text-[#d79088]">
+                      {number}
+                    </p>
+
+                    <h4 className="mt-1 font-medium text-white/90">{title}</h4>
+
+                    <p className="mt-1 text-sm leading-6 text-cream/50">
+                      {text}
+                    </p>
+                  </div>
+                </div>
+
+                {index !== steps.length - 1 && (
+                  <div className="flex h-7 items-center justify-center">
+                    <ArrowRight className="h-4 w-4 rotate-90 text-[#d79088]/60" />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Gate status */}
+          <div className="mt-7 grid gap-3 sm:grid-cols-3">
+            <div className="rounded-[1.3rem] border border-emerald-400/15 bg-emerald-400/[0.06] p-4">
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="h-4 w-4 text-emerald-300" />
+
+                <span className="text-sm font-medium text-white/80">Pass</span>
+              </div>
+
+              <p className="mt-2 text-xs leading-5 text-cream/45">
+                Evidence meets release policy.
+              </p>
+            </div>
+
+            <div className="rounded-[1.3rem] border border-[#d79088]/20 bg-[#d79088]/[0.06] p-4">
+              <div className="flex items-center gap-3">
+                <CircleAlert className="h-4 w-4 text-[#d79088]" />
+
+                <span className="text-sm font-medium text-white/80">
+                  Review
+                </span>
+              </div>
+
+              <p className="mt-2 text-xs leading-5 text-cream/45">
+                Risk or missing evidence needs attention.
+              </p>
+            </div>
+
+            <div className="rounded-[1.3rem] border border-red-400/15 bg-red-400/[0.05] p-4">
+              <div className="flex items-center gap-3">
+                <ShieldCheck className="h-4 w-4 text-red-300" />
+
+                <span className="text-sm font-medium text-white/80">Stop</span>
+              </div>
+
+              <p className="mt-2 text-xs leading-5 text-cream/45">
+                Critical release condition failed.
+              </p>
+            </div>
+          </div>
+
+          {/* Final release */}
+          <div className="mt-6 flex flex-col items-start justify-between gap-5 rounded-[1.6rem] border border-[#d79088]/20 bg-linear-to-r from-[#8b332c]/20 via-white/[0.045] to-[#6f4b83]/15 p-5 sm:flex-row sm:items-center md:p-6">
+            <div className="flex items-center gap-4">
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#8b332c]/30 text-[#d79088]">
+                <Rocket className="h-5 w-5" />
+              </span>
+
+              <div>
+                <p className="font-medium text-white/90">
+                  Release-ready evidence
+                </p>
+
+                <p className="mt-1 text-sm text-cream/50">
+                  Traceable build, known risk and auditable decision.
+                </p>
+              </div>
+            </div>
+
+            <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-[#d79088]">
+              Release confidence
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <figcaption className="mt-4 text-center text-sm italic leading-6 text-cream/40">
+        Figure 7. Selected protocol and product tests feed evidence into the
+        release decision.
+      </figcaption>
+    </figure>
+  );
+}
+
 /* -------------------------------------------------------------------------- */
 /* SECTION RENDERER                                                           */
 /* -------------------------------------------------------------------------- */
@@ -466,6 +846,11 @@ function RenderSection({
           </div>
         </ArticleSection>
       );
+    case "repeatable-lab":
+      return <RepeatableLabDiagram />;
+
+    case "release-decision":
+      return <ReleaseDecisionDiagram />;
     default:
       return null;
   }
@@ -481,7 +866,7 @@ function ArticleSection({
   children,
 }: {
   number: number;
-  title?: string;
+  title?: RichText;
   children: React.ReactNode;
 }) {
   return (
@@ -493,7 +878,7 @@ function ArticleSection({
           </span>
 
           <h2 className="text-2xl font-medium tracking-[-0.035em] text-white md:text-3xl">
-            {title}
+            <RichContent content={title} />
           </h2>
         </div>
       )}

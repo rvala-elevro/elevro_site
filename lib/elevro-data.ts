@@ -571,7 +571,7 @@ export const resourceGroups = {
     {
       title: "Protocol Automation for Connected Devices",
       summary:
-        "BLE, Wi-Fi, MQTT, Zigbee, UART, I2C, SPI, CANBus, and ModBus automation patterns.",
+        "How to validate communication, product behaviour and recovery across wireless and serial interfaces.",
       icon: Wifi,
     },
     {

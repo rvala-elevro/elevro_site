@@ -11,7 +11,7 @@ export type ResourceFaq = {
 export type ResourceSection =
   | {
       type: "text";
-      title?: string;
+      title?: RichText;
       paragraphs: RichText[];
     }
   | {
@@ -21,17 +21,17 @@ export type ResourceSection =
     }
   | {
       type: "bullets";
-      title?: string;
+      title?: RichText;
       items: RichText[];
     }
   | {
       type: "steps";
-      title?: string;
+      title?: RichText;
       items: RichText[];
     }
   | {
       type: "status";
-      title?: string;
+      title?: RichText;
       items: {
         title: string;
         text: string;
@@ -45,8 +45,14 @@ export type ResourceSection =
     }
   | {
       type: "faq";
-      title?: string;
+      title?: RichText;
       items: ResourceFaq[];
+    }
+  | {
+      type: "repeatable-lab";
+    }
+  | {
+      type: "release-decision";
     };
 export type ResourceDetail = {
   type: "blogs" | "whitepapers" | "case-studies";
@@ -308,6 +314,477 @@ export const resourceDetails: ResourceDetail[] = [
         type: "callout",
         label: "Closing perspective",
         text: "The objective is not to create more pipeline steps. It is to make every embedded SDK release more repeatable, explainable and safe.",
+      },
+    ],
+  },
+  {
+    type: "blogs",
+
+    slug: "protocol-automation-for-connected-devices",
+
+    category: "Connected Device Quality Engineering",
+
+    title: "Protocol Automation for Connected Devices",
+
+    excerpt:
+      "How to validate communication, product behaviour and recovery across wireless and serial interfaces.",
+
+    metaTitle: "Protocol Automation for Connected Devices | Elevro",
+
+    metaDescription:
+      "Learn how protocol automation validates BLE, Wi-Fi, MQTT, Zigbee, UART, I2C, SPI, CAN and Modbus across connected device journeys.",
+
+    keywords: [
+      "protocol automation",
+      "connected device testing",
+      "IoT protocol testing",
+      "BLE automation testing",
+      "Wi-Fi testing automation",
+      "MQTT testing",
+      "embedded systems protocol testing",
+      "serial interface testing",
+    ],
+
+    // The client document doesn't specify a publication date.
+    // Change this if they provide an exact one.
+    publishedAt: "October 2026",
+
+    // ~4,300 words in the supplied document.
+    readTime: "20 min read",
+
+    faqs: [
+      {
+        question: "Is a successful connection enough to pass a protocol test?",
+        answer:
+          "No. Validate identity, permitted access, message meaning, resulting product action, visible state and recovery. A link can be healthy while the workflow is wrong.",
+      },
+      {
+        question: "Should every protocol use the same test cases?",
+        answer:
+          "Use a common scenario and evidence structure, then apply protocol-specific assertions. BLE subscriptions, SPI timing and Modbus exception responses have different semantics.",
+      },
+      {
+        question: "How do we test unreliable wireless conditions?",
+        answer:
+          "Control one variable at a time, such as signal, network availability or gateway restart. Capture timing and state before, during and after the interruption, including retries and duplicates.",
+      },
+      {
+        question: "When should we use a simulator instead of real hardware?",
+        answer:
+          "Use simulators for fast, repeatable parser and integration checks. Use real devices for radio, electrical, timing, power and cross-device behaviour, especially before release.",
+      },
+      {
+        question: "What is the minimum useful evidence for a failed run?",
+        answer:
+          "Keep the build and configuration, exact test step, timestamps, raw protocol trace, device and service logs, expected and actual state, and any rerun history.",
+      },
+      {
+        question:
+          "Can iPerf3 prove that a device meets its Wi-Fi performance target?",
+        answer:
+          "iPerf3 shows connection speed when the test traffic passes through the device. Repeat it in realistic locations, then check whether the product's actual tasks also finish promptly and reliably.",
+      },
+      {
+        question: "How should an AT parser handle unsolicited events?",
+        answer:
+          "Timestamp and queue events separately from the active command response. Match command completion to its documented terminal response, then assert the later state transition independently.",
+      },
+      {
+        question: "Can AI help with protocol automation?",
+        answer:
+          "It can propose impacted scenarios, cluster similar traces and summarize cross-layer evidence. Engineers should review generated assertions and verify the suspected root cause.",
+      },
+      {
+        question: "How do we avoid duplicate actions after reconnecting?",
+        answer:
+          "Define application-level command identity and idempotency where needed, then test retries and state convergence. Transport acknowledgment alone does not prove exactly-once physical action.",
+      },
+      {
+        question: "What is protocol automation for connected devices?",
+        answer:
+          "Protocol automation is a repeatable way to control interfaces, execute protocol-specific checks, capture traces, inject failures and verify the resulting product state. For connected products, it should link communication evidence to the device, application, API or cloud outcome rather than treating a successful handshake as the final result.",
+      },
+      {
+        question:
+          "Which protocols can be automated in an embedded or IoT test lab?",
+        answer:
+          "The framework in this article covers wireless and messaging interfaces such as BLE, Wi-Fi, MQTT and Zigbee, as well as UART and AT commands, I2C, SPI, CAN and Modbus. The orchestration can be shared, but each protocol keeps its own timing, addressing, error and recovery assertions.",
+      },
+    ],
+
+    sections: [
+      {
+        type: "bullets",
+        title:
+          "Protocol Automation vs. Protocol Testing vs. End-to-End Connected Device Testing",
+        items: [
+          "Protocol testing checks whether a specific interface follows its expected communication rules, such as BLE discovery and GATT behaviour, MQTT topics and payloads, UART framing, or Modbus register access.",
+          "Protocol automation makes those checks repeatable by controlling setup, sending commands, capturing traces, asserting timing and state, injecting faults, and publishing evidence for every run.",
+          "End-to-end connected device testing follows one product action across the protocol path and verifies the resulting physical, application, API or cloud state, including recovery after interruption.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "The problem begins where a protocol test ends",
+        paragraphs: [
+          "A sensor can acknowledge a command, a gateway can publish a message and an app can show a success toast while the actual product state is wrong. Connected products translate intent across several links, and a local handshake proves only one part of that chain.",
+
+          [
+            {
+              text: "BLE pairing, Wi-Fi association, MQTT messaging, Zigbee mesh traffic, UART diagnostics, I2C sensors, SPI peripherals, CAN bus controllers and Modbus equipment each have their own timing, addressing and error semantics. ",
+            },
+            {
+              text: "Protocol automation",
+              href: "/services/intelligent-quality-engineering",
+            },
+            {
+              text: " should therefore capture both the wire-level exchange and the customer-visible outcome, with enough evidence to locate the failing boundary.",
+            },
+          ],
+        ],
+      },
+
+      {
+        type: "image",
+        src: "/resources/blogs/protocol-automation-connected-devices/protocols-by-product-role.png",
+        alt: "Protocols by product role across a connected product architecture",
+        caption:
+          "Figure 1. Different interfaces serve distinct roles in one connected product; the validation plan follows the product architecture.",
+      },
+
+      {
+        type: "text",
+        title: "Start with a contract for each interface",
+        paragraphs: [
+          "Before automating a protocol, describe the behaviour the product expects from it: endpoints, identifiers, message schema, units and byte order, command permissions, timing limits, retry policy, failure response and recovery state.",
+          "The contract also identifies where an observation can be collected: packet capture, bus trace, device log, gateway log, API response, cloud event or app state.",
+          "Every run should record build and firmware versions, hardware revision, interface configuration, topology, environment conditions and timestamps.",
+        ],
+      },
+
+      {
+        type: "image",
+        src: "/resources/blogs/protocol-automation-connected-devices/interface-contract.png",
+        alt: "Turning connected device behaviour into a testable protocol contract",
+        caption:
+          "Figure 2. The interface contract connects each request to observable device behaviour and evidence.",
+      },
+
+      {
+        type: "text",
+        title: "Wireless links need more than a successful connection",
+        paragraphs: [
+          "Wireless tests must include discovery, identity, secure access, data exchange, interruption and reconnection.",
+          "Signal strength, channel congestion, access point changes, a sleeping phone or a restarting gateway can alter timing. A useful suite checks whether subscriptions, credentials and state are restored and whether queued work is replayed correctly.",
+        ],
+      },
+
+      {
+        type: "image",
+        src: "/resources/blogs/protocol-automation-connected-devices/wireless-validation-bench.png",
+        alt: "Wireless validation bench for BLE Wi-Fi and Zigbee",
+        caption:
+          "Figure 3. Representative wireless validation bench with BLE, Wi-Fi performance and Zigbee test setups.",
+      },
+
+      {
+        type: "text",
+        title: [
+          {
+            text: "BLE validation",
+            href: "/industries/smart-home-iot-matter",
+          },
+          {
+            text: " from GAP to product profile",
+          },
+        ],
+        paragraphs: [
+          "A BLE test strategy should separate GAP discovery and identity, connection and security, GATT/ATT data access, and the application profile carried by those services.",
+          "Passing a read of one characteristic is insufficient when the product depends on a particular advertising mode, negotiated connection behaviour, subscription state and profile-specific measurement format.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "GAP discovery, identity and security",
+        paragraphs: [
+          "Validate advertising interval and mode, advertised service UUIDs, device identity, manufacturer data, scan response content and supported active or passive discovery.",
+          "For pairing and bonding, test authentication and encryption requirements, persistence across reset, reconnect with stored keys, bond removal and re-pairing.",
+          "Do not label a connection secure solely because pairing returned success; verify the protected operation and recorded security state.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "Connection establishment and link behaviour",
+        paragraphs: [
+          "Measure discovery-to-connect latency, connection success rate, negotiated connection interval, peripheral latency and supervision timeout.",
+          "Run repeated connect and disconnect cycles, out-of-range loss, peripheral reset, application restart and reconnect after sleep.",
+          "A reconnect is complete only after security, service state and subscriptions required by the user journey have been restored.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "GATT and ATT transaction validation",
+        paragraphs: [
+          "Discover expected services, characteristic UUIDs, properties, handles and descriptors, and verify mandatory versus optional attributes for the supported firmware version.",
+          "Exercise reads, writes, notifications and indications according to supported properties and validate boundary lengths, encoding, ATT errors and changed GATT databases.",
+          "Capture HCI or over-the-air traces alongside peripheral logs and app events to locate failures across the radio, GATT client, parser and UI.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "Profile conformance and application meaning",
+        paragraphs: [
+          "A standardized BLE profile adds rules beyond the generic GATT database, including required characteristics, feature flags, data layout, units and optional-field conditions.",
+          "At the product layer, compare decoded values with controlled stimuli or reference instruments and confirm that mobile and cloud systems preserve units, identity, freshness and ordering.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "Wi-Fi and MQTT validate network and message state",
+        paragraphs: [
+          "Wi-Fi validation should cover provisioning, authentication, address assignment, service reachability, reconnection, network switching and recovery from invalid credentials or unavailable services.",
+          "For MQTT, validate topics, authorization, payload schema, publish/subscribe flow, QoS behaviour, retained state, session continuity and duplicate handling.",
+          "After interruption, verify the intended offline queue policy, replay order and eventual device-cloud state convergence.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "Measure Wi-Fi performance under controlled conditions",
+        paragraphs: [
+          "Start from the product's real tasks, such as sending sensor readings, responding to commands, streaming audio or downloading an update.",
+          "iPerf3 can measure throughput when traffic actually passes through the device. Repeat tests at realistic locations and network loads while recording signal conditions, drops and reconnects.",
+          "Throughput alone is not sufficient; real product actions must still complete promptly and recover reliably.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "Zigbee validates commissioning and mesh behaviour",
+        paragraphs: [
+          "Cover joining and rejoining, endpoint and cluster discovery, commands, attribute reports, binding or groups where used, and route changes through a mesh.",
+          "Test coordinator or router loss and power restoration with the supported topology and verify that application-visible state remains fresh.",
+        ],
+      },
+
+      {
+        type: "bullets",
+        title:
+          "What Protocol Automation Should Validate Across Connected Devices",
+        items: [
+          "BLE: discovery, identity, pairing and bonding, GATT/ATT access, notifications or indications, reconnect behaviour and profile meaning.",
+          "Wi-Fi: provisioning, authentication, service reachability, performance, network switching and recovery.",
+          "MQTT: topics, authorization, payload schema, QoS, retained or queued state, duplicates, replay order and convergence.",
+          "Zigbee: joining, clusters, attributes, mesh routing, node loss and application state freshness.",
+          "UART and AT commands: framing, command deadlines, terminal responses, unsolicited events, parser resynchronization and restart recovery.",
+          "I2C and SPI: addressing or chip select, timing, byte order, transaction integrity and peripheral readiness.",
+          "CAN and Modbus: identifier or register mapping, freshness, exceptions, timeout handling, bus behaviour and final equipment state.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "Board and field interfaces need their own error models",
+        paragraphs: [
+          [
+            {
+              text: "A reusable ",
+            },
+            {
+              text: "automation framework",
+              href: "/services/intelligent-quality-engineering",
+            },
+            {
+              text: " can expose a common test language while keeping electrical setup and protocol semantics in separate adapters.",
+            },
+          ],
+          "A sensor register read, a full-duplex SPI transaction and a CAN frame must not be treated as equivalent simply because each returns bytes.",
+        ],
+      },
+
+      {
+        type: "image",
+        src: "/resources/blogs/protocol-automation-connected-devices/board-field-interface-testing.png",
+        alt: "UART I2C SPI CAN and Modbus automated protocol test setups",
+        caption:
+          "Figure 4. Representative UART, I2C/SPI, CAN and Modbus interface test setups.",
+      },
+
+      {
+        type: "text",
+        title: "UART and AT command interfaces",
+        paragraphs: [
+          "For UART, verify baud rate, framing and flow control, command delimiters, echo policy, response parsing, unsolicited messages and timeout behaviour.",
+          "Exercise malformed commands, partial frames, burst traffic, reset during a transaction and port reopening. Preserve the raw byte stream alongside parsed results.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "Automate BLE and Wi-Fi AT command workflows",
+        paragraphs: [
+          "An AT interface is a command and event stream, not a simple request-response function. The harness needs a serial transport layer, command scheduler and parser that separates echo, data lines, terminal responses, prompts and unsolicited result codes.",
+          "For Wi-Fi modules, validate responsiveness, firmware identity, station mode, access-point connection, addressing, sockets, data transfer and recovery from invalid credentials, DHCP, DNS, peer-close or network-loss conditions.",
+          "For BLE AT firmware, validate role initialization, scanning, peer connection, GATT discovery, reads, writes, subscriptions and reconnection behaviour.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "I2C and SPI peripherals",
+        paragraphs: [
+          "For I2C, test addressing, register access, ACK/NACK handling, timeout, bus recovery and interpretation of multi-byte values.",
+          "For SPI, verify chip select, clock rate, polarity and phase, transaction length, byte order and duplex mode.",
+          "Compare sensor values against controlled physical or simulated stimuli rather than merely checking for nonempty responses.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "CAN bus and Modbus equipment",
+        paragraphs: [
+          "For CAN, validate identifier filtering, payload decoding, periodic messages, command priority, timeout, stale-signal handling and recovery from relevant node or bus faults.",
+          "For Modbus, verify server selection, function code, register address, data type, scaling and byte or word order, and distinguish valid exception responses from timeout or corruption.",
+          "A register write should be confirmed with a subsequent read or independent equipment observation.",
+        ],
+      },
+
+      {
+        type: "callout",
+        label: "Realistic illustration",
+        text: "A passing MQTT publish, Wi-Fi transaction and local interface exchange can all appear green while the complete product still fails during recovery. Protocol automation therefore needs shared command identity, timestamps, raw traces and final-state assertions.",
+      },
+
+      {
+        type: "text",
+        title: "Build one end to end scenario from request to recovery",
+        paragraphs: [
+          "A connected environmental controller may receive a target temperature from a mobile app, pass it through an API and MQTT gateway, apply it locally, and confirm the result through an I2C sensor.",
+          "The test should follow one command ID through the entire journey and confirm that device, cloud and app state converge within the agreed time.",
+          "Interrupt Wi-Fi during the journey and verify whether the action occurred, whether retries are safe and whether duplicate actions are prevented.",
+        ],
+      },
+
+      {
+        type: "image",
+        src: "/resources/blogs/protocol-automation-connected-devices/communication-outcome-journey.png",
+        alt: "Communication to product outcome and recovery validation journey",
+        caption:
+          "Figure 5. One scenario follows intent through communication and action, then validates the visible outcome and recovery.",
+      },
+
+      {
+        type: "text",
+        title: "Design a lab that makes faults repeatable",
+        paragraphs: [
+          "A controlled lab needs device identity and reservation, programmable power or reset, network control, protocol sniffers or bus analysers, safe sensor or actuator simulation and time-synchronized logs.",
+          "Fault injection should be deliberate and bounded. Examples include dropping packets, weakening connectivity, restarting a gateway, disconnecting a serial adapter, delaying responses or making a bus node unavailable.",
+          "Preserve first-failure artifacts before automated retries modify the system.",
+        ],
+      },
+
+      {
+        type: "repeatable-lab",
+      },
+
+      {
+        type: "text",
+        title: "Connect protocol evidence to CI and release decisions",
+        paragraphs: [
+          "Fast parser, schema and adapter checks can run on relevant changes. Integration jobs can then exercise selected devices or simulators and affected protocol paths.",
+          "Scheduled suites cover longer wireless interruptions, mesh topologies, bus load and hardware variants, while release validation covers representative journeys, recovery and security boundaries.",
+          "Selection should remain traceable to changed components, requirements, prior defects and known risk.",
+        ],
+      },
+
+      {
+        type: "release-decision",
+      },
+
+      {
+        type: "bullets",
+        title: "Glossary",
+        items: [
+          "Protocol Automation — repeatable control, execution, fault injection, evidence capture and assertions for communication interfaces and product outcomes.",
+          "Interface Contract — expected endpoints, message structure, timing, permissions, failure behaviour, recovery rules and completion state.",
+          "GATT/ATT — the BLE data model and attribute protocol used to expose and access services, characteristics and descriptors.",
+          "Correlation ID — an identifier tying one request to protocol events, device actions, logs and application or cloud state.",
+          "Idempotency — application behaviour preventing a repeated command from causing an unintended duplicate action.",
+          "Fault Injection — controlled introduction of failures such as packet loss, restart, timeout or unavailable nodes.",
+          "State Convergence — when device, gateway, cloud and application views agree after communication or recovery.",
+        ],
+      },
+
+      {
+        type: "faq",
+        title: "Frequently Asked Questions",
+        items: [
+          {
+            question:
+              "Is a successful connection enough to pass a protocol test?",
+            answer:
+              "No. Validate identity, permitted access, message meaning, resulting product action, visible state and recovery. A link can be healthy while the workflow is wrong.",
+          },
+          {
+            question: "Should every protocol use the same test cases?",
+            answer:
+              "Use a common scenario and evidence structure, then apply protocol-specific assertions. BLE subscriptions, SPI timing and Modbus exception responses have different semantics.",
+          },
+          {
+            question: "How do we test unreliable wireless conditions?",
+            answer:
+              "Control one variable at a time, such as signal, network availability or gateway restart. Capture timing and state before, during and after the interruption.",
+          },
+          {
+            question:
+              "When should we use a simulator instead of real hardware?",
+            answer:
+              "Use simulators for fast, repeatable parser and integration checks. Use real devices for radio, electrical, timing, power and cross-device behaviour, especially before release.",
+          },
+          {
+            question: "What is the minimum useful evidence for a failed run?",
+            answer:
+              "Keep the build and configuration, exact test step, timestamps, raw protocol trace, device and service logs, expected and actual state, and rerun history.",
+          },
+          {
+            question:
+              "Can iPerf3 prove that a device meets its Wi-Fi performance target?",
+            answer:
+              "iPerf3 shows connection speed when test traffic passes through the device. Repeat it in realistic locations and verify the product's real tasks also complete reliably.",
+          },
+          {
+            question: "How should an AT parser handle unsolicited events?",
+            answer:
+              "Timestamp and queue events separately from the active command response, then assert later state transitions independently.",
+          },
+          {
+            question: "Can AI help with protocol automation?",
+            answer:
+              "It can propose impacted scenarios, cluster similar traces and summarize cross-layer evidence. Engineers should review generated assertions and suspected root causes.",
+          },
+          {
+            question: "How do we avoid duplicate actions after reconnecting?",
+            answer:
+              "Define application-level command identity and idempotency, then test retries and state convergence.",
+          },
+          {
+            question: "What is protocol automation for connected devices?",
+            answer:
+              "Protocol automation repeatedly controls interfaces, performs protocol-specific checks, captures traces, injects failures and verifies the resulting product state across device, application, API or cloud layers.",
+          },
+          {
+            question:
+              "Which protocols can be automated in an embedded or IoT test lab?",
+            answer:
+              "BLE, Wi-Fi, MQTT, Zigbee, UART and AT commands, I2C, SPI, CAN and Modbus can all be automated while retaining protocol-specific timing, addressing, error and recovery assertions.",
+          },
+        ],
       },
     ],
   },
