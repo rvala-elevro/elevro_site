@@ -922,7 +922,7 @@ function IndustriesHero() {
           </p>
 
           <h1 className="mt-5 max-w-4xl text-4xl font-medium leading-[1.03] tracking-[-0.055em] text-white md:text-6xl xl:text-7xl">
-            Industry-Specific Product Engineering Solutions
+          AI-Powered Digital Product Engineering Company
           </h1>
 
           <p className="mt-7 max-w-3xl text-xl leading-8 text-white/75">
