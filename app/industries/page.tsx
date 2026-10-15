@@ -26,9 +26,9 @@ import { SectionTitle } from "@/components/PageBlocks";
 import { resourceDetails } from "@/lib/resource-details";
 
 export const metadata: Metadata = {
-  title: "Industry-Specific Product Engineering Solutions | Elevro",
+  title: "Digital Product Engineering Company | Elevro",
   description:
-    "Explore Elevro's industry-specific product engineering solutions across consumer electronics, healthcare, eCommerce, automotive, IoT, Matter, cloud and SaaS platforms.",
+    "Elevro is a product engineering company delivering AI-powered quality engineering, digital engineering, cloud, DevOps and product development solutions.",
 
   alternates: {
     canonical: "/industries",
@@ -61,7 +61,7 @@ const industries = [
   {
     title: "Consumer Electronics",
     href: "/industries/consumer-electronics",
-    image: "/industries/consumer-electronics.webp",
+    image: "/industries/consumer-electronics.png",
     icon: Smartphone,
     text: "Deliver reliable connected experiences with quality engineering for smart devices, wearables, embedded firmware and wireless products. We support device-to-app connectivity, protocol testing, firmware validation and automated testing across complex consumer technology ecosystems.",
     capabilities: [
@@ -76,7 +76,7 @@ const industries = [
   {
     title: "Healthcare & MedTech",
     href: "/industries/healthcare-medtech",
-    image: "/industries/healthcare-medtech.webp",
+    image: "/industries/healthcare-medtech.png",
     icon: HeartPulse,
     text: "Support accurate and reliable healthcare technology with specialised software testing and quality engineering. Elevro helps validate connected health devices, healthcare applications, patient-facing platforms, APIs and complex data workflows.",
     capabilities: [
@@ -91,7 +91,7 @@ const industries = [
   {
     title: "eCommerce & Retail",
     href: "/industries/ecommerce-retail",
-    image: "/industries/ecommerce-retail.webp",
+    image: "/industries/ecommerce-retail.png",
     icon: ShoppingCart,
     text: "Create seamless digital commerce experiences with end-to-end quality assurance and automated testing. We help businesses validate product catalogues, pricing, inventory, checkout journeys, order management and backend workflows.",
     capabilities: [
@@ -107,7 +107,7 @@ const industries = [
   {
     title: "Automotive & Infotainment",
     href: "/industries/automotive-infotainment",
-    image: "/industries/automotive-infotainment.webp",
+    image: "/industries/automotive-infotainment.png",
     icon: Car,
     text: "Strengthen automotive software quality with automated validation for infotainment systems, Android Auto, Android Automotive OS and connected vehicle interfaces.",
     capabilities: [
@@ -122,7 +122,7 @@ const industries = [
   {
     title: "Smart Home, IoT & Matter",
     href: "/industries/smart-home-iot-matter",
-    image: "/industries/smart-home-iot-matter.webp",
+    image: "/industries/smart-home-iot-matter.png",
     icon: House,
     text: "Enable reliable connectivity and interoperability across smart home ecosystems with specialised IoT testing and automation. We validate Matter-enabled devices, wireless protocols, hubs, mobile applications, firmware and voice assistant integrations.",
     capabilities: [
@@ -137,7 +137,7 @@ const industries = [
   {
     title: "Cloud & SaaS Platforms",
     href: "/industries/cloud-saas-platforms",
-    image: "/industries/cloud-saas-platforms.webp",
+    image: "/industries/cloud-saas-platforms.png",
     icon: CloudCog,
     text: "Support scalable cloud-native applications with intelligent quality engineering, automation and continuous delivery solutions. Elevro helps validate SaaS workflows, APIs, backend systems and cloud infrastructure.",
     capabilities: [
