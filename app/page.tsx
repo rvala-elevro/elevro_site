@@ -339,9 +339,9 @@ function Hero() {
           </div>
 
           <h1 className="max-w-4xl text-[2.35rem] font-medium leading-tight tracking-[-0.04em] text-white/90 sm:text-[2.65rem] md:text-6xl">
-            AI-Powered Product{" "}
+            AI-Powered Digital Product{" "}
             <span className="soft-gradient-text font-medium block sm:inline">
-              Engineering Services
+              Engineering Company
             </span>
           </h1>
 

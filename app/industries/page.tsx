@@ -26,10 +26,9 @@ import { SectionTitle } from "@/components/PageBlocks";
 import { resourceDetails } from "@/lib/resource-details";
 
 export const metadata: Metadata = {
-  title: "Digital Product Engineering Company | Elevro",
+  title: "Industry-Specific Product Engineering Solutions | Elevro",
   description:
-    "Elevro is a product engineering company delivering AI-powered quality engineering, digital engineering, cloud, DevOps and product development solutions.",
-
+    "Explore Elevro's industry-specific product engineering solutions across consumer electronics, healthcare, eCommerce, automotive, IoT, Matter, cloud and SaaS platforms.",
   alternates: {
     canonical: "/industries",
   },
@@ -922,7 +921,7 @@ function IndustriesHero() {
           </p>
 
           <h1 className="mt-5 max-w-4xl text-4xl font-medium leading-[1.03] tracking-[-0.055em] text-white md:text-6xl xl:text-7xl">
-          AI-Powered Digital Product Engineering Company
+            Industry-Specific Product Engineering Solutions
           </h1>
 
           <p className="mt-7 max-w-3xl text-xl leading-8 text-white/75">
