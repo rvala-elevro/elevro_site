@@ -14,10 +14,10 @@ export const siteConfig = {
 export const seoPages = {
   home: {
     path: "/",
-    metaTitle: "Product Engineering Services & Solutions | Elevro",
+    metaTitle: "Digital Product Engineering Company | Elevro",
     metaDescription:
-      "Elevro delivers product engineering services powered by AI, digital engineering, quality engineering, cloud and product enablement expertise.",
-    h1: "AI-Powered Product Engineering Services",
+      "Elevro is a product engineering company delivering AI-powered quality engineering, digital engineering, cloud, DevOps and product development solutions.",
+    h1: "AI-Powered Digital Product Engineering Company",
   },
 
   services: {
