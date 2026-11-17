@@ -278,13 +278,7 @@ export default async function ResourceDetailPage({ params }: PageProps) {
           <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[minmax(0,1fr)_280px]">
             {/* Article */}
             <div className="min-w-0">
-              {resource.sections.map((section, index) => (
-                <RenderSection
-                  key={`${section.type}-${index}`}
-                  section={section}
-                  index={index}
-                />
-              ))}
+              <ArticleSections sections={resource.sections} />
 
               <AuthorBio resource={resource} />
               <RelatedPosts resource={resource} />
@@ -791,27 +785,68 @@ function ReleaseDecisionDiagram() {
 /* SECTION RENDERER                                                           */
 /* -------------------------------------------------------------------------- */
 
-function RenderSection({
-  section,
-  index,
+function ArticleSections({
+  sections,
   headingLevel = 2,
 }: {
-  section: ResourceSection;
-  index: number;
+  sections: ResourceSection[];
   headingLevel?: 2 | 3;
+}) {
+  let topicNumber = 0;
+
+  return sections.map((section, index) => {
+    const hasHeading = "title" in section && Boolean(section.title);
+    const label = hasHeading
+      ? formatTopicLabel(++topicNumber, headingLevel)
+      : undefined;
+
+    const content = (
+      <RenderSection
+        key={`${section.type}-${index}`}
+        section={section}
+        label={label}
+        headingLevel={headingLevel}
+      />
+    );
+
+    // Untitled blocks continue the preceding topic without advancing its label.
+    return !hasHeading && topicNumber > 0 ? (
+      <div key={`${section.type}-${index}`} className="pl-11">
+        {content}
+      </div>
+    ) : content;
+  });
+}
+
+function formatTopicLabel(number: number, headingLevel: 2 | 3) {
+  if (headingLevel === 2) return `${number}.`;
+
+  let letters = "";
+  for (let value = number; value > 0; value = Math.floor((value - 1) / 26)) {
+    letters = String.fromCharCode(65 + ((value - 1) % 26)) + letters;
+  }
+  return `${letters}.`;
+}
+
+function RenderSection({
+  section,
+  label,
+  headingLevel,
+}: {
+  section: ResourceSection;
+  label?: string;
+  headingLevel: 2 | 3;
 }) {
   switch (section.type) {
     case "group":
       return (
-        <ArticleSection number={index + 1} title={section.title}>
-          {section.sections.map((child, childIndex) => (
-            <RenderSection key={`${child.type}-${childIndex}`} section={child} index={childIndex} headingLevel={3} />
-          ))}
+        <ArticleSection label={label} title={section.title} headingLevel={headingLevel}>
+          <ArticleSections sections={section.sections} headingLevel={3} />
         </ArticleSection>
       );
     case "text":
       return (
-        <ArticleSection number={index + 1} title={section.title} headingLevel={headingLevel}>
+        <ArticleSection label={label} title={section.title} headingLevel={headingLevel}>
           <div className="space-y-5">
             {section.paragraphs.map((paragraph, paragraphIndex) => (
               <p key={paragraphIndex}>
@@ -839,7 +874,7 @@ function RenderSection({
 
     case "bullets":
       return (
-        <ArticleSection number={index + 1} title={section.title}>
+        <ArticleSection label={label} title={section.title} headingLevel={headingLevel}>
           <ul className="space-y-4">
             {section.items.map((item, itemIndex) => (
               <li key={itemIndex} className="flex gap-3">
@@ -856,7 +891,7 @@ function RenderSection({
 
     case "steps":
       return (
-        <ArticleSection number={index + 1} title={section.title}>
+        <ArticleSection label={label} title={section.title} headingLevel={headingLevel}>
           <div className="grid gap-4">
             {section.items.map((item, stepIndex) => (
               <div
@@ -878,7 +913,7 @@ function RenderSection({
 
     case "status":
       return (
-        <ArticleSection number={index + 1} title={section.title}>
+        <ArticleSection label={label} title={section.title} headingLevel={headingLevel}>
           <StatusGrid items={section.items} />
         </ArticleSection>
       );
@@ -909,7 +944,7 @@ function RenderSection({
       );
     case "faq":
       return (
-        <ArticleSection number={index + 1} title={section.title}>
+        <ArticleSection label={label} title={section.title} headingLevel={headingLevel}>
           <div className="space-y-3">
             {section.items.map((faq) => (
               <details
@@ -947,12 +982,12 @@ function RenderSection({
 /* -------------------------------------------------------------------------- */
 
 function ArticleSection({
-  number,
+  label,
   title,
   children,
   headingLevel = 2,
 }: {
-  number: number;
+  label?: string;
   title?: RichText;
   children: React.ReactNode;
   headingLevel?: 2 | 3;
@@ -961,12 +996,14 @@ function ArticleSection({
   return (
     <section className="border-t border-white/8 py-12 first:border-t-0 first:pt-0">
       {title && (
-        <div className="flex gap-5">
-          <span className="mt-1 shrink-0 text-sm font-medium text-[#d79088]">
-            {String(number).padStart(2, "0")}
+        <div className="grid grid-cols-[2rem_minmax(0,1fr)] items-baseline gap-x-3">
+          <span className="text-sm font-medium tabular-nums text-[#d79088]">
+            {label}
           </span>
 
-          <Heading className="text-2xl font-medium tracking-[-0.035em] text-white md:text-3xl">
+          <Heading className={headingLevel === 3
+            ? "text-xl font-medium tracking-[-0.035em] text-white md:text-2xl"
+            : "text-2xl font-medium tracking-[-0.035em] text-white md:text-3xl"}>
             <RichContent content={title} />
           </Heading>
         </div>
@@ -975,7 +1012,7 @@ function ArticleSection({
       <div
         className={
           title
-            ? "mt-7 text-base leading-8 text-cream/65 md:pl-10"
+            ? "mt-7 pl-11 text-base leading-8 text-cream/65"
             : "text-base leading-8 text-cream/65"
         }
       >
