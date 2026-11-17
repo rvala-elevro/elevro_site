@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://www.elevro.com/services/intelligent-quality-engineering</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-11-17T13:39:29+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -110,11 +110,13 @@
   </url>
   <url>
     <loc>https://www.elevro.com/resources/blogs/ai-based-testing-for-modern-product-teams</loc>
+    <lastmod>2026-11-17T13:39:29+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.elevro.com/resources/blogs/building-cicd-quality-gates-for-embedded-sdks</loc>
+    <lastmod>2026-11-17T13:39:29+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -125,6 +127,7 @@
   </url>
   <url>
     <loc>https://www.elevro.com/resources/blogs/how-generative-ai-is-transforming-software-quality-assurance</loc>
+    <lastmod>2026-11-17T13:39:29+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
