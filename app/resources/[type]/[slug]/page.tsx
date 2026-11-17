@@ -116,14 +116,21 @@ function ResourceStructuredData({
   resource: ResourceDetail;
 }) {
   const articleUrl = `https://www.elevro.com/resources/${resource.type}/${resource.slug}`;
+  const isBlogPosting = resource.type === "blogs" && Boolean(resource.author);
 
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": resource.author ? "BlogPosting" : "Article",
+    "@type": isBlogPosting ? "BlogPosting" : "Article",
+    ...(isBlogPosting && {
+      "@id": `${articleUrl}#article`,
+      inLanguage: "en",
+    }),
     headline: resource.title,
-    description: resource.excerpt,
+    description: resource.answerSummary?.definition ?? resource.excerpt,
     url: articleUrl,
-    mainEntityOfPage: articleUrl,
+    mainEntityOfPage: isBlogPosting
+      ? { "@type": "WebPage", "@id": articleUrl }
+      : articleUrl,
     ...(resource.socialImage && {
       image: new URL(resource.socialImage.url, siteUrl).href,
     }),
@@ -140,8 +147,8 @@ function ResourceStructuredData({
     }),
     publisher: {
       "@type": "Organization",
-      name: "Elevro",
-      url: "https://www.elevro.com",
+      name: isBlogPosting ? "Elevro Solutions" : "Elevro",
+      url: isBlogPosting ? `${siteUrl}/` : siteUrl,
     },
   };
 
