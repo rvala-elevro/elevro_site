@@ -83,6 +83,9 @@ export async function generateMetadata({
     title: resource.metaTitle,
     description: resource.metaDescription,
     keywords: resource.keywords,
+    ...(resource.author && {
+      authors: [{ name: resource.author.name, url: new URL(resource.author.url, siteUrl).href }],
+    }),
     alternates: {
       canonical: canonicalPath,
     },
@@ -94,6 +97,9 @@ export async function generateMetadata({
       url: `${siteUrl}${canonicalPath}`,
       siteName: "Elevro",
       images: [socialImage],
+      ...(resource.datePublished && { publishedTime: resource.datePublished }),
+      ...(resource.dateModified && { modifiedTime: resource.dateModified }),
+      ...(resource.author && { authors: [new URL(resource.author.url, siteUrl).href] }),
     },
 
     twitter: {
@@ -113,7 +119,7 @@ function ResourceStructuredData({
 
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": resource.author ? "BlogPosting" : "Article",
     headline: resource.title,
     description: resource.excerpt,
     url: articleUrl,
@@ -122,6 +128,16 @@ function ResourceStructuredData({
       image: new URL(resource.socialImage.url, siteUrl).href,
     }),
     ...(resource.datePublished && { datePublished: resource.datePublished }),
+    ...(resource.dateModified && { dateModified: resource.dateModified }),
+    ...(resource.author && {
+      author: {
+        "@type": "Person",
+        name: resource.author.name,
+        jobTitle: resource.author.role,
+        url: new URL(resource.author.url, siteUrl).href,
+        ...(resource.author.linkedinUrl && { sameAs: [resource.author.linkedinUrl] }),
+      },
+    }),
     publisher: {
       "@type": "Organization",
       name: "Elevro",
@@ -144,6 +160,19 @@ function ResourceStructuredData({
       }
     : null;
 
+  const breadcrumbSchema = resource.showBreadcrumbs
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { name: "Home", item: siteUrl },
+          { name: "Resources", item: `${siteUrl}/#resources` },
+          { name: formatResourceType(resource.type), item: `${siteUrl}/resources/${resource.type}` },
+          { name: resource.title, item: articleUrl },
+        ].map((item, index) => ({ "@type": "ListItem", position: index + 1, ...item })),
+      }
+    : null;
+
   return (
     <>
       <script
@@ -158,6 +187,14 @@ function ResourceStructuredData({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
+          }}
+        />
+      )}
+      {breadcrumbSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
           }}
         />
       )}
@@ -241,14 +278,10 @@ export default async function ResourceDetailPage({ params }: PageProps) {
           <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[minmax(0,1fr)_280px]">
             {/* Article */}
             <div className="min-w-0">
-              {resource.sections.map((section, index) => (
-                <RenderSection
-                  key={`${section.type}-${index}`}
-                  section={section}
-                  index={index}
-                />
-              ))}
+              <ArticleSections sections={resource.sections} />
 
+              <AuthorBio resource={resource} />
+              <RelatedPosts resource={resource} />
               {resource.type === "blogs" && <TalkToElevro />}
             </div>
 
@@ -257,6 +290,7 @@ export default async function ResourceDetailPage({ params }: PageProps) {
               category={resource.category}
               title={resource.title}
               type={resource.type}
+              relatedPostSlugs={resource.relatedPostSlugs}
             />
           </div>
         </section>
@@ -281,6 +315,19 @@ function ResourceHero({
       <div className="pointer-events-none absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-[#6f4b83]/25 blur-[120px]" />
 
       <div className="relative z-10 mx-auto max-w-5xl">
+        {resource.showBreadcrumbs && (
+          <nav aria-label="Breadcrumb" className="mb-7 text-sm leading-6 text-cream/55">
+            <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
+              <li><Link href="/" className="hover:text-white">Home</Link></li>
+              <li aria-hidden="true">›</li>
+              <li><Link href="/#resources" className="hover:text-white">Resources</Link></li>
+              <li aria-hidden="true">›</li>
+              <li><Link href={`/resources/${resource.type}`} className="hover:text-white">{formatResourceType(resource.type)}</Link></li>
+              <li aria-hidden="true">›</li>
+              <li aria-current="page" className="text-cream/75">{resource.title}</li>
+            </ol>
+          </nav>
+        )}
         <Link
           href={`/resources/${resource.type}`}
           className="inline-flex items-center gap-2 text-sm font-medium text-cream/55 transition hover:text-white"
@@ -297,12 +344,33 @@ function ResourceHero({
           {resource.title}
         </h1>
 
-        <p className="mt-7 max-w-3xl text-lg leading-8 text-cream/65 md:text-xl">
-          {resource.excerpt}
-        </p>
+        {resource.answerSummary ? (
+          <div className="mt-7 max-w-3xl">
+            <p className="text-lg leading-8 text-cream/75 md:text-xl">{resource.answerSummary.definition}</p>
+            <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.045] p-5 md:p-6">
+              <p className="text-sm font-medium text-[#d79088]">Key takeaways</p>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-base leading-7 text-cream/65">
+                {resource.answerSummary.takeaways.map((takeaway) => <li key={takeaway}>{takeaway}</li>)}
+              </ul>
+            </div>
+          </div>
+        ) : (
+          <p className="mt-7 max-w-3xl text-lg leading-8 text-cream/65 md:text-xl">
+            {resource.excerpt}
+          </p>
+        )}
 
         <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-cream/45">
-          <span>{resource.publishedAt}</span>
+          {resource.datePublished ? (
+            <span>Published <time dateTime={resource.datePublished}>{resource.publishedAt}</time></span>
+          ) : <span>{resource.publishedAt}</span>}
+
+          {resource.dateModified && (
+            <>
+              <span aria-hidden="true">•</span>
+              <span>Last updated <time dateTime={resource.dateModified}>{formatArticleDate(resource.dateModified)}</time></span>
+            </>
+          )}
 
           <span aria-hidden="true">•</span>
 
@@ -310,8 +378,17 @@ function ResourceHero({
 
           <span aria-hidden="true">•</span>
 
-          <span>Elevro Insight</span>
+          {resource.author ? (
+            <a href={resource.author.url} rel="author" className="text-[#d79088] hover:text-white">By {resource.author.name}</a>
+          ) : <span>Elevro Insight</span>}
         </div>
+        {resource.author && (
+          <div className="mt-4 max-w-3xl text-sm leading-7 text-cream/55">
+            <p className="font-medium text-cream/75">{resource.author.role}</p>
+            {resource.author.bio.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            {resource.author.linkedinUrl && <a href={resource.author.linkedinUrl} className="text-[#d79088] hover:text-white">LinkedIn profile</a>}
+          </div>
+        )}
         {resource.heroImage && (
           <div className="surface-panel mt-12 overflow-hidden rounded-[2rem] border border-white/10 p-2 shadow-soft md:p-3">
             <div
@@ -324,7 +401,7 @@ function ResourceHero({
                 fill
                 priority
                 className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 1000px"
+                sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1087px) calc(100vw - 88px), 1000px"
               />
             </div>
           </div>
@@ -708,17 +785,68 @@ function ReleaseDecisionDiagram() {
 /* SECTION RENDERER                                                           */
 /* -------------------------------------------------------------------------- */
 
+function ArticleSections({
+  sections,
+  headingLevel = 2,
+}: {
+  sections: ResourceSection[];
+  headingLevel?: 2 | 3;
+}) {
+  let topicNumber = 0;
+
+  return sections.map((section, index) => {
+    const hasHeading = "title" in section && Boolean(section.title);
+    const label = hasHeading
+      ? formatTopicLabel(++topicNumber, headingLevel)
+      : undefined;
+
+    const content = (
+      <RenderSection
+        key={`${section.type}-${index}`}
+        section={section}
+        label={label}
+        headingLevel={headingLevel}
+      />
+    );
+
+    // Untitled blocks continue the preceding topic without advancing its label.
+    return !hasHeading && topicNumber > 0 ? (
+      <div key={`${section.type}-${index}`} className="pl-11">
+        {content}
+      </div>
+    ) : content;
+  });
+}
+
+function formatTopicLabel(number: number, headingLevel: 2 | 3) {
+  if (headingLevel === 2) return `${number}.`;
+
+  let letters = "";
+  for (let value = number; value > 0; value = Math.floor((value - 1) / 26)) {
+    letters = String.fromCharCode(65 + ((value - 1) % 26)) + letters;
+  }
+  return `${letters}.`;
+}
+
 function RenderSection({
   section,
-  index,
+  label,
+  headingLevel,
 }: {
   section: ResourceSection;
-  index: number;
+  label?: string;
+  headingLevel: 2 | 3;
 }) {
   switch (section.type) {
+    case "group":
+      return (
+        <ArticleSection label={label} title={section.title} headingLevel={headingLevel}>
+          <ArticleSections sections={section.sections} headingLevel={3} />
+        </ArticleSection>
+      );
     case "text":
       return (
-        <ArticleSection number={index + 1} title={section.title}>
+        <ArticleSection label={label} title={section.title} headingLevel={headingLevel}>
           <div className="space-y-5">
             {section.paragraphs.map((paragraph, paragraphIndex) => (
               <p key={paragraphIndex}>
@@ -746,7 +874,7 @@ function RenderSection({
 
     case "bullets":
       return (
-        <ArticleSection number={index + 1} title={section.title}>
+        <ArticleSection label={label} title={section.title} headingLevel={headingLevel}>
           <ul className="space-y-4">
             {section.items.map((item, itemIndex) => (
               <li key={itemIndex} className="flex gap-3">
@@ -763,7 +891,7 @@ function RenderSection({
 
     case "steps":
       return (
-        <ArticleSection number={index + 1} title={section.title}>
+        <ArticleSection label={label} title={section.title} headingLevel={headingLevel}>
           <div className="grid gap-4">
             {section.items.map((item, stepIndex) => (
               <div
@@ -785,7 +913,7 @@ function RenderSection({
 
     case "status":
       return (
-        <ArticleSection number={index + 1} title={section.title}>
+        <ArticleSection label={label} title={section.title} headingLevel={headingLevel}>
           <StatusGrid items={section.items} />
         </ArticleSection>
       );
@@ -801,7 +929,8 @@ function RenderSection({
                 src={section.src}
                 alt={section.alt}
                 fill
-                sizes="(max-width: 1024px) 100vw, 850px"
+                loading="lazy"
+                sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1023px) calc(100vw - 88px), (max-width: 1343px) calc(100vw - 424px), 920px"
               />
             </div>
           </div>
@@ -815,7 +944,7 @@ function RenderSection({
       );
     case "faq":
       return (
-        <ArticleSection number={index + 1} title={section.title}>
+        <ArticleSection label={label} title={section.title} headingLevel={headingLevel}>
           <div className="space-y-3">
             {section.items.map((faq) => (
               <details
@@ -853,32 +982,37 @@ function RenderSection({
 /* -------------------------------------------------------------------------- */
 
 function ArticleSection({
-  number,
+  label,
   title,
   children,
+  headingLevel = 2,
 }: {
-  number: number;
+  label?: string;
   title?: RichText;
   children: React.ReactNode;
+  headingLevel?: 2 | 3;
 }) {
+  const Heading = headingLevel === 3 ? "h3" : "h2";
   return (
     <section className="border-t border-white/8 py-12 first:border-t-0 first:pt-0">
       {title && (
-        <div className="flex gap-5">
-          <span className="mt-1 shrink-0 text-sm font-medium text-[#d79088]">
-            {String(number).padStart(2, "0")}
+        <div className="grid grid-cols-[2rem_minmax(0,1fr)] items-baseline gap-x-3">
+          <span className="text-sm font-medium tabular-nums text-[#d79088]">
+            {label}
           </span>
 
-          <h2 className="text-2xl font-medium tracking-[-0.035em] text-white md:text-3xl">
+          <Heading className={headingLevel === 3
+            ? "text-xl font-medium tracking-[-0.035em] text-white md:text-2xl"
+            : "text-2xl font-medium tracking-[-0.035em] text-white md:text-3xl"}>
             <RichContent content={title} />
-          </h2>
+          </Heading>
         </div>
       )}
 
       <div
         className={
           title
-            ? "mt-7 text-base leading-8 text-cream/65 md:pl-10"
+            ? "mt-7 pl-11 text-base leading-8 text-cream/65"
             : "text-base leading-8 text-cream/65"
         }
       >
@@ -936,22 +1070,31 @@ function ResourceSidebar({
   category,
   title,
   type,
+  relatedPostSlugs,
 }: {
   category: string;
   title: string;
   type: string;
+  relatedPostSlugs?: string[];
 }) {
+  const related = getRelatedPosts(relatedPostSlugs);
   return (
     <aside className="hidden lg:block">
       <div className="sticky top-28">
         <div className="surface-panel rounded-[2rem] border border-white/10 p-6 shadow-soft">
           <p className="text-xs font-medium uppercase tracking-[0.18em] text-[#d79088]">
-            Elevro Insight
+            {related.length ? "Related reading" : "Elevro Insight"}
           </p>
 
-          <h3 className="mt-4 text-lg font-medium leading-7 text-white/90">
-            {title}
-          </h3>
+          {related.length ? (
+            <ul className="mt-4 space-y-4 text-sm leading-6 text-cream/75">
+              {related.map((post) => (
+                <li key={post.slug}><Link href={`/resources/blogs/${post.slug}`} className="hover:text-white">{post.title}</Link></li>
+              ))}
+            </ul>
+          ) : (
+            <h3 className="mt-4 text-lg font-medium leading-7 text-white/90">{title}</h3>
+          )}
 
           <div className="mt-5 border-t border-white/10 pt-5">
             <p className="text-xs uppercase tracking-[0.14em] text-cream/35">
@@ -976,6 +1119,52 @@ function ResourceSidebar({
 /* -------------------------------------------------------------------------- */
 /* HELPERS                                                                    */
 /* -------------------------------------------------------------------------- */
+
+function getRelatedPosts(slugs: string[] = []) {
+  return slugs.flatMap((slug) => {
+    const post = getResourceDetail("blogs", slug);
+    return post ? [post] : [];
+  });
+}
+
+function AuthorBio({ resource }: { resource: ResourceDetail }) {
+  if (!resource.author) return null;
+  return (
+    <section id="author" aria-labelledby="author-heading" className="mt-12 scroll-mt-28 rounded-[2rem] border border-white/10 bg-white/[0.045] p-6 md:p-8">
+      <h2 id="author-heading" className="text-xl font-medium text-white">About the author</h2>
+      <p className="mt-4 font-medium text-[#d79088]"><a href={resource.author.url} rel="author" className="hover:text-white">{resource.author.name}</a></p>
+      <p className="mt-1 text-sm text-cream/75">{resource.author.role}</p>
+      {resource.author.bio.map((paragraph) => <p key={paragraph} className="mt-3 text-sm leading-7 text-cream/65">{paragraph}</p>)}
+      {resource.author.linkedinUrl && <a href={resource.author.linkedinUrl} rel="me" className="mt-4 inline-block text-sm font-medium text-[#d79088] hover:text-white">Connect on LinkedIn</a>}
+    </section>
+  );
+}
+
+function RelatedPosts({ resource }: { resource: ResourceDetail }) {
+  const posts = getRelatedPosts(resource.relatedPostSlugs);
+  if (!posts.length) return null;
+  return (
+    <section aria-labelledby="related-posts-heading" className="mt-14">
+      <h2 id="related-posts-heading" className="text-2xl font-medium text-white">Related posts</h2>
+      <div className="mt-6 grid gap-4 md:grid-cols-3">
+        {posts.map((post) => (
+          <Link key={post.slug} href={`/resources/blogs/${post.slug}`} className="rounded-[1.5rem] border border-white/10 bg-white/[0.045] p-5 transition hover:border-[#d79088]/40 hover:bg-white/[0.075]">
+            <p className="text-xs uppercase tracking-wide text-[#d79088]">{post.category}</p>
+            <h3 className="mt-3 text-lg font-medium leading-7 text-white/90">{post.title}</h3>
+            <p className="mt-3 text-sm leading-6 text-cream/60">{post.excerpt}</p>
+            <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-[#d79088]">Read post <ArrowRight className="h-4 w-4" /></span>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function formatArticleDate(value: string) {
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "numeric", month: "long", year: "numeric", timeZone: "Asia/Kolkata",
+  }).format(new Date(value));
+}
 
 function formatResourceType(type: string) {
   if (type === "case-studies") {

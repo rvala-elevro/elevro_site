@@ -103,7 +103,10 @@ export default async function ResourceTypePage({
             );
 
             const content = (
-              <article className="flex h-full flex-col">
+              <article
+                id={type === "case-studies" ? item.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") : undefined}
+                className="flex h-full scroll-mt-28 flex-col"
+              >
                 <span className="grid h-16 w-16 place-items-center rounded-3xl bg-secondary/30">
                   <Icon className="h-7 w-7" />
                 </span>

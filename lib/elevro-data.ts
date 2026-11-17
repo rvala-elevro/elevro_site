@@ -124,7 +124,14 @@ export const services: ServiceItem[] = [
             href: "/services/artificial-intelligence",
           },
           {
-            text: ".",
+            text: ". Learn how ",
+          },
+          {
+            text: "generative AI in software testing",
+            href: "/resources/blogs/how-generative-ai-is-transforming-software-quality-assurance",
+          },
+          {
+            text: " supports test generation, synthetic data, maintenance and triage with human review.",
           },
         ],
       },

@@ -10,6 +10,11 @@ export type ResourceFaq = {
 };
 export type ResourceSection =
   | {
+      type: "group";
+      title: RichText;
+      sections: ResourceSection[];
+    }
+  | {
       type: "text";
       title?: RichText;
       paragraphs: RichText[];
@@ -69,6 +74,20 @@ export type ResourceDetail = {
 
   publishedAt: string;
   datePublished?: string;
+  dateModified?: string;
+  author?: {
+    name: string;
+    role: string;
+    url: string;
+    bio: string[];
+    linkedinUrl?: string;
+  };
+  showBreadcrumbs?: boolean;
+  answerSummary?: {
+    definition: string;
+    takeaways: string[];
+  };
+  relatedPostSlugs?: string[];
   readTime: string;
 
   heroImage?: string;
@@ -90,7 +109,7 @@ export const resourceDetails: ResourceDetail[] = [
     "category": "AI & Quality Engineering",
     "title": "How Generative AI Is Transforming Software Quality Assurance",
     "excerpt": "From test generation and synthetic IoT data to agentic QA, AI-code validation and governed end-to-end product testing.",
-    "metaTitle": "How Generative AI Is Transforming Software Quality Assurance | Elevro",
+    "metaTitle": "How Generative AI Is Transforming Software QA | Elevro",
     "metaDescription": "How generative AI is transforming software quality assurance — from test generation and self-healing scripts to agentic QA, AI-code validation, and governance.",
     "keywords": [
       "how generative AI is transforming software quality assurance",
@@ -98,7 +117,7 @@ export const resourceDetails: ResourceDetail[] = [
       "agentic QA",
       "AI test case generation"
     ],
-    "publishedAt": "October 2026",
+    "publishedAt": "9 October 2026",
     "datePublished": "2026-10-09",
     "readTime": "12 min read",
     "heroImage": "/resources/blogs/generative-ai-quality-assurance/connected-product-hero.webp",
@@ -111,6 +130,14 @@ export const resourceDetails: ResourceDetail[] = [
       "alt": "Generative AI supports candidate tests across firmware, mobile, cloud and CI/CD for a connected smart-light product."
     },
     "faqs": [
+      {
+        "question": "What is generative AI in software testing?",
+        "answer": "Generative AI in software testing uses large language models to create test cases, test data and scripts from requirements, repair broken scripts automatically and triage failures. Human testers still review the output and make release decisions."
+      },
+      {
+        "question": "Which QA tasks can generative AI automate?",
+        "answer": "Generative AI can assist with test case and script generation, synthetic test data creation, test maintenance, exploratory scenario suggestions, regression prioritization, failure triage and test reporting. Teams should review generated artifacts and proposed repairs, validate results against requirements and product behavior, and retain human control over release decisions."
+      },
       {
         "question": "Is generative AI replacing QA testers?",
         "answer": "No. Generative AI accelerates test creation, data generation and maintenance, but it still depends on human judgment for business context, exploratory testing and final release decisions. QA roles are shifting toward strategy, oversight and AI supervision rather than disappearing."
@@ -142,14 +169,14 @@ export const resourceDetails: ResourceDetail[] = [
         "paragraphs": [
           [
             {
-              "text": "Software release cycles have compressed from months to days, and in many "
+              "text": "Software release cycles have compressed from months to days, and in many quality engineering pipelines, to hours. "
             },
             {
-              "text": "product-enablement",
-              "href": "/services/product-enablement"
+              "text": "Quality assurance teams",
+              "href": "/services/intelligent-quality-engineering"
             },
             {
-              "text": " pipelines, to hours. Quality assurance teams are being asked to test more surface area, across more devices, configurations and integrations, in a fraction of the time they had five years ago. Generative AI has moved from an experimental add-on to a practical part of how that demand gets met. It is not a replacement for testers, and it is not a single tool you install. It is a set of capabilities, test case generation, synthetic data creation, self-healing scripts, and increasingly, autonomous agents, that change what a QA team spends its time on."
+              "text": " are being asked to test more surface area, across more devices, configurations and integrations, in a fraction of the time they had five years ago. Generative AI has moved from an experimental add-on to a practical part of how that demand gets met. It is not a replacement for testers, and it is not a single tool you install. It is a set of capabilities, test case generation, synthetic data creation, self-healing scripts, and increasingly, autonomous agents, that change what a QA team spends its time on."
             }
           ],
           [
@@ -171,128 +198,144 @@ export const resourceDetails: ResourceDetail[] = [
         "title": "From Manual Testing to Agentic QA: A Short History",
         "paragraphs": [
           "QA has moved through four fairly distinct phases. Manual testing, where every scenario was scripted and executed by hand. Test automation, where repeatable scripts replaced manual execution but still required manual authorship. AI-assisted testing, roughly 2019 to 2023, where machine learning began powering self-healing scripts and smarter test prioritization, in tools like early versions of Testim and Mabl. And now, generative AI testing, where large language models generate test cases, test data and, increasingly, entire test strategies from plain-language requirements.",
-          "The scale of this shift is reflected in the industry's own data: Capgemini's World Quality Report 2025-26 found that generative AI is now the single top-ranked skill quality engineers say they need, ahead of traditional automation scripting or domain testing knowledge. That is a meaningful signal that this is not a passing trend QA leaders can wait out."
+          [
+            {
+              "text": "The scale of this shift is reflected in the industry's own data: "
+            },
+            {
+              "text": "Capgemini's World Quality Report 2025-26",
+              "href": "https://www.capgemini.com/insights/research-library/world-quality-report-2025-26/"
+            },
+            {
+              "text": " ranked generative AI as the leading skill for quality engineers (63%), followed by core quality engineering skills (60%). That is a meaningful signal that QA leaders need to develop AI fluency alongside strong testing fundamentals."
+            }
+          ]
         ]
       },
       {
-        "type": "text",
+        "type": "group",
         "title": "Where Generative AI Is Already Transforming Software Testing",
-        "paragraphs": [
-          "Several capabilities have moved well past the proof-of-concept stage and are now in regular production use across QA teams."
-        ]
-      },
-      {
-        "type": "text",
-        "title": "Automatic Test Case Generation From Requirements",
-        "paragraphs": [
-          [
-            {
-              "text": "Generative AI models can read requirements documents, user stories, system logs or even recorded user sessions, and produce structured test cases directly from them. This removes a large share of the manual scripting effort that traditionally consumed the first days of any testing cycle, and it tends to surface scenarios a time-pressured tester might not have written by hand. The output still needs human review before it becomes trusted coverage, but the starting point is dramatically faster than a blank test plan. Our "
-            },
-            {
-              "text": "Intelligent Quality Engineering",
-              "href": "/services/intelligent-quality-engineering"
-            },
-            {
-              "text": " practice builds this review step into the workflow by design, rather than treating generated tests as automatically trustworthy."
-            }
-          ]
-        ]
-      },
-      {
-        "type": "image",
-        "src": "/resources/blogs/generative-ai-quality-assurance/requirements-to-product-tests.webp",
-        "alt": "A connected-product requirement becomes candidate firmware, connectivity, mobile and API checks.",
-        "aspectRatio": "1672 / 941",
-        "caption": "Candidate checks connect a product requirement with firmware, connectivity, mobile and API behavior."
-      },
-      {
-        "type": "text",
-        "title": "Realistic, Privacy-Safe Test Data Creation",
-        "paragraphs": [
-          [
-            {
-              "text": "Generative models can synthesize data that statistically resembles production data, realistic names, transaction patterns, device telemetry, without exposing actual customer records. This matters most in regulated sectors: our work in "
-            },
-            {
-              "text": "healthcare and medtech",
-              "href": "/industries/healthcare-medtech"
-            },
-            {
-              "text": " and other compliance-sensitive industries depends on being able to test thoroughly without ever touching real patient or financial data."
-            }
-          ]
-        ]
-      },
-      {
-        "type": "image",
-        "src": "/resources/blogs/generative-ai-quality-assurance/synthetic-iot-telemetry.webp",
-        "alt": "Synthetic device telemetry and simulated IoT devices exercise mobile and cloud services in staging.",
-        "aspectRatio": "1672 / 941",
-        "caption": "Synthetic telemetry and simulated devices extend validation across staging, mobile and cloud services."
-      },
-      {
-        "type": "text",
-        "title": "Self-Healing Test Scripts and Smarter Maintenance",
-        "paragraphs": [
-          "One of the most labour-intensive parts of test automation has always been maintenance: a UI element moves, a locator changes, and dozens of scripts break overnight. AI-based locators and pattern recognition now let scripts adapt automatically when an element moves, a label changes or a layout updates, rather than failing outright and waiting for a human fix."
-        ]
-      },
-      {
-        "type": "image",
-        "src": "/resources/blogs/generative-ai-quality-assurance/mobile-device-test-maintenance.webp",
-        "alt": "A proposed mobile locator repair preserves original evidence and checks actual smart-light and cloud state.",
-        "aspectRatio": "1672 / 941",
-        "caption": "A proposed locator repair retains original evidence and verifies the actual device and cloud state."
-      },
-      {
-        "type": "text",
-        "title": "Exploratory Testing and Edge Case Discovery",
-        "paragraphs": [
-          "Even experienced testers develop blind spots after enough time on one product. Generative AI can propose alternative input combinations, unusual environmental conditions or rarely-exercised paths through an application, prompts a human reviewer can accept, modify or discard, rather than coverage that silently replaces exploratory judgment."
-        ]
-      },
-      {
-        "type": "text",
-        "title": "Smarter, Risk-Based Regression Testing",
-        "paragraphs": [
-          [
-            {
-              "text": "Rather than re-running an entire suite on every change, AI can rank regression tests by historical failure rate, code change proximity and business criticality, so the highest-risk areas get the deepest scrutiny first. This is especially valuable inside fast-moving "
-            },
-            {
-              "text": "CI/CD pipelines",
-              "href": "/services/cloud-engineering"
-            },
-            {
-              "text": ", where feedback speed and coverage depth are constantly in tension."
-            }
-          ]
-        ]
-      },
-      {
-        "type": "text",
-        "title": "AI-Assisted Debugging and Root Cause Analysis",
-        "paragraphs": [
-          "When a test fails, generative AI can scan logs, stack traces and recent commits to propose a likely cause, a timeout, a stale test, an actual regression, before a human spends an hour tracing it manually. This does not replace the final judgment call, but it meaningfully shortens the path to one."
-        ]
-      },
-      {
-        "type": "text",
-        "title": "Continuous Testing Inside CI/CD Pipelines",
-        "paragraphs": [
-          [
-            {
-              "text": "Generative AI enables real-time testing within DevOps and CI/CD workflows: new builds can be tested automatically on check-in, with fast feedback returned before a developer has moved on to the next task. Our piece on "
-            },
-            {
-              "text": "building CI/CD quality gates for embedded SDKs",
-              "href": "/resources/blogs/building-cicd-quality-gates-for-embedded-sdks"
-            },
-            {
-              "text": " goes deeper into how this works specifically for firmware and embedded build pipelines, where hardware dependencies add an extra layer of complexity most generic CI/CD advice ignores."
-            }
-          ]
+        "sections": [
+          {
+            "type": "text",
+            "paragraphs": [
+              "Several capabilities have moved well past the proof-of-concept stage and are now in regular production use across QA teams."
+            ]
+          },
+          {
+            "type": "text",
+            "title": "Automatic Test Case Generation From Requirements",
+            "paragraphs": [
+              [
+                {
+                  "text": "Generative AI models can read requirements documents, user stories, system logs or even recorded user sessions, and produce structured test cases directly from them. This removes a large share of the manual scripting effort that traditionally consumed the first days of any testing cycle, and it tends to surface scenarios a time-pressured tester might not have written by hand. The output still needs human review before it becomes trusted coverage, but the starting point is dramatically faster than a blank test plan. Our "
+                },
+                {
+                  "text": "Intelligent Quality Engineering",
+                  "href": "/services/intelligent-quality-engineering"
+                },
+                {
+                  "text": " practice builds this review step into the workflow by design, rather than treating generated tests as automatically trustworthy."
+                }
+              ]
+            ]
+          },
+          {
+            "type": "image",
+            "src": "/resources/blogs/generative-ai-quality-assurance/requirements-to-product-tests.webp",
+            "alt": "A connected-product requirement becomes candidate firmware, connectivity, mobile and API checks.",
+            "aspectRatio": "1672 / 941",
+            "caption": "Candidate checks connect a product requirement with firmware, connectivity, mobile and API behavior."
+          },
+          {
+            "type": "text",
+            "title": "Realistic, Privacy-Safe Test Data Creation",
+            "paragraphs": [
+              [
+                {
+                  "text": "Generative models can synthesize data that statistically resembles production data, realistic names, transaction patterns, device telemetry, without exposing actual customer records. This matters most in regulated sectors: our work in "
+                },
+                {
+                  "text": "healthcare and medtech",
+                  "href": "/industries/healthcare-medtech"
+                },
+                {
+                  "text": " and other compliance-sensitive industries depends on being able to test thoroughly without ever touching real patient or financial data."
+                }
+              ]
+            ]
+          },
+          {
+            "type": "image",
+            "src": "/resources/blogs/generative-ai-quality-assurance/synthetic-iot-telemetry.webp",
+            "alt": "Synthetic device telemetry and simulated IoT devices exercise mobile and cloud services in staging.",
+            "aspectRatio": "1672 / 941",
+            "caption": "Synthetic telemetry and simulated devices extend validation across staging, mobile and cloud services."
+          },
+          {
+            "type": "text",
+            "title": "Self-Healing Test Scripts and Smarter Maintenance",
+            "paragraphs": [
+              "One of the most labour-intensive parts of test automation has always been maintenance: a UI element moves, a locator changes, and dozens of scripts break overnight. AI-based locators and pattern recognition now let scripts adapt automatically when an element moves, a label changes or a layout updates, rather than failing outright and waiting for a human fix."
+            ]
+          },
+          {
+            "type": "image",
+            "src": "/resources/blogs/generative-ai-quality-assurance/mobile-device-test-maintenance.webp",
+            "alt": "A proposed mobile locator repair preserves original evidence and checks actual smart-light and cloud state.",
+            "aspectRatio": "1672 / 941",
+            "caption": "A proposed locator repair retains original evidence and verifies the actual device and cloud state."
+          },
+          {
+            "type": "text",
+            "title": "Exploratory Testing and Edge Case Discovery",
+            "paragraphs": [
+              "Even experienced testers develop blind spots after enough time on one product. Generative AI can propose alternative input combinations, unusual environmental conditions or rarely-exercised paths through an application, prompts a human reviewer can accept, modify or discard, rather than coverage that silently replaces exploratory judgment."
+            ]
+          },
+          {
+            "type": "text",
+            "title": "Smarter, Risk-Based Regression Testing",
+            "paragraphs": [
+              [
+                {
+                  "text": "Rather than re-running an entire suite on every change, AI can rank regression tests by historical failure rate, code change proximity and business criticality, so the highest-risk areas get the deepest scrutiny first. This is especially valuable inside fast-moving "
+                },
+                {
+                  "text": "CI/CD pipelines",
+                  "href": "/resources/blogs/building-cicd-quality-gates-for-embedded-sdks"
+                },
+                {
+                  "text": ", where feedback speed and coverage depth are constantly in tension."
+                }
+              ]
+            ]
+          },
+          {
+            "type": "text",
+            "title": "AI-Assisted Debugging and Root Cause Analysis",
+            "paragraphs": [
+              "When a test fails, generative AI can scan logs, stack traces and recent commits to propose a likely cause, a timeout, a stale test, an actual regression, before a human spends an hour tracing it manually. This does not replace the final judgment call, but it meaningfully shortens the path to one."
+            ]
+          },
+          {
+            "type": "text",
+            "title": "Continuous Testing Inside CI/CD Pipelines",
+            "paragraphs": [
+              [
+                {
+                  "text": "Generative AI enables real-time testing within DevOps and CI/CD workflows: new builds can be tested automatically on check-in, with fast feedback returned before a developer has moved on to the next task. Our piece on "
+                },
+                {
+                  "text": "building CI/CD quality gates for embedded SDKs",
+                  "href": "/resources/blogs/building-cicd-quality-gates-for-embedded-sdks"
+                },
+                {
+                  "text": " goes deeper into how this works specifically for firmware and embedded build pipelines, where hardware dependencies add an extra layer of complexity most generic CI/CD advice ignores."
+                }
+              ]
+            ]
+          }
         ]
       },
       {
@@ -314,7 +357,18 @@ export const resourceDetails: ResourceDetail[] = [
         "type": "text",
         "title": "A New Challenge: Who Tests the AI That's Writing the Code?",
         "paragraphs": [
-          "This is the part of the conversation most generative-AI-in-QA content skips entirely, and it deserves more attention than it gets. As generative AI increasingly writes the application code itself, not just the tests, QA's scope is expanding to include validating AI-generated code before it ships. Industry data from Tricentis' 2026 QA trend research found that at least 60% of AI-generated code contains issues requiring human intervention before release.",
+          [
+            {
+              "text": "As generative AI increasingly writes application code as well as tests, QA's scope is expanding to include validating AI-generated code before it ships. "
+            },
+            {
+              "text": "Tricentis' 2026 Quality Transformation Report",
+              "href": "https://www.tricentis.com/news/2026-quality-transformation-report"
+            },
+            {
+              "text": " found that 60% of surveyed organizations deploy untested code to production. Its survey also found that 30% cited the volume of AI-generated code as a reason for deploying untested code. These findings describe gaps in testing and release control; they do not measure the percentage of AI-generated code that contains defects."
+            }
+          ],
           "This reframes part of QA's job: testing isn't only about catching bugs introduced by human developers anymore, it is also about catching the specific failure patterns that AI code generation tends to produce, patterns that differ meaningfully from typical human coding mistakes. Edge-case and exploratory testing become more, not less, important in this environment, because an AI model's failure modes are often less predictable than a human developer's."
         ]
       },
@@ -466,11 +520,11 @@ export const resourceDetails: ResourceDetail[] = [
               "text": " industry work. For a closer look at the kind of outcomes this produces in practice, our "
             },
             {
-              "text": "case studies",
-              "href": "/resources/case-studies"
+              "text": "Smart Audio Device Test Automation case study",
+              "href": "/resources/case-studies#smart-audio-device-test-automation"
             },
             {
-              "text": " page covers real engagements in more detail."
+              "text": " covers validation across audio interfaces, wireless connectivity, voice assistants, firmware and APIs."
             }
           ]
         ]
@@ -486,6 +540,14 @@ export const resourceDetails: ResourceDetail[] = [
         "type": "faq",
         "title": "Frequently Asked Questions",
         "items": [
+          {
+            "question": "What is generative AI in software testing?",
+            "answer": "Generative AI in software testing uses large language models to create test cases, test data and scripts from requirements, repair broken scripts automatically and triage failures. Human testers still review the output and make release decisions."
+          },
+          {
+            "question": "Which QA tasks can generative AI automate?",
+            "answer": "Generative AI can assist with test case and script generation, synthetic test data creation, test maintenance, exploratory scenario suggestions, regression prioritization, failure triage and test reporting. Teams should review generated artifacts and proposed repairs, validate results against requirements and product behavior, and retain human control over release decisions."
+          },
           {
             "question": "Is generative AI replacing QA testers?",
             "answer": "No. Generative AI accelerates test creation, data generation and maintenance, but it still depends on human judgment for business context, exploratory testing and final release decisions. QA roles are shifting toward strategy, oversight and AI supervision rather than disappearing."
@@ -537,6 +599,32 @@ export const resourceDetails: ResourceDetail[] = [
           ]
         ]
       }
+    ],
+    "dateModified": "2026-11-17T14:09:01+05:30",
+    "author": {
+      "name": "Rahul Vala",
+      "role": "Founder & CEO, Elevro Solutions",
+      "url": "https://www.linkedin.com/in/rahul-vala-0352993b/",
+      "linkedinUrl": "https://www.linkedin.com/in/rahul-vala-0352993b/",
+      "bio": [
+        "Rahul Vala is the Founder & CEO of Elevro Solutions and an Automation Architect with 14+ years of experience in quality engineering, test automation and CI/CD.",
+        "His work spans embedded systems, IoT, mobile and cloud platforms, with a focus on dependable automation, product validation and release confidence."
+      ]
+    },
+    "showBreadcrumbs": true,
+    "answerSummary": {
+      "definition": "Generative AI in software testing uses large language models to create test cases, test data and scripts from requirements, repair broken scripts automatically and triage failures. Human testers still review the output and make release decisions.",
+      "takeaways": [
+        "Generate candidate test cases and scripts from requirements, then review them against product behavior.",
+        "Create synthetic test data for device, mobile, API and cloud validation without relying on customer records.",
+        "Reduce maintenance and triage effort with proposed script repairs and failure analysis.",
+        "Use human review, traceable evidence and CI/CD quality gates to govern release decisions."
+      ]
+    },
+    "relatedPostSlugs": [
+      "ai-based-testing-for-modern-product-teams",
+      "building-cicd-quality-gates-for-embedded-sdks",
+      "protocol-automation-for-connected-devices"
     ]
   },
   {
@@ -759,6 +847,12 @@ export const resourceDetails: ResourceDetail[] = [
           "Quality gates reduce late surprises, repeated manual effort and unclear release discussions.",
 
           "Developers receive faster feedback, reviewers focus on meaningful risk, and leaders receive consistent evidence instead of relying on confidence by opinion.",
+
+          [
+            { text: "For ways to extend these gates with reviewed test generation, synthetic data and failure triage, read our guide to " },
+            { text: "generative AI in software testing", href: "/resources/blogs/how-generative-ai-is-transforming-software-quality-assurance" },
+            { text: "." },
+          ],
 
           [
             {
@@ -1566,6 +1660,11 @@ export const resourceDetails: ResourceDetail[] = [
             },
           ],
           "The outcome is straightforward: every significant product change should lead to a reasoned validation plan, trustworthy execution and a release decision that the team can explain.",
+          [
+            { text: "For a closer look at creating candidate tests, synthetic data and governed AI workflows, explore " },
+            { text: "how generative AI is transforming software QA", href: "/resources/blogs/how-generative-ai-is-transforming-software-quality-assurance" },
+            { text: "." },
+          ],
         ],
       },
 
