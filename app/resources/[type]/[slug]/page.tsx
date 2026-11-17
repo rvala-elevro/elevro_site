@@ -1095,7 +1095,7 @@ function AuthorBio({ resource }: { resource: ResourceDetail }) {
   return (
     <section id="author" aria-labelledby="author-heading" className="mt-12 scroll-mt-28 rounded-[2rem] border border-white/10 bg-white/[0.045] p-6 md:p-8">
       <h2 id="author-heading" className="text-xl font-medium text-white">About the author</h2>
-      <p className="mt-4 font-medium text-[#d79088]">{resource.author.name}</p>
+      <p className="mt-4 font-medium text-[#d79088]"><a href={resource.author.url} rel="author" className="hover:text-white">{resource.author.name}</a></p>
       <p className="mt-1 text-sm text-cream/75">{resource.author.role}</p>
       {resource.author.bio.map((paragraph) => <p key={paragraph} className="mt-3 text-sm leading-7 text-cream/65">{paragraph}</p>)}
       {resource.author.linkedinUrl && <a href={resource.author.linkedinUrl} rel="me" className="mt-4 inline-block text-sm font-medium text-[#d79088] hover:text-white">Connect on LinkedIn</a>}

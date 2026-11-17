@@ -600,11 +600,12 @@ export const resourceDetails: ResourceDetail[] = [
         ]
       }
     ],
-    "dateModified": "2026-11-17T13:39:29+05:30",
+    "dateModified": "2026-11-17T14:09:01+05:30",
     "author": {
       "name": "Rahul Vala",
       "role": "Founder & CEO, Elevro Solutions",
-      "url": "/resources/blogs/how-generative-ai-is-transforming-software-quality-assurance#author",
+      "url": "https://www.linkedin.com/in/rahul-vala-0352993b/",
+      "linkedinUrl": "https://www.linkedin.com/in/rahul-vala-0352993b/",
       "bio": [
         "Rahul Vala is the Founder & CEO of Elevro Solutions and an Automation Architect with 14+ years of experience in quality engineering, test automation and CI/CD.",
         "His work spans embedded systems, IoT, mobile and cloud platforms, with a focus on dependable automation, product validation and release confidence."

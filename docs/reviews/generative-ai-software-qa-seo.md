@@ -11,7 +11,7 @@ Article: `/resources/blogs/how-generative-ai-is-transforming-software-quality-as
 | # | Recommendation | Implementation |
 | --- | --- | --- |
 | 1 | Shorter search title | Set the exact requested 54-character metadata title: `How Generative AI Is Transforming Software QA \| Elevro`. The full article H1 and URL remain consistent with the existing blog listing. |
-| 2 | Named author and bio | Added Rahul Vala, Founder & CEO, Elevro Solutions, with two experience paragraphs beside the byline and an author box at the end. Rahul was confirmed as the author. **His personal LinkedIn URL is still needed.** The byline and schema currently point to the visible author bio on this article; the renderer supports adding a LinkedIn link and `sameAs` once supplied. |
+| 2 | Named author and bio | Added Rahul Vala, Founder & CEO, Elevro Solutions, with two experience paragraphs beside the byline and an author box at the end. Rahul confirmed the author name and supplied [his personal LinkedIn URL](https://www.linkedin.com/in/rahul-vala-0352993b/). The author name, byline, profile links, author metadata, OG author and Person schema now use that URL, including `sameAs`. |
 | 3 | Source and verify statistics | Linked the original Capgemini report page and Tricentis research announcement. Corrected the Tricentis claim: the report says 60% of surveyed organizations deploy untested code, not that 60% of AI-generated code contains defects. Capgemini's skill ranking is 63% for generative AI and 60% for core QE skills. |
 | 4 | Visible dates, schema and OG dates | Show `9 October 2026` and `Last updated 17 November 2026`. Added `dateModified`, `article:published_time` and `article:modified_time`; existing `datePublished` is retained. |
 | 5 | Definition and key takeaways | Added the exact requested definition immediately below the H1 and four takeaway bullets. |
@@ -35,7 +35,7 @@ Article: `/resources/blogs/how-generative-ai-is-transforming-software-quality-as
 - `pnpm exec tsc --noEmit`: passed.
 - `pnpm build`: passed; all 29 pages generated, including the updated blog and the inbound-link pages.
 - `git diff --check`: passed.
-- Built HTML checks: passed for the exact metadata title, canonical URL, Person author, dates and OG tags, three JSON-LD types, all eight FAQ question/answer pairs, seven nested H3 capability headings, three related posts, three inbound pages, case-study anchor, all seven image assets, hero preload and section lazy loading.
+- Built HTML checks: passed for the exact metadata title, canonical URL, Person author, dates and OG tags, three JSON-LD types, all eight FAQ question/answer pairs, seven nested H3 capability headings, three related posts, three inbound pages, case-study anchor, all seven image assets, hero preload and section lazy loading. Follow-up checks verified Rahul Vala's supplied LinkedIn URL on the byline, author bio, profile links, author metadata, OG author and schema `url`/`sameAs`.
 - Responsive-image check: the generated `srcset` and `sizes` select a 750px candidate for a 390px viewport at DPR 2. The 3840px `src` fallback still appears in Next.js output; browsers supporting `srcset` use the responsive candidate instead. This was checked from generated markup, not a measured browser network trace.
 - Regression checks: existing blogs retain Article schema and their original social-image fallback, and receive no invented author or modification dates.
 - Google Rich Results Test: submitted the generated JSON-LD in code mode. Google returned **“Something went wrong — Log in and try again”**; no successful Rich Results Test result is claimed. A reviewer should rerun the test in a signed-in session or on the branch preview.
@@ -43,8 +43,7 @@ Article: `/resources/blogs/how-generative-ai-is-transforming-software-quality-as
 
 ## Review follow-up
 
-1. Supply Rahul's personal LinkedIn URL to complete recommendation 2.
-2. Rerun Google Rich Results Test and check desktop/mobile layout on the preview before merging.
-3. Keep the confirmed date-only publication value unless the real original publish timestamp becomes available.
+1. Rerun Google Rich Results Test and check desktop/mobile layout on the preview before merging.
+2. Keep the confirmed date-only publication value unless the real original publish timestamp becomes available.
 
 No merge to `main` or production deployment was performed as part of this update.
