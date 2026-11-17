@@ -563,6 +563,11 @@ export const resourcePreview = [
 export const resourceGroups = {
   blogs: [
     {
+      title: "How Generative AI Is Transforming Software Quality Assurance",
+      summary: "From test generation and synthetic IoT data to agentic QA, AI-code validation and governed end-to-end product testing.",
+      icon: BrainCircuit,
+    },
+    {
       title: "AI Based Testing for Modern Product Teams",
       summary:
         "How to connect change impact, cross-product validation and release evidence.",

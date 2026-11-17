@@ -25,6 +25,7 @@ import {
 import {
   getResourceDetail,
   resourceDetails,
+  type ResourceDetail,
   type ResourceSection,
   type RichText,
 } from "@/lib/resource-details";
@@ -71,6 +72,12 @@ export async function generateMetadata({
   }
 
   const canonicalPath = `/resources/${type}/${slug}`;
+  const socialImage = resource.socialImage ?? {
+    url: "/og-image.png",
+    width: 1200,
+    height: 630,
+    alt: resource.title,
+  };
 
   return {
     title: resource.metaTitle,
@@ -86,38 +93,21 @@ export async function generateMetadata({
       description: resource.metaDescription,
       url: `${siteUrl}${canonicalPath}`,
       siteName: "Elevro",
-      images: [
-        {
-          url: "/og-image.png",
-          width: 1200,
-          height: 630,
-          alt: resource.title,
-        },
-      ],
+      images: [socialImage],
     },
 
     twitter: {
       card: "summary_large_image",
       title: resource.metaTitle,
       description: resource.metaDescription,
-      images: ["/og-image.png"],
+      images: [socialImage.url],
     },
   };
 }
 function ResourceStructuredData({
   resource,
 }: {
-  resource: {
-    title: string;
-    excerpt: string;
-    slug: string;
-    type: string;
-    publishedAt: string;
-    faqs?: {
-      question: string;
-      answer: string;
-    }[];
-  };
+  resource: ResourceDetail;
 }) {
   const articleUrl = `https://www.elevro.com/resources/${resource.type}/${resource.slug}`;
 
@@ -128,6 +118,10 @@ function ResourceStructuredData({
     description: resource.excerpt,
     url: articleUrl,
     mainEntityOfPage: articleUrl,
+    ...(resource.socialImage && {
+      image: new URL(resource.socialImage.url, siteUrl).href,
+    }),
+    ...(resource.datePublished && { datePublished: resource.datePublished }),
     publisher: {
       "@type": "Organization",
       name: "Elevro",
@@ -278,15 +272,7 @@ export default async function ResourceDetailPage({ params }: PageProps) {
 function ResourceHero({
   resource,
 }: {
-  resource: {
-    type: string;
-    category: string;
-    title: string;
-    excerpt: string;
-    publishedAt: string;
-    readTime: string;
-    heroImage?: string;
-  };
+  resource: ResourceDetail;
 }) {
   return (
     <section className="hero-soft-bg relative overflow-hidden px-4 pb-20 pt-32 md:px-8 md:pb-28 md:pt-40">
@@ -328,10 +314,13 @@ function ResourceHero({
         </div>
         {resource.heroImage && (
           <div className="surface-panel mt-12 overflow-hidden rounded-[2rem] border border-white/10 p-2 shadow-soft md:p-3">
-            <div className="relative aspect-[2/1] overflow-hidden rounded-[1.6rem]">
+            <div
+              className="relative aspect-[2/1] overflow-hidden rounded-[1.6rem]"
+              style={{ aspectRatio: resource.heroImageAspectRatio }}
+            >
               <Image
                 src={resource.heroImage}
-                alt={resource.title}
+                alt={resource.heroImageAlt ?? resource.title}
                 fill
                 priority
                 className="object-cover"
@@ -804,7 +793,10 @@ function RenderSection({
       return (
         <figure className="my-12">
           <div className="surface-panel overflow-hidden rounded-[2rem] border border-white/10 p-2 shadow-soft md:p-3">
-            <div className="relative aspect-[16/8] overflow-hidden rounded-[1.6rem] bg-[#17091e]">
+            <div
+              className="relative aspect-[16/8] overflow-hidden rounded-[1.6rem] bg-[#17091e]"
+              style={{ aspectRatio: section.aspectRatio }}
+            >
               <Image
                 src={section.src}
                 alt={section.alt}
