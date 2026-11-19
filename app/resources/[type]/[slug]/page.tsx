@@ -924,6 +924,53 @@ function RenderSection({
           <StatusGrid items={section.items} />
         </ArticleSection>
       );
+    case "table":
+      return (
+        <ArticleSection label={label} title={section.title} headingLevel={headingLevel}>
+          <div
+            role="region"
+            aria-label={section.caption}
+            tabIndex={0}
+            className="overflow-x-auto rounded-2xl border border-white/10 bg-white/[0.045] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d79088]"
+          >
+            <table className="w-full min-w-[36rem] border-collapse text-left text-sm leading-7 md:text-base">
+              <caption className="sr-only">{section.caption}</caption>
+              <thead className="bg-white/[0.06] text-white/90">
+                <tr>
+                  {section.headers.map((header, headerIndex) => (
+                    <th
+                      key={headerIndex}
+                      scope="col"
+                      className="px-5 py-4 font-medium md:px-6"
+                    >
+                      {header}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {section.rows.map((row, rowIndex) => (
+                  <tr key={rowIndex} className="border-t border-white/10 even:bg-white/[0.025]">
+                    {row.map((cell, cellIndex) => cellIndex === 0 ? (
+                      <th
+                        key={cellIndex}
+                        scope="row"
+                        className="w-48 px-5 py-4 align-top font-medium text-white/85 md:px-6"
+                      >
+                        <RichContent content={cell} />
+                      </th>
+                    ) : (
+                      <td key={cellIndex} className="px-5 py-4 align-top text-cream/65 md:px-6">
+                        <RichContent content={cell} />
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </ArticleSection>
+      );
     case "image":
       return (
         <figure className="my-12">
@@ -942,9 +989,23 @@ function RenderSection({
             </div>
           </div>
 
-          {section.caption && (
+          {(section.caption || section.fullSizeSrc) && (
             <figcaption className="mt-4 text-center text-sm italic leading-6 text-cream/45">
               {section.caption}
+              {section.fullSizeSrc && (
+                <div className={section.caption ? "mt-2" : undefined}>
+                  <a
+                    href={section.fullSizeSrc}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`View diagram at full size: ${section.alt} (opens in a new tab)`}
+                    className="inline-flex items-center gap-2 rounded-md px-2 py-2 font-medium not-italic text-[#d79088] underline decoration-[#d79088]/30 underline-offset-4 transition hover:text-white hover:decoration-white/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d79088]"
+                  >
+                    View diagram at full size
+                    <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                  </a>
+                </div>
+              )}
             </figcaption>
           )}
         </figure>

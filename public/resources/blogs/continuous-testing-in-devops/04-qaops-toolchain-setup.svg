@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="960" viewBox="0 0 1280 960" role="img" aria-label="A practical QAOps toolchain">
+<title>A practical QAOps toolchain</title>
+<defs>
+<marker id="arrow-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#39D2E8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#48D9AE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#B6C8D8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#FFCB77" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#FF8E9E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#8CAEFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect x="0" y="0" width="1280" height="960" rx="0" fill="#071523" stroke="none" stroke-width="1.5"/>
+<text x="48" y="48" fill="#39D2E8" font-family="DejaVu Sans" font-size="17" font-weight="600" text-anchor="start" letter-spacing="2.6">TOOLS AND SHARED OWNERSHIP</text>
+<text x="48" y="102" fill="#F3F8FC" font-family="DejaVu Sans" font-size="37" font-weight="700" text-anchor="start" letter-spacing="0">A practical QAOps toolchain</text>
+<text x="48" y="140" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Illustrative setup · Choose a toolchain that fits the product and its risks</text>
+<text x="48" y="935" fill="#B6C8D8" font-family="DejaVu Sans" font-size="16" font-weight="700" text-anchor="start" letter-spacing="2">ELEVRO</text>
+<text x="1232" y="935" fill="#B6C8D8" font-family="DejaVu Sans" font-size="14" font-weight="400" text-anchor="end" letter-spacing="1.5">CONTINUOUS TESTING IN DEVOPS</text>
+<path d="M 410 237 L 550 237" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M 880 285 V 320 H 235 V 355" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M 880 320 H 640 V 355" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M 880 320 H 1045 V 355" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M 880 410 L 805 410" fill="none" stroke="#B6C8D8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-muted)"/>
+<path d="M 640 465 V 510 H 235 V 555" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M 640 510 V 555" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M 640 510 H 1045 V 555" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M 70 410 H 40 V 792 H 230" fill="none" stroke="#FFCB77" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7" marker-end="url(#arrow-amber)"/>
+<path d="M 235 655 V 699 H 490 V 745" fill="none" stroke="#FFCB77" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7" marker-end="url(#arrow-amber)"/>
+<path d="M 640 655 V 699" fill="none" stroke="#FFCB77" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"/>
+<path d="M 1045 655 V 699 H 490" fill="none" stroke="#FFCB77" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"/>
+<path d="M 750 792 L 850 792" fill="none" stroke="#48D9AE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<path d="M 1210 792 H 1240 V 170 H 240 V 190" fill="none" stroke="#B6C8D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 7" marker-end="url(#arrow-muted)"/>
+<text x="810" y="190" fill="#B6C8D8" font-family="DejaVu Sans" font-size="20" font-weight="400" text-anchor="middle" letter-spacing="0">Feedback improves future changes</text>
+<rect x="70" y="190" width="340" height="95" rx="16" fill="#10263B" stroke="#39D2E8" stroke-width="1.5"/>
+<text x="92" y="227" fill="#F3F8FC" font-family="DejaVu Sans" font-size="25" font-weight="700" text-anchor="start" letter-spacing="0">Version control</text>
+<text x="92" y="262" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Code and test changes</text>
+<rect x="550" y="215" width="660" height="70" rx="16" fill="#10263B" stroke="#39D2E8" stroke-width="1.5"/>
+<text x="572" y="252" fill="#F3F8FC" font-family="DejaVu Sans" font-size="27" font-weight="700" text-anchor="start" letter-spacing="0">CI/CD orchestration</text>
+<rect x="70" y="355" width="330" height="110" rx="16" fill="#10263B" stroke="#49657D" stroke-width="1.5"/>
+<text x="92" y="392" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">Build + code checks</text>
+<text x="92" y="427" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Compile, lint, unit tests</text>
+<rect x="475" y="355" width="330" height="110" rx="16" fill="#10263B" stroke="#49657D" stroke-width="1.5"/>
+<text x="497" y="392" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">Test runners</text>
+<text x="497" y="427" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Local or remote agents</text>
+<rect x="880" y="355" width="330" height="110" rx="16" fill="#10263B" stroke="#49657D" stroke-width="1.5"/>
+<text x="902" y="392" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">Environment setup</text>
+<text x="902" y="427" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Repeatable infrastructure</text>
+<rect x="70" y="555" width="330" height="100" rx="16" fill="#10263B" stroke="#39D2E8" stroke-width="1.5"/>
+<text x="92" y="592" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">Web + API tests</text>
+<text x="92" y="627" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Services and user flows</text>
+<rect x="475" y="555" width="330" height="100" rx="16" fill="#10263B" stroke="#39D2E8" stroke-width="1.5"/>
+<text x="497" y="592" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">Mobile tests</text>
+<text x="497" y="627" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Apps and interactions</text>
+<rect x="880" y="555" width="330" height="100" rx="16" fill="#10263B" stroke="#39D2E8" stroke-width="1.5"/>
+<text x="902" y="592" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">Embedded tests</text>
+<text x="902" y="627" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Local device lab access</text>
+<rect x="230" y="745" width="520" height="95" rx="16" fill="#10263B" stroke="#FFCB77" stroke-width="1.5"/>
+<text x="252" y="782" fill="#F3F8FC" font-family="DejaVu Sans" font-size="26" font-weight="700" text-anchor="start" letter-spacing="0">Shared reports + evidence</text>
+<text x="252" y="817" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Results, logs and build identity</text>
+<rect x="850" y="745" width="360" height="95" rx="16" fill="#10263B" stroke="#48D9AE" stroke-width="1.5"/>
+<text x="872" y="782" fill="#F3F8FC" font-family="DejaVu Sans" font-size="26" font-weight="700" text-anchor="start" letter-spacing="0">Quality gates</text>
+<text x="872" y="817" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Stage and release decisions</text>
+<text x="640" y="892" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="600" text-anchor="middle" letter-spacing="0">Development · Quality engineering · DevOps</text>
+</svg>

@@ -570,6 +570,12 @@ export const resourcePreview = [
 export const resourceGroups = {
   blogs: [
     {
+      title: "Continuous Testing in DevOps: A Practical Guide for Faster Releases",
+      summary:
+        "A practical guide to CI/CD workflows, QAOps, quality gates, and automated validation across software, embedded, IoT, and cloud-connected products.",
+      icon: TestTubeDiagonal,
+    },
+    {
       title: "How Generative AI Is Transforming Software Quality Assurance",
       summary: "From test generation and synthetic IoT data to agentic QA, AI-code validation and governed end-to-end product testing.",
       icon: BrainCircuit,

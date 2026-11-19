@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="840" viewBox="0 0 1280 840" role="img" aria-label="Continuous testing across the pipeline">
+<title>Continuous testing across the pipeline</title>
+<defs>
+<marker id="arrow-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#39D2E8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#48D9AE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#B6C8D8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#FFCB77" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#FF8E9E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#8CAEFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect x="0" y="0" width="1280" height="840" rx="0" fill="#071523" stroke="none" stroke-width="1.5"/>
+<text x="48" y="48" fill="#39D2E8" font-family="DejaVu Sans" font-size="17" font-weight="600" text-anchor="start" letter-spacing="2.6">DELIVERY WORKFLOW</text>
+<text x="48" y="102" fill="#F3F8FC" font-family="DejaVu Sans" font-size="37" font-weight="700" text-anchor="start" letter-spacing="0">Continuous testing across the pipeline</text>
+<text x="48" y="140" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Illustrative sequence • Required checks pass before progression</text>
+<text x="48" y="815" fill="#B6C8D8" font-family="DejaVu Sans" font-size="16" font-weight="700" text-anchor="start" letter-spacing="2">ELEVRO</text>
+<text x="1232" y="815" fill="#B6C8D8" font-family="DejaVu Sans" font-size="14" font-weight="400" text-anchor="end" letter-spacing="1.5">CONTINUOUS TESTING IN DEVOPS</text>
+<path d="M 320 285 L 356 285" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M 622 285 L 658 285" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M 924 285 L 960 285" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M 1093 385 L 1093 470" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M 960 565 L 924 565" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M 658 565 L 622 565" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M 356 565 H 187 V 385" fill="none" stroke="#48D9AE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<path d="M 54 746 H 20 V 285 H 54" fill="none" stroke="#FF8E9E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 6" marker-end="url(#arrow-red)"/>
+<rect x="54" y="195" width="266" height="190" rx="18" fill="#10263B" stroke="#49657D" stroke-width="1.5"/>
+<circle cx="85" cy="225" r="15" fill="#071523" stroke="#39D2E8" stroke-width="1.5"/>
+<text x="85" y="231" fill="#39D2E8" font-family="DejaVu Sans" font-size="17" font-weight="700" text-anchor="middle" letter-spacing="0">1</text>
+<text x="74" y="273" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">Commit or</text>
+<text x="74" y="303" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">pull request</text>
+<text x="74" y="340" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Code change triggers</text>
+<text x="74" y="368" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">CI validation</text>
+<rect x="356" y="195" width="266" height="190" rx="18" fill="#10263B" stroke="#49657D" stroke-width="1.5"/>
+<circle cx="387" cy="225" r="15" fill="#071523" stroke="#39D2E8" stroke-width="1.5"/>
+<text x="387" y="231" fill="#39D2E8" font-family="DejaVu Sans" font-size="17" font-weight="700" text-anchor="middle" letter-spacing="0">2</text>
+<text x="376" y="273" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">Build and</text>
+<text x="376" y="303" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">initial checks</text>
+<text x="376" y="340" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Unit · static · security</text>
+<text x="376" y="368" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Dependency checks</text>
+<rect x="658" y="195" width="266" height="190" rx="18" fill="#10263B" stroke="#49657D" stroke-width="1.5"/>
+<circle cx="689" cy="225" r="15" fill="#071523" stroke="#39D2E8" stroke-width="1.5"/>
+<text x="689" y="231" fill="#39D2E8" font-family="DejaVu Sans" font-size="17" font-weight="700" text-anchor="middle" letter-spacing="0">3</text>
+<text x="678" y="273" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">Functional and</text>
+<text x="678" y="303" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">integration tests</text>
+<text x="678" y="340" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">APIs · services</text>
+<text x="678" y="368" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Product workflows</text>
+<rect x="960" y="195" width="266" height="190" rx="18" fill="#10263B" stroke="#49657D" stroke-width="1.5"/>
+<circle cx="991" cy="225" r="15" fill="#071523" stroke="#39D2E8" stroke-width="1.5"/>
+<text x="991" y="231" fill="#39D2E8" font-family="DejaVu Sans" font-size="17" font-weight="700" text-anchor="middle" letter-spacing="0">4</text>
+<text x="980" y="273" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">Regression and</text>
+<text x="980" y="303" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">compatibility</text>
+<text x="980" y="340" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Existing behavior</text>
+<text x="980" y="368" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Supported versions</text>
+<rect x="960" y="470" width="266" height="190" rx="18" fill="#10263B" stroke="#49657D" stroke-width="1.5"/>
+<circle cx="991" cy="500" r="15" fill="#071523" stroke="#39D2E8" stroke-width="1.5"/>
+<text x="991" y="506" fill="#39D2E8" font-family="DejaVu Sans" font-size="17" font-weight="700" text-anchor="middle" letter-spacing="0">5</text>
+<text x="980" y="548" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">Performance and</text>
+<text x="980" y="578" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">security</text>
+<text x="980" y="615" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Load · resource use</text>
+<text x="980" y="643" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Security validation</text>
+<rect x="658" y="470" width="266" height="190" rx="18" fill="#10263B" stroke="#49657D" stroke-width="1.5"/>
+<circle cx="689" cy="500" r="15" fill="#071523" stroke="#48D9AE" stroke-width="1.5"/>
+<text x="689" y="506" fill="#48D9AE" font-family="DejaVu Sans" font-size="17" font-weight="700" text-anchor="middle" letter-spacing="0">6</text>
+<text x="678" y="548" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">Release</text>
+<text x="678" y="578" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">readiness</text>
+<text x="678" y="615" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Evidence and gates</text>
+<text x="678" y="643" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Required approval</text>
+<rect x="356" y="470" width="266" height="190" rx="18" fill="#10263B" stroke="#49657D" stroke-width="1.5"/>
+<circle cx="387" cy="500" r="15" fill="#071523" stroke="#48D9AE" stroke-width="1.5"/>
+<text x="387" y="506" fill="#48D9AE" font-family="DejaVu Sans" font-size="17" font-weight="700" text-anchor="middle" letter-spacing="0">7</text>
+<text x="376" y="548" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">Deploy and</text>
+<text x="376" y="578" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="start" letter-spacing="0">monitor</text>
+<text x="376" y="615" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Health · synthetic</text>
+<text x="376" y="643" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Operational signals</text>
+<text x="187" y="616" fill="#48D9AE" font-family="DejaVu Sans" font-size="21" font-weight="600" text-anchor="middle" letter-spacing="0">Feedback improves</text>
+<text x="187" y="647" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="middle" letter-spacing="0">tests and changes</text>
+<rect x="54" y="711" width="1178" height="68" rx="14" fill="#281E2B" stroke="#6E414E" stroke-width="1.5"/>
+<text x="79" y="753" fill="#FF8E9E" font-family="DejaVu Sans" font-size="23" font-weight="700" text-anchor="start" letter-spacing="0">Critical failure at any stage</text>
+<path d="M 445 746 L 490 746" fill="none" stroke="#FF8E9E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-red)"/>
+<text x="515" y="753" fill="#F3F8FC" font-family="DejaVu Sans" font-size="23" font-weight="500" text-anchor="start" letter-spacing="0">Stop • Investigate • Fix • Rerun validation</text>
+</svg>
