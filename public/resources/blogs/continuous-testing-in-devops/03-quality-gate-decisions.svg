@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="840" viewBox="0 0 1280 840" role="img" aria-label="Quality gates guide release decisions">
+<title>Quality gates guide release decisions</title>
+<defs>
+<marker id="arrow-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#39D2E8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#48D9AE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#B6C8D8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#FFCB77" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#FF8E9E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#8CAEFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect x="0" y="0" width="1280" height="840" rx="0" fill="#071523" stroke="none" stroke-width="1.5"/>
+<text x="48" y="48" fill="#39D2E8" font-family="DejaVu Sans" font-size="17" font-weight="600" text-anchor="start" letter-spacing="2.6">BEST PRACTICES</text>
+<text x="48" y="102" fill="#F3F8FC" font-family="DejaVu Sans" font-size="37" font-weight="700" text-anchor="start" letter-spacing="0">Quality gates guide release decisions</text>
+<text x="48" y="140" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Critical failures stop progress. Exceptions require recorded owner approval.</text>
+<text x="48" y="815" fill="#B6C8D8" font-family="DejaVu Sans" font-size="16" font-weight="700" text-anchor="start" letter-spacing="2">ELEVRO</text>
+<text x="1232" y="815" fill="#B6C8D8" font-family="DejaVu Sans" font-size="14" font-weight="400" text-anchor="end" letter-spacing="1.5">CONTINUOUS TESTING IN DEVOPS</text>
+<path d="M 640 286 L 640 320 L 218 320 L 218 350" fill="none" stroke="#48D9AE" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<path d="M 640 286 L 640 350" fill="none" stroke="#FFCB77" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-amber)"/>
+<path d="M 640 320 L 1062 320 L 1062 350" fill="none" stroke="#FF8E9E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-red)"/>
+<path d="M 218 480 L 218 650" fill="none" stroke="#48D9AE" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<path d="M 1062 480 L 1062 650" fill="none" stroke="#FF8E9E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-red)"/>
+<path d="M 640 480 L 640 560 L 218 560" fill="none" stroke="#48D9AE" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<path d="M 640 560 L 1062 560" fill="none" stroke="#FF8E9E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-red)"/>
+<path d="M 1062 750 L 1062 775 L 1252 775 L 1252 235 L 940 235" fill="none" stroke="#39D2E8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 7" marker-end="url(#arrow-cyan)"/>
+<rect x="340" y="180" width="600" height="106" rx="18" fill="#10263B" stroke="#39D2E8" stroke-width="2"/>
+<text x="640" y="219" fill="#F3F8FC" font-family="DejaVu Sans" font-size="27" font-weight="700" text-anchor="middle" letter-spacing="0">Evaluate agreed criteria</text>
+<text x="640" y="255" fill="#B6C8D8" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="middle" letter-spacing="0">Build results and test evidence</text>
+<rect x="48" y="350" width="340" height="130" rx="18" fill="#10263B" stroke="#48D9AE" stroke-width="2"/>
+<text x="72" y="388" fill="#48D9AE" font-family="DejaVu Sans" font-size="27" font-weight="700" text-anchor="start" letter-spacing="0">PASS</text>
+<text x="72" y="423" fill="#F3F8FC" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Required conditions</text>
+<text x="72" y="454" fill="#F3F8FC" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">are satisfied</text>
+<rect x="470" y="350" width="340" height="130" rx="18" fill="#10263B" stroke="#FFCB77" stroke-width="2"/>
+<text x="494" y="388" fill="#FFCB77" font-family="DejaVu Sans" font-size="27" font-weight="700" text-anchor="start" letter-spacing="0">REVIEW</text>
+<text x="494" y="423" fill="#F3F8FC" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Owner assesses a</text>
+<text x="494" y="454" fill="#F3F8FC" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">documented exception</text>
+<rect x="892" y="350" width="340" height="130" rx="18" fill="#10263B" stroke="#FF8E9E" stroke-width="2"/>
+<text x="916" y="388" fill="#FF8E9E" font-family="DejaVu Sans" font-size="27" font-weight="700" text-anchor="start" letter-spacing="0">STOP</text>
+<text x="916" y="423" fill="#F3F8FC" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Critical failure or</text>
+<text x="916" y="454" fill="#F3F8FC" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">unmet mandatory gate</text>
+<rect x="277" y="522" width="307" height="30" rx="0" fill="#071523" stroke="none" stroke-width="1.5"/>
+<text x="430" y="544" fill="#48D9AE" font-family="DejaVu Sans" font-size="21" font-weight="600" text-anchor="middle" letter-spacing="0">Approved within policy</text>
+<rect x="726" y="522" width="231" height="30" rx="0" fill="#071523" stroke="none" stroke-width="1.5"/>
+<text x="841" y="544" fill="#FF8E9E" font-family="DejaVu Sans" font-size="21" font-weight="600" text-anchor="middle" letter-spacing="0">Not approved</text>
+<text x="1094" y="220" fill="#39D2E8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="middle" letter-spacing="0">New evidence</text>
+<rect x="48" y="650" width="340" height="100" rx="18" fill="#10263B" stroke="#48D9AE" stroke-width="2"/>
+<text x="218" y="690" fill="#F3F8FC" font-family="DejaVu Sans" font-size="24" font-weight="700" text-anchor="middle" letter-spacing="0">Progress to next stage</text>
+<text x="218" y="722" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="middle" letter-spacing="0">Continue validation</text>
+<rect x="892" y="650" width="340" height="100" rx="18" fill="#10263B" stroke="#FF8E9E" stroke-width="2"/>
+<text x="1062" y="690" fill="#F3F8FC" font-family="DejaVu Sans" font-size="26" font-weight="700" text-anchor="middle" letter-spacing="0">Resolve and rerun</text>
+<text x="1062" y="722" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="middle" letter-spacing="0">Collect new test evidence</text>
+</svg>

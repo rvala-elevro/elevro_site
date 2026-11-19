@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="960" viewBox="0 0 1280 960" role="img" aria-label="A connected product test setup">
+<title>A connected product test setup</title>
+<defs>
+<marker id="arrow-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#39D2E8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#48D9AE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#B6C8D8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#FFCB77" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#FF8E9E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#8CAEFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect x="0" y="0" width="1280" height="960" rx="0" fill="#071523" stroke="none" stroke-width="1.5"/>
+<text x="48" y="48" fill="#39D2E8" font-family="DejaVu Sans" font-size="17" font-weight="600" text-anchor="start" letter-spacing="2.6">EMBEDDED AND IOT VALIDATION</text>
+<text x="48" y="102" fill="#F3F8FC" font-family="DejaVu Sans" font-size="37" font-weight="700" text-anchor="start" letter-spacing="0">A connected product test setup</text>
+<text x="48" y="140" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Illustrative architecture · Validate firmware, mobile, connectivity and cloud together</text>
+<text x="48" y="935" fill="#B6C8D8" font-family="DejaVu Sans" font-size="16" font-weight="700" text-anchor="start" letter-spacing="2">ELEVRO</text>
+<text x="1232" y="935" fill="#B6C8D8" font-family="DejaVu Sans" font-size="14" font-weight="400" text-anchor="end" letter-spacing="1.5">CONTINUOUS TESTING IN DEVOPS</text>
+<rect x="50" y="330" width="860" height="415" rx="20" fill="#0C2033" stroke="#49657D" stroke-width="1.5" stroke-dasharray="8 7"/>
+<text x="680" y="359" fill="#B6C8D8" font-family="DejaVu Sans" font-size="17" font-weight="700" text-anchor="middle" letter-spacing="2">LOCAL TEST LAB</text>
+<path d="M 360 232 L 410 232" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M 565 275 V 307 H 230 V 380" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M 230 490 L 230 610" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)" marker-start="url(#arrow-cyan)"/>
+<path d="M 380 435 L 560 435" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M 380 610 L 560 490" fill="none" stroke="#48D9AE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)" marker-start="url(#arrow-teal)"/>
+<path d="M 380 665 L 560 665" fill="none" stroke="#48D9AE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)" marker-start="url(#arrow-teal)"/>
+<path d="M 710 490 L 710 610" fill="none" stroke="#48D9AE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)" marker-start="url(#arrow-teal)"/>
+<path d="M 860 665 L 980 665" fill="none" stroke="#48D9AE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)" marker-start="url(#arrow-teal)"/>
+<path d="M 860 435 H 1100 V 610" fill="none" stroke="#48D9AE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)" marker-start="url(#arrow-teal)"/>
+<path d="M 80 435 H 30 V 827 H 80" fill="none" stroke="#FFCB77" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7" marker-end="url(#arrow-amber)"/>
+<path d="M 730 827 L 880 827" fill="none" stroke="#FFCB77" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7" marker-end="url(#arrow-amber)"/>
+<rect x="70" y="190" width="290" height="85" rx="16" fill="#10263B" stroke="#39D2E8" stroke-width="1.5"/>
+<text x="92" y="227" fill="#F3F8FC" font-family="DejaVu Sans" font-size="25" font-weight="700" text-anchor="start" letter-spacing="0">Code repository</text>
+<rect x="410" y="190" width="310" height="85" rx="16" fill="#10263B" stroke="#39D2E8" stroke-width="1.5"/>
+<text x="432" y="227" fill="#F3F8FC" font-family="DejaVu Sans" font-size="27" font-weight="700" text-anchor="start" letter-spacing="0">CI pipeline</text>
+<rect x="80" y="380" width="300" height="110" rx="16" fill="#10263B" stroke="#39D2E8" stroke-width="1.5"/>
+<text x="102" y="417" fill="#F3F8FC" font-family="DejaVu Sans" font-size="25" font-weight="700" text-anchor="start" letter-spacing="0">Lab test agent</text>
+<text x="102" y="452" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Runs automation</text>
+<rect x="560" y="380" width="300" height="110" rx="16" fill="#10263B" stroke="#39D2E8" stroke-width="1.5"/>
+<text x="582" y="417" fill="#F3F8FC" font-family="DejaVu Sans" font-size="23" font-weight="700" text-anchor="start" letter-spacing="0">Mobile test device</text>
+<text x="582" y="452" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Automated app flows</text>
+<rect x="80" y="610" width="300" height="110" rx="16" fill="#10263B" stroke="#48D9AE" stroke-width="1.5"/>
+<text x="102" y="647" fill="#F3F8FC" font-family="DejaVu Sans" font-size="23" font-weight="700" text-anchor="start" letter-spacing="0">Device under test</text>
+<text x="102" y="682" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Firmware + interfaces</text>
+<rect x="560" y="610" width="300" height="110" rx="16" fill="#10263B" stroke="#48D9AE" stroke-width="1.5"/>
+<text x="582" y="647" fill="#F3F8FC" font-family="DejaVu Sans" font-size="23" font-weight="700" text-anchor="start" letter-spacing="0">Wi-Fi access point</text>
+<text x="582" y="682" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Controlled test network</text>
+<rect x="980" y="610" width="240" height="110" rx="16" fill="#10263B" stroke="#48D9AE" stroke-width="1.5"/>
+<text x="1002" y="647" fill="#F3F8FC" font-family="DejaVu Sans" font-size="23" font-weight="700" text-anchor="start" letter-spacing="0">Cloud services</text>
+<text x="1002" y="682" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">APIs + data</text>
+<rect x="80" y="780" width="650" height="95" rx="16" fill="#10263B" stroke="#FFCB77" stroke-width="1.5"/>
+<text x="102" y="817" fill="#F3F8FC" font-family="DejaVu Sans" font-size="26" font-weight="700" text-anchor="start" letter-spacing="0">Build identity, logs + test results</text>
+<text x="102" y="852" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Traceable evidence from automated validation</text>
+<rect x="880" y="780" width="330" height="95" rx="16" fill="#10263B" stroke="#48D9AE" stroke-width="1.5"/>
+<text x="902" y="817" fill="#F3F8FC" font-family="DejaVu Sans" font-size="23" font-weight="700" text-anchor="start" letter-spacing="0">Release quality gates</text>
+<text x="902" y="852" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Review agreed criteria</text>
+<text x="260" y="548" fill="#39D2E8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Flash + logs</text>
+<text x="470" y="416" fill="#39D2E8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="middle" letter-spacing="0">App tests</text>
+<rect x="426" y="537" width="68" height="34" rx="6" fill="#0C2033" stroke="none" stroke-width="1.5"/>
+<text x="460" y="562" fill="#48D9AE" font-family="DejaVu Sans" font-size="22" font-weight="600" text-anchor="middle" letter-spacing="0">BLE</text>
+<text x="470" y="644" fill="#48D9AE" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="middle" letter-spacing="0">Wi-Fi</text>
+<text x="737" y="555" fill="#48D9AE" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Wi-Fi</text>
+<text x="922" y="644" fill="#48D9AE" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="middle" letter-spacing="0">IP link</text>
+<text x="988" y="415" fill="#48D9AE" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="middle" letter-spacing="0">App APIs</text>
+<path d="M 80 907 L 127 907" fill="none" stroke="#39D2E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<text x="142" y="914" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Automation</text>
+<path d="M 438 907 L 485 907" fill="none" stroke="#48D9AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)" marker-start="url(#arrow-teal)"/>
+<text x="500" y="914" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Product communication</text>
+<path d="M 933 907 L 980 907" fill="none" stroke="#FFCB77" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 6" marker-end="url(#arrow-amber)"/>
+<text x="995" y="914" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Test evidence</text>
+</svg>

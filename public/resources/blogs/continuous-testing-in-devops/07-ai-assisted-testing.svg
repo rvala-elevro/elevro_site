@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="840" viewBox="0 0 1280 840" role="img" aria-label="AI assistance with engineering oversight">
+<title>AI assistance with engineering oversight</title>
+<defs>
+<marker id="arrow-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#39D2E8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#48D9AE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#B6C8D8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#FFCB77" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#FF8E9E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#8CAEFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect x="0" y="0" width="1280" height="840" rx="0" fill="#071523" stroke="none" stroke-width="1.5"/>
+<text x="48" y="48" fill="#39D2E8" font-family="DejaVu Sans" font-size="17" font-weight="600" text-anchor="start" letter-spacing="2.6">AI IN CONTINUOUS TESTING</text>
+<text x="48" y="102" fill="#F3F8FC" font-family="DejaVu Sans" font-size="37" font-weight="700" text-anchor="start" letter-spacing="0">AI assistance with engineering oversight</text>
+<text x="48" y="140" fill="#B6C8D8" font-family="DejaVu Sans" font-size="21" font-weight="400" text-anchor="start" letter-spacing="0">Review suggestions, execute checks, and use observed results to guide decisions.</text>
+<text x="48" y="815" fill="#B6C8D8" font-family="DejaVu Sans" font-size="16" font-weight="700" text-anchor="start" letter-spacing="2">ELEVRO</text>
+<text x="1232" y="815" fill="#B6C8D8" font-family="DejaVu Sans" font-size="14" font-weight="400" text-anchor="end" letter-spacing="1.5">CONTINUOUS TESTING IN DEVOPS</text>
+<path d="M 398 300 L 454 300" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M 812 300 L 868 300" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M 1054 408 L 1054 484" fill="none" stroke="#39D2E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M 876 571 L 820 571" fill="none" stroke="#48D9AE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<path d="M 462 571 L 406 571" fill="none" stroke="#48D9AE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<path d="M 637 490 L 637 416" fill="none" stroke="#8CAEFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 6" marker-end="url(#arrow-blue)"/>
+<text x="651" y="455" fill="#8CAEFF" font-family="DejaVu Sans" font-size="19" font-weight="400" text-anchor="start" letter-spacing="0">Feedback</text>
+<rect x="48" y="200" width="350" height="208" rx="18" fill="#10263B" stroke="#49657D" stroke-width="1.5"/>
+<rect x="68" y="222" width="5" height="26" rx="2" fill="#39D2E8" stroke="none" stroke-width="1.5"/>
+<text x="87" y="244" fill="#F3F8FC" font-family="DejaVu Sans" font-size="25" font-weight="700" text-anchor="start" letter-spacing="0">Engineering context</text>
+<text x="72" y="288" fill="#B6C8D8" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Requirements and flows</text>
+<text x="72" y="320" fill="#B6C8D8" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Code and dependencies</text>
+<text x="72" y="352" fill="#B6C8D8" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Past failures and logs</text>
+<rect x="462" y="200" width="350" height="208" rx="18" fill="#10263B" stroke="#49657D" stroke-width="1.5"/>
+<rect x="482" y="222" width="5" height="26" rx="2" fill="#8CAEFF" stroke="none" stroke-width="1.5"/>
+<text x="501" y="244" fill="#F3F8FC" font-family="DejaVu Sans" font-size="25" font-weight="700" text-anchor="start" letter-spacing="0">AI-assisted analysis</text>
+<text x="486" y="288" fill="#B6C8D8" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Suggested test scenarios</text>
+<text x="486" y="320" fill="#B6C8D8" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Risk-based test priorities</text>
+<text x="486" y="352" fill="#B6C8D8" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Possible causes and fixes</text>
+<text x="486" y="384" fill="#B6C8D8" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Maintenance suggestions</text>
+<rect x="876" y="200" width="356" height="208" rx="18" fill="#10263B" stroke="#49657D" stroke-width="1.5"/>
+<rect x="896" y="222" width="5" height="26" rx="2" fill="#FFCB77" stroke="none" stroke-width="1.5"/>
+<text x="915" y="244" fill="#F3F8FC" font-family="DejaVu Sans" font-size="25" font-weight="700" text-anchor="start" letter-spacing="0">Engineer review</text>
+<text x="900" y="288" fill="#B6C8D8" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Check proposed scenarios</text>
+<text x="900" y="320" fill="#B6C8D8" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Validate proposed changes</text>
+<text x="900" y="352" fill="#B6C8D8" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Preserve required coverage</text>
+<rect x="876" y="490" width="356" height="165" rx="18" fill="#10263B" stroke="#49657D" stroke-width="1.5"/>
+<rect x="896" y="512" width="5" height="26" rx="2" fill="#48D9AE" stroke="none" stroke-width="1.5"/>
+<text x="915" y="534" fill="#F3F8FC" font-family="DejaVu Sans" font-size="25" font-weight="700" text-anchor="start" letter-spacing="0">Execute tests</text>
+<text x="900" y="578" fill="#B6C8D8" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Run validated test changes</text>
+<text x="900" y="610" fill="#B6C8D8" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Within the defined pipeline</text>
+<rect x="462" y="490" width="350" height="165" rx="18" fill="#10263B" stroke="#49657D" stroke-width="1.5"/>
+<rect x="482" y="512" width="5" height="26" rx="2" fill="#48D9AE" stroke="none" stroke-width="1.5"/>
+<text x="501" y="534" fill="#F3F8FC" font-family="DejaVu Sans" font-size="25" font-weight="700" text-anchor="start" letter-spacing="0">Observed evidence</text>
+<text x="486" y="578" fill="#B6C8D8" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Execution logs and results</text>
+<text x="486" y="610" fill="#B6C8D8" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Measured product behavior</text>
+<rect x="48" y="490" width="350" height="165" rx="18" fill="#10263B" stroke="#49657D" stroke-width="1.5"/>
+<rect x="68" y="512" width="5" height="26" rx="2" fill="#48D9AE" stroke="none" stroke-width="1.5"/>
+<text x="87" y="534" fill="#F3F8FC" font-family="DejaVu Sans" font-size="25" font-weight="700" text-anchor="start" letter-spacing="0">Quality gates</text>
+<text x="72" y="578" fill="#B6C8D8" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Evaluate agreed criteria</text>
+<text x="72" y="610" fill="#B6C8D8" font-family="DejaVu Sans" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">Support release decisions</text>
+<text x="48" y="725" fill="#B6C8D8" font-family="DejaVu Sans" font-size="23" font-weight="400" text-anchor="start" letter-spacing="0">AI suggestions inform the work. Test evidence and engineering review govern progression.</text>
+</svg>

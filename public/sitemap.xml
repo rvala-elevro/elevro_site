@@ -92,7 +92,7 @@
   </url>
   <url>
     <loc>https://www.elevro.com/resources/blogs</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -107,6 +107,12 @@
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.elevro.com/resources/blogs/continuous-testing-in-devops</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.elevro.com/resources/blogs/ai-based-testing-for-modern-product-teams</loc>
