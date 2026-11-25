@@ -198,7 +198,7 @@ export const resourceDetails: ResourceDetail[] = [
           "Continuous testing integrates automated testing and quality validation throughout the software development lifecycle (SDLC). Instead of waiting until development is complete, teams continuously validate code changes, application functionality, system integrations, and release readiness through automated testing workflows.",
           "For modern digital products, this approach extends beyond web and mobile applications. It also supports embedded systems, firmware, IoT devices, APIs, cloud platforms, and connected product ecosystems.",
           "By combining continuous testing with Continuous Integration and Continuous Delivery (CI/CD), organizations can identify defects earlier, reduce repetitive testing efforts, and make more informed release decisions.",
-          "In this guide, we explore how continuous testing works in DevOps, its benefits, key testing approaches, popular tools, implementation strategies, and best practices for building reliable software delivery pipelines."
+          "In this guide, we explore how continuous testing works in DevOps, its benefits, key testing approaches, implementation strategies, and best practices for building reliable software delivery pipelines."
         ]
       },
       {
@@ -250,8 +250,7 @@ export const resourceDetails: ResourceDetail[] = [
             "src": "/resources/blogs/continuous-testing-in-devops/02-continuous-testing-pipeline.webp",
             "alt": "Seven-stage continuous testing flow from code commit through build, integration, regression, performance, release readiness and monitoring, with feedback and failure correction loops.",
             "caption": "Figure 1. An illustrative CI/CD validation sequence with monitoring feedback and a critical-failure correction loop.",
-            "aspectRatio": "2560 / 1680",
-            "fullSizeSrc": "/resources/blogs/continuous-testing-in-devops/02-continuous-testing-pipeline.svg"
+            "aspectRatio": "2560 / 1680"
           },
           {
             "type": "text",
@@ -480,6 +479,13 @@ export const resourceDetails: ResourceDetail[] = [
             "title": "Better Collaboration Through QAOps"
           },
           {
+            "type": "image",
+            "src": "/resources/blogs/continuous-testing-in-devops/04-qaops-toolchain-setup.webp",
+            "alt": "QAOps architecture connecting version control and CI/CD to build checks, test runners, environment setup, web and API tests, mobile tests, embedded tests, shared reports and quality gates.",
+            "caption": "Figure 2. An illustrative QAOps setup connects CI/CD, test runners, environments and product checks to shared evidence.",
+            "aspectRatio": "2560 / 1920"
+          },
+          {
             "type": "text",
             "paragraphs": [
               "Automated quality checks help identify build failures, regression issues, security concerns, and integration problems before deployment.",
@@ -559,9 +565,8 @@ export const resourceDetails: ResourceDetail[] = [
             "type": "image",
             "src": "/resources/blogs/continuous-testing-in-devops/03-quality-gate-decisions.webp",
             "alt": "Quality-gate decision flow showing pass to the next stage, owner review of documented exceptions, and stop, resolve and rerun paths that collect new evidence.",
-            "caption": "Figure 2. Quality gates translate test evidence into pass, review or stop decisions, with owner approval for exceptions.",
-            "aspectRatio": "2560 / 1680",
-            "fullSizeSrc": "/resources/blogs/continuous-testing-in-devops/03-quality-gate-decisions.svg"
+            "caption": "Figure 3. Quality gates translate test evidence into pass, review or stop decisions, with owner approval for exceptions.",
+            "aspectRatio": "2560 / 1680"
           },
           {
             "type": "text",
@@ -630,88 +635,6 @@ export const resourceDetails: ResourceDetail[] = [
             "paragraphs": [
               "Use these insights to identify bottlenecks, improve automation reliability, and optimize testing workflows."
             ]
-          }
-        ]
-      },
-      {
-        "type": "group",
-        "title": "Popular Continuous Testing Tools for DevOps",
-        "sections": [
-          {
-            "type": "text",
-            "paragraphs": [
-              "Choosing the right tools depends on application architecture, programming languages, testing requirements, infrastructure, and existing CI/CD workflows.",
-              "The following tools are commonly used to support continuous testing and automation."
-            ]
-          },
-          {
-            "type": "table",
-            "caption": "Continuous testing tools and their primary purpose",
-            "headers": [
-              "Tool",
-              "Primary Purpose"
-            ],
-            "rows": [
-              [
-                "Jenkins",
-                "CI/CD pipeline automation and test execution"
-              ],
-              [
-                "GitLab CI",
-                "Automated build, testing, and delivery workflows"
-              ],
-              [
-                "TeamCity",
-                "Build management and continuous integration"
-              ],
-              [
-                "Pytest",
-                "Python-based unit and functional testing"
-              ],
-              [
-                "Robot Framework",
-                "Keyword-driven test automation"
-              ],
-              [
-                "Selenium",
-                "Web browser automation"
-              ],
-              [
-                "Playwright",
-                "End-to-end web application testing"
-              ],
-              [
-                "Cypress",
-                "Modern web application testing"
-              ],
-              [
-                "Appium",
-                "Mobile application automation"
-              ],
-              [
-                "Docker",
-                "Consistent and isolated testing environments"
-              ],
-              [
-                "Terraform",
-                "Infrastructure provisioning and environment automation"
-              ]
-            ]
-          },
-          {
-            "type": "text",
-            "paragraphs": [
-              "A tool should be selected based on the product's testing requirements rather than popularity alone. Teams should also consider integration compatibility, scalability, maintenance effort, and reporting capabilities.",
-              "For complex connected products, the toolchain may need to support firmware builds, hardware integration, protocol validation, and automated device testing alongside conventional application testing."
-            ]
-          },
-          {
-            "type": "image",
-            "src": "/resources/blogs/continuous-testing-in-devops/04-qaops-toolchain-setup.webp",
-            "alt": "QAOps architecture connecting version control and CI/CD to build checks, test runners, environment setup, web and API tests, mobile tests, embedded tests, shared reports and quality gates.",
-            "caption": "Figure 3. An illustrative QAOps setup connects CI/CD, test runners, environments and product checks to shared evidence.",
-            "aspectRatio": "2560 / 1920",
-            "fullSizeSrc": "/resources/blogs/continuous-testing-in-devops/04-qaops-toolchain-setup.svg"
           }
         ]
       },
@@ -790,8 +713,7 @@ export const resourceDetails: ResourceDetail[] = [
             "src": "/resources/blogs/continuous-testing-in-devops/05-implementation-roadmap.webp",
             "alt": "Seven-step continuous testing roadmap: assess workflow, define objectives, select tools, build a reusable framework, integrate CI/CD, establish quality gates and monitor and improve.",
             "caption": "Figure 4. A seven-step implementation roadmap links assessment, automation and quality gates with ongoing improvement.",
-            "aspectRatio": "2560 / 1680",
-            "fullSizeSrc": "/resources/blogs/continuous-testing-in-devops/05-implementation-roadmap.svg"
+            "aspectRatio": "2560 / 1680"
           },
           {
             "type": "text",
@@ -880,8 +802,7 @@ export const resourceDetails: ResourceDetail[] = [
             "src": "/resources/blogs/continuous-testing-in-devops/06-embedded-iot-test-setup.webp",
             "alt": "Connected product test lab showing a CI pipeline and local lab agent, device under test, mobile test device, BLE and Wi-Fi links, cloud services and evidence sent to release quality gates.",
             "caption": "Figure 5. An illustrative local lab setup validates device, mobile, wireless and cloud interactions and retains release evidence.",
-            "aspectRatio": "2560 / 1920",
-            "fullSizeSrc": "/resources/blogs/continuous-testing-in-devops/06-embedded-iot-test-setup.svg"
+            "aspectRatio": "2560 / 1920"
           },
           {
             "type": "text",
@@ -967,8 +888,7 @@ export const resourceDetails: ResourceDetail[] = [
             "src": "/resources/blogs/continuous-testing-in-devops/07-ai-assisted-testing.webp",
             "alt": "AI-assisted testing workflow moving engineering context through AI suggestions and engineer review to automated tests, observed evidence and quality gates, with results fed back for analysis.",
             "caption": "Figure 6. Engineers review AI suggestions before execution; observed test results feed analysis and quality gates.",
-            "aspectRatio": "2560 / 1680",
-            "fullSizeSrc": "/resources/blogs/continuous-testing-in-devops/07-ai-assisted-testing.svg"
+            "aspectRatio": "2560 / 1680"
           },
           {
             "type": "text",
